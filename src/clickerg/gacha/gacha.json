@@ -1,0 +1,9 @@
+{
+  "contrato_1":
+    [
+      {"id":"1", "name":"Elza", "lvl":"1", "base_atk":"100", "prob":"5"},
+      {"id":"2", "name":"Zephu", "lvl":"1", "base_atk":"90", "prob":"10"},
+      {"id":"3", "name":"Vargas", "lvl":"1", "base_atk":"50", "prob":"65"},
+      {"id":"4", "name":"Selena", "lvl":"1", "base_atk":"80", "prob":"20"}
+      ]
+}

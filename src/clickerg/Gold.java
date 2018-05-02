@@ -5,14 +5,22 @@
  */
 package clickerg;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -30,6 +38,10 @@ public class Gold implements Initializable {
     private Pane pn_Mine;
     @FXML
     private Label label_goldPerClick;
+    @FXML
+    private VBox vBox_Gold;
+    @FXML
+    private ImageView imageContainer_roca;
     
     
     @Override

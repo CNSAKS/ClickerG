@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tienes>
+    <heroe>
+        <base_atk>50</base_atk>
+        <id>3</id>
+        <lvl>1</lvl>
+        <name>Vargas</name>
+    </heroe>
+    <heroe>
+        <base_atk>80</base_atk>
+        <id>4</id>
+        <lvl>1</lvl>
+        <name>Selena</name>
+    </heroe>
+    <heroe>
+        <base_atk>100</base_atk>
+        <id>1</id>
+        <lvl>1</lvl>
+        <name>Elza</name>
+    </heroe>
+    <heroe>
+        <base_atk>50</base_atk>
+        <id>3</id>
+        <lvl>1</lvl>
+        <name>Vargas</name>
+    </heroe>
+</tienes>

@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -34,7 +35,9 @@ public class Main extends Application {
     @FXML
     private Button bt_exp;
     @FXML
-    private VBox vBox_Main;
+    private AnchorPane AnchorPane_main;
+    @FXML
+    private Button bt_gacha;
 
     /**
      * Initializes the controller class.
@@ -83,7 +86,17 @@ public class Main extends Application {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
-        stage.setTitle("Reserva de entradas");
+        stage.setTitle("Exp");
+        stage.show();
+    }
+
+    @FXML
+    private void clickGacha(ActionEvent event) throws IOException {
+        Parent reserva = FXMLLoader.load(getClass().getResource("gacha/gacha.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(reserva));
+        //Preguntar por cierre
+        stage.setTitle("Gacha");
         stage.show();
     }
     

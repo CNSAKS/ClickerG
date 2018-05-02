@@ -7,7 +7,28 @@ and open the template in the editor.
     Created on : 23-abr-2018, 15:59:08
     Author     : CNSAKS
 */
-#vBox_Main {
+#AnchorPane_main{
     -fx-background-image: url("main.png");
     -fx-background-size: cover;
 }
+
+.button{
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-transition-duration: 0.4s;
+}
+
+.button:hover {
+    -fx-background-color: #000090; /* darkblue */
+    -fx-color: white;
+}
+
+#bt_boss{
+    -fx-background-image: url("boss.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
