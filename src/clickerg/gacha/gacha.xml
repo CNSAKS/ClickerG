@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE contrato [
+<!ELEMENT contrato (heroe)>
+<!ELEMENT heroe (base_atk,id,lvl,name,prob)>
+<!ELEMENT base_atk (#PCDATA)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT lvl (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT prob (#PCDATA)>
+]>
+<contrato>
+    <heroe>
+       <base_atk>100</base_atk>
+       <id>1</id>
+       <lvl>1</lvl>
+       <name>Elza</name>
+       <prob>5</prob>
+    </heroe>
+    <heroe>
+       <base_atk>90</base_atk>
+       <id>2</id>
+       <lvl>1</lvl>
+       <name>Zephu</name>
+       <prob>10</prob>
+    </heroe>
+    <heroe>
+       <base_atk>50</base_atk>
+       <id>3</id>
+       <lvl>1</lvl>
+       <name>Vargas</name>
+       <prob>65</prob>
+    </heroe>
+    <heroe>
+       <base_atk>80</base_atk>
+       <id>4</id>
+       <lvl>1</lvl>
+       <name>Selena</name>
+       <prob>20</prob>
+    </heroe>
+</contrato>
