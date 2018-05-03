@@ -5,20 +5,36 @@
  */
 package clickerg;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  *
  * @author cnsak
  */
 public class AuxiliarHeroe {
 
+    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String active) {
+        this.id = id;
+        this.name = name;
+        this.lvl = lvl;
+        this.base_atk = base_atk;
+        this.prob = prob;
+        this.active = active;
+    }
+    
     public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob) {
         this.id = id;
         this.name = name;
         this.lvl = lvl;
         this.base_atk = base_atk;
         this.prob = prob;
+        this.active = "irrelevante";
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
     }
 
     public String getId() {
@@ -70,4 +86,6 @@ public class AuxiliarHeroe {
     private String lvl;
     private String base_atk;
     private String prob;
+    private String active;
+    
 }

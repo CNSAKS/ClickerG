@@ -5,9 +5,6 @@
  */
 package clickerg;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -65,8 +62,8 @@ public class Gacha implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadfromXML("C:\\Users\\cnsak\\Documents\\NetBeansProjects\\ClickerG-master\\src\\clickerg\\gacha\\gacha.xml", 0);
-        loadfromXML("C:\\Users\\cnsak\\Documents\\NetBeansProjects\\ClickerG-master\\src\\clickerg\\gacha\\have.xml", 1);
+        loadfromXML("src/clickerg/gacha/gacha.xml", 0);
+        loadfromXML("src/clickerg/gacha/have.xml", 1);
     }
     
         
@@ -109,7 +106,21 @@ public class Gacha implements Initializable {
 
             for(int x =0;x<contratados.size();x++){
                 heroe = dom.createElement("heroe");
-
+                
+                //borrar esta linea solo pruebas
+                if(x==0){
+                    e = dom.createElement("active");
+                    e.appendChild(dom.createTextNode("true"));
+                    heroe.appendChild(e);
+                }else{
+                    e = dom.createElement("active");
+                    e.appendChild(dom.createTextNode("false"));
+                    heroe.appendChild(e);
+                }
+                e = dom.createElement("base_atk");
+                e.appendChild(dom.createTextNode(contratados.get(x).getBase_atk()));
+                heroe.appendChild(e);
+                
                 e = dom.createElement("base_atk");
                 e.appendChild(dom.createTextNode(contratados.get(x).getBase_atk()));
                 heroe.appendChild(e);
@@ -195,7 +206,7 @@ public class Gacha implements Initializable {
     }
     @FXML
     private void savePrueba(ActionEvent event) {
-        saveToXML("C:\\Users\\cnsak\\Documents\\NetBeansProjects\\ClickerG-master\\src\\clickerg\\gacha\\have.xml");
+        saveToXML("src/clickerg/gacha/have.xml");
     }
         
   
