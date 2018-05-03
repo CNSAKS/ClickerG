@@ -2,27 +2,11 @@
 <tienes>
     <heroe>
         <active>true</active>
-        <base_atk>90</base_atk>
-        <base_atk>90</base_atk>
-        <id>2</id>
-        <lvl>1</lvl>
-        <name>Zephu</name>
-    </heroe>
-    <heroe>
-        <active>false</active>
-        <base_atk>90</base_atk>
-        <base_atk>90</base_atk>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
         <id>3</id>
         <lvl>1</lvl>
         <name>Vargas</name>
-    </heroe>
-    <heroe>
-        <active>false</active>
-        <base_atk>50</base_atk>
-        <base_atk>50</base_atk>
-        <id>2</id>
-        <lvl>1</lvl>
-        <name>Zephu</name>
     </heroe>
     <heroe>
         <active>false</active>
@@ -42,11 +26,51 @@
     </heroe>
     <heroe>
         <active>false</active>
-        <base_atk>100</base_atk>
-        <base_atk>100</base_atk>
-        <id>1</id>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
+        <id>3</id>
         <lvl>1</lvl>
-        <name>Elza</name>
+        <name>Vargas</name>
+    </heroe>
+    <heroe>
+        <active>false</active>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
+        <id>4</id>
+        <lvl>1</lvl>
+        <name>Selena</name>
+    </heroe>
+    <heroe>
+        <active>false</active>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
+        <id>3</id>
+        <lvl>1</lvl>
+        <name>Vargas</name>
+    </heroe>
+    <heroe>
+        <active>false</active>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
+        <id>4</id>
+        <lvl>1</lvl>
+        <name>Selena</name>
+    </heroe>
+    <heroe>
+        <active>false</active>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
+        <id>4</id>
+        <lvl>1</lvl>
+        <name>Selena</name>
+    </heroe>
+    <heroe>
+        <active>false</active>
+        <base_atk>50</base_atk>
+        <base_atk>50</base_atk>
+        <id>3</id>
+        <lvl>1</lvl>
+        <name>Vargas</name>
     </heroe>
     <heroe>
         <active>false</active>

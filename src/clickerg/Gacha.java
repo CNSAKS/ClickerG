@@ -166,6 +166,7 @@ public class Gacha implements Initializable {
 
     
     public void loadfromXML(String xmlRoute, int mode) {
+
         // Make an  instance of the DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
@@ -192,7 +193,7 @@ public class Gacha implements Initializable {
                 }
             }else{
                 for(int i = 0;i<id.size();i++){
-                    contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i)));
+                    contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "not needed"));
                 }
             }
             
