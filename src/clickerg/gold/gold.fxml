@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,20 +14,21 @@
    <children>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
          <children>
-            <Label text="Gold:" />
-            <Label fx:id="lb_goldCount" />
-            <Label text="GPC:">
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="label_goldPerClick" />
-            <Button mnemonicParsing="false" onAction="#moreGPC" text="Button">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#pruebaActu" text="Guardar" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#irATown" text="Button" />
+                  <Label layoutX="165.0" layoutY="12.0" text="Gold:" />
+                  <Label fx:id="lb_goldCount" layoutX="243.0" layoutY="12.0" />
+                  <Label layoutX="255.0" layoutY="12.0" text="GPC:">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="label_goldPerClick" layoutX="327.0" layoutY="12.0" prefHeight="17.0" prefWidth="8.0" />
+                  <Button layoutX="367.0" layoutY="8.0" mnemonicParsing="false" onAction="#moreGPC" text="Button" />
+                  <Button layoutX="527.0" layoutY="8.0" mnemonicParsing="false" onAction="#pruebaActu" text="Guardar" />
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
       <Pane fx:id="pn_Mine" onMousePressed="#goldIncrease" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

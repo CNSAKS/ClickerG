@@ -52,7 +52,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("main/main.css").toExternalForm());
         stage.setScene(scene);
-        stage.setTitle("Ventana principal");
+        stage.setTitle("Town");
         stage.show();
     }
      
@@ -66,7 +66,7 @@ public class Main extends Application {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
-        stage.setTitle("Reserva de entradas");
+        stage.setTitle("Cave");
         stage.show();
     }
 

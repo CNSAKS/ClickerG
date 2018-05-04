@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Gacha">
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Gacha">
    <children>
-      <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="&lt;" />
-      <VBox fx:id="vBox_Gacha" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMousePressed="#summon" prefHeight="400.0" prefWidth="600.0" />
-      
-      <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#savePrueba" text="&gt;" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#irATown" text="Button">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Button>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="&lt;" />
+            <VBox fx:id="vBox_Gacha" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMousePressed="#summon" prefHeight="400.0" prefWidth="600.0" />
+            
+            <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#savePrueba" text="&gt;" />
+         </children>
+      </HBox>
    </children>
-</HBox>
+</VBox>

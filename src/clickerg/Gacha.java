@@ -25,9 +25,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -231,6 +235,17 @@ public class Gacha implements Initializable {
         saveToXML("src/clickerg/gacha/have.xml");
         saveToXML("src/clickerg/main/accountInfo.xml");
     }
+
+    @FXML
+    private void irATown(ActionEvent event) throws IOException {
+         Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(reserva));
+        //Preguntar por cierre
+        stage.setTitle("Town");
+        stage.show();
+    }
+    
         
   
     
