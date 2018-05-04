@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -60,4 +61,13 @@ public class Exp implements Initializable {
          exp += expPerClick;
          lb_expCount.setText(exp + "");
     } 
+
+    @FXML
+    private void backTown(ActionEvent event) throws IOException {
+        Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(reserva));
+        stage.setTitle("Town");
+        stage.show();
+    }
 }
