@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vBox_Gold" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@gold.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Gold">
+<VBox fx:id="vBox_Gold" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@gold.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Gold">
    <children>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
          <children>
@@ -26,6 +26,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#pruebaActu" text="Guardar" />
          </children>
       </HBox>
       <Pane fx:id="pn_Mine" onMousePressed="#goldIncrease" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

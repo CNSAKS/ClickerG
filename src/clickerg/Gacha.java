@@ -49,6 +49,7 @@ public class Gacha implements Initializable {
     ArrayList<AuxiliarHeroe> contratos = new ArrayList<AuxiliarHeroe>();
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
     Document xml;
+    ArrayList<String> goldInAccount;
     ArrayList<String> id;
     ArrayList<String> name;
     ArrayList<String> lvl;
@@ -64,17 +65,22 @@ public class Gacha implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         loadfromXML("src/clickerg/gacha/gacha.xml", 0);
         loadfromXML("src/clickerg/gacha/have.xml", 1);
+        loadfromXML("src/clickerg/main/accountInfo.xml", 1);
+        
     }
     
         
     private ArrayList<String> getTextValue(Element doc, String tag) {
         ArrayList<String> value = new ArrayList<String>();
         NodeList nl= doc.getElementsByTagName(tag);
+        
         for(int x = 0;x<nl.getLength();x++){
            value.add(nl.item(x).getFirstChild().getNodeValue());
         }
         return value;
     }
+    
+   
 
     @FXML
     private void summon(MouseEvent event) {
@@ -102,7 +108,20 @@ public class Gacha implements Initializable {
 
             dom = db.newDocument();
 
-            Element rootEle = dom.createElement("tienes");
+            Element rootEle = dom.createElement("accountInfo");
+            
+            Element heroes = dom.createElement("heroes");
+            
+            Element goldEle = dom.createElement("gold");
+            
+            goldEle.appendChild(dom.createTextNode(goldInAccount.get(0)));
+                    
+            rootEle.appendChild(goldEle);
+            
+            rootEle.appendChild(heroes);
+            
+            
+            
 
             for(int x =0;x<contratados.size();x++){
                 heroe = dom.createElement("heroe");
@@ -137,7 +156,7 @@ public class Gacha implements Initializable {
                 e.appendChild(dom.createTextNode(contratados.get(x).getName()));
                 heroe.appendChild(e);
 
-                rootEle.appendChild(heroe);
+                heroes.appendChild(heroe);
             }
 
             dom.appendChild(rootEle);
@@ -178,6 +197,8 @@ public class Gacha implements Initializable {
             
             Element doc = xml.getDocumentElement();
             
+            goldInAccount = getTextValue(doc, "gold");
+            
             id = getTextValue(doc, "id");
 
             name = getTextValue(doc, "name");
@@ -208,6 +229,7 @@ public class Gacha implements Initializable {
     @FXML
     private void savePrueba(ActionEvent event) {
         saveToXML("src/clickerg/gacha/have.xml");
+        saveToXML("src/clickerg/main/accountInfo.xml");
     }
         
   
