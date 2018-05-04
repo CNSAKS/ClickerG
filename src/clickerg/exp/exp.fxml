@@ -11,6 +11,11 @@
    <children>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#backTown" text="Back" translateX="-180.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
             <Label text="Exp: " />
             <Label fx:id="lb_expCount" />
             <Label text="ExpPC: ">
