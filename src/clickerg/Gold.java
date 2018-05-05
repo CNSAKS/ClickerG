@@ -78,6 +78,7 @@ public class Gold implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        loadDataGold("src/clickerg/main/accountInfo.xml");
         label_goldPerClick.setText(goldPerClick+"");
         lb_goldCount.setText(gold+"");
     }    
@@ -138,5 +139,38 @@ public class Gold implements Initializable {
         //Preguntar por cierre
         stage.setTitle("Town");
         stage.show();
+    }
+    
+    private void loadDataGold(String xmlRoute){
+    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try {
+            // use the factory to take an instance of the document builder
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            // parse using the builder to get the DOM mapping of the    
+            // XML file
+            xml = db.parse(xmlRoute);
+            
+            Element doc = xml.getDocumentElement();
+            
+            goldInAccount = getTextValue(doc, "gold");  
+            
+            gold = Integer.parseInt(goldInAccount.get(0));
+        } catch (ParserConfigurationException pce) {
+            System.out.println(pce.getMessage());
+        } catch (SAXException se) {
+            System.out.println(se.getMessage());
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
+        }
+    }
+    
+    private ArrayList<String> getTextValue(Element doc, String tag) {
+        ArrayList<String> value = new ArrayList<String>();
+        NodeList nl= doc.getElementsByTagName(tag);
+        
+        for(int x = 0;x<nl.getLength();x++){
+           value.add(nl.item(x).getFirstChild().getNodeValue());
+        }
+        return value;
     }
 }

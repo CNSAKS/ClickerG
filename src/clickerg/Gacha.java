@@ -59,6 +59,7 @@ public class Gacha implements Initializable {
     ArrayList<String> lvl;
     ArrayList<String> base_atk;
     ArrayList<String> prob;
+    int gold;
     @FXML
     private VBox vBox_Gacha;
     
@@ -68,7 +69,6 @@ public class Gacha implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadfromXML("src/clickerg/gacha/gacha.xml", 0);
-        loadfromXML("src/clickerg/gacha/have.xml", 1);
         loadfromXML("src/clickerg/main/accountInfo.xml", 1);
         
     }
@@ -88,12 +88,18 @@ public class Gacha implements Initializable {
 
     @FXML
     private void summon(MouseEvent event) {
+        System.out.println("Oro:"+gold);
+        if(gold<500){
+            System.out.println("No tienes oro suficiente ("+(gold-500)+"), vete a farmear");
+            return;
+        }
         double value = Math.random()*100;
         double actualSearch = 0;
         for(int x = 0; x<contratos.size();x++){
             if(actualSearch+Integer.parseInt(contratos.get(x).getProb())>value){
                 System.out.println("Te toco "+contratos.get(x).toString());
                 contratados.add(contratos.get(x));
+                gold-=500;
                 return;
             }
             actualSearch+=Integer.parseInt(contratos.get(x).getProb());
@@ -118,7 +124,7 @@ public class Gacha implements Initializable {
             
             Element goldEle = dom.createElement("gold");
             
-            goldEle.appendChild(dom.createTextNode(goldInAccount.get(0)));
+            goldEle.appendChild(dom.createTextNode(gold+""));
                     
             rootEle.appendChild(goldEle);
             
@@ -201,8 +207,6 @@ public class Gacha implements Initializable {
             
             Element doc = xml.getDocumentElement();
             
-            goldInAccount = getTextValue(doc, "gold");
-            
             id = getTextValue(doc, "id");
 
             name = getTextValue(doc, "name");
@@ -217,6 +221,8 @@ public class Gacha implements Initializable {
                     contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i)));
                 }
             }else{
+                goldInAccount = getTextValue(doc, "gold");
+                gold = Integer.parseInt(goldInAccount.get(0));
                 for(int i = 0;i<id.size();i++){
                     contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "not needed"));
                 }
@@ -232,7 +238,6 @@ public class Gacha implements Initializable {
     }
     @FXML
     private void savePrueba(ActionEvent event) {
-        saveToXML("src/clickerg/gacha/have.xml");
         saveToXML("src/clickerg/main/accountInfo.xml");
     }
 
