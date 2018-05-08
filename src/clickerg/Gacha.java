@@ -52,6 +52,7 @@ public class Gacha implements Initializable {
 
     ArrayList<AuxiliarHeroe> contratos = new ArrayList<AuxiliarHeroe>();
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
+    ArrayList<AuxiliarHeroe> contratadosToSave = new ArrayList<AuxiliarHeroe>();
     Document xml;
     ArrayList<String> goldInAccount;
     ArrayList<String> id;
@@ -99,6 +100,7 @@ public class Gacha implements Initializable {
             if(actualSearch+Integer.parseInt(contratos.get(x).getProb())>value){
                 System.out.println("Te toco "+contratos.get(x).toString());
                 contratados.add(contratos.get(x));
+                contratadosToSave.add(contratos.get(x));
                 gold-=500;
                 return;
             }
@@ -106,7 +108,7 @@ public class Gacha implements Initializable {
         }
     }
     
-    public void saveToXML(String xmlRoute) {
+    public void saveToXML(String xmlRoute) throws SAXException, IOException {
         Document dom;
         Element e = null;
         Element heroe;
@@ -115,25 +117,17 @@ public class Gacha implements Initializable {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
+            dom = db.parse(xmlRoute);
 
-            dom = db.newDocument();
+            Node rootEle = dom.getFirstChild();
+            
+            Node HeroesData = dom.getElementsByTagName("heroes").item(0);
+            
+            Node goldEle = dom.getElementsByTagName("gold").item(0);
+            
+            goldEle.setTextContent(gold + "");
 
-            Element rootEle = dom.createElement("accountInfo");
-            
-            Element heroes = dom.createElement("heroes");
-            
-            Element goldEle = dom.createElement("gold");
-            
-            goldEle.appendChild(dom.createTextNode(gold+""));
-                    
-            rootEle.appendChild(goldEle);
-            
-            rootEle.appendChild(heroes);
-            
-            
-            
-
-            for(int x =0;x<contratados.size();x++){
+            for(int x =0;x<contratadosToSave.size();x++){
                 heroe = dom.createElement("heroe");
                 
                 //borrar esta linea solo pruebas
@@ -147,30 +141,29 @@ public class Gacha implements Initializable {
                     heroe.appendChild(e);
                 }
                 e = dom.createElement("base_atk");
-                e.appendChild(dom.createTextNode(contratados.get(x).getBase_atk()));
+                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getBase_atk()));
                 heroe.appendChild(e);
                 
                 e = dom.createElement("base_atk");
-                e.appendChild(dom.createTextNode(contratados.get(x).getBase_atk()));
+                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getBase_atk()));
                 heroe.appendChild(e);
 
                 e = dom.createElement("id");
-                e.appendChild(dom.createTextNode(contratados.get(x).getId()));
+                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getId()));
                 heroe.appendChild(e);
 
                 e = dom.createElement("lvl");
-                e.appendChild(dom.createTextNode(contratados.get(x).getLvl()));
+                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getLvl()));
                 heroe.appendChild(e);
 
                 e = dom.createElement("name");
-                e.appendChild(dom.createTextNode(contratados.get(x).getName()));
+                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getName()));
                 heroe.appendChild(e);
 
-                heroes.appendChild(heroe);
+                Node heroeNode = (Node)heroe;
+                
+                HeroesData.appendChild(heroeNode);
             }
-
-            dom.appendChild(rootEle);
-
             try {
                 Transformer tr = TransformerFactory.newInstance().newTransformer();
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -237,7 +230,7 @@ public class Gacha implements Initializable {
         }
     }
     @FXML
-    private void savePrueba(ActionEvent event) {
+    private void savePrueba(ActionEvent event) throws SAXException, IOException {
         saveToXML("src/clickerg/main/accountInfo.xml");
     }
 
