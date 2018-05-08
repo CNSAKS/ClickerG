@@ -54,7 +54,7 @@ public class Boss implements Initializable {
         hp_bar.setProgress(1);
         currenthp.setText(bossHp+" / "+bossHp);
         
-        loadfromXML("C:\\Users\\cnsak\\Documents\\NetBeansProjects\\ClickerG-master\\src\\clickerg\\gacha\\have.xml", 0);
+        loadfromXML("src/clickerg/main/accountInfo.xml", 1);
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroDamage = Integer.parseInt(contratados.get(x).getBase_atk());
