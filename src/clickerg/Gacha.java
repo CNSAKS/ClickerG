@@ -60,6 +60,7 @@ public class Gacha implements Initializable {
     ArrayList<String> lvl;
     ArrayList<String> base_atk;
     ArrayList<String> prob;
+    ArrayList<String> exp;
     int gold;
     @FXML
     private VBox vBox_Gacha;
@@ -140,12 +141,14 @@ public class Gacha implements Initializable {
                     e.appendChild(dom.createTextNode("false"));
                     heroe.appendChild(e);
                 }
+                
+                
                 e = dom.createElement("base_atk");
                 e.appendChild(dom.createTextNode(contratadosToSave.get(x).getBase_atk()));
                 heroe.appendChild(e);
                 
-                e = dom.createElement("base_atk");
-                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getBase_atk()));
+                e = dom.createElement("exp");
+                e.appendChild(dom.createTextNode(contratadosToSave.get(x).getExp()));
                 heroe.appendChild(e);
 
                 e = dom.createElement("id");
@@ -207,17 +210,18 @@ public class Gacha implements Initializable {
             lvl = getTextValue(doc, "lvl");
 
             base_atk = getTextValue(doc, "base_atk");
-            
+
             if(mode==0){
                 prob = getTextValue(doc, "prob");
                 for(int i = 0;i<id.size();i++){
-                    contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i)));
+                    contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i), "0"));
                 }
             }else{
                 goldInAccount = getTextValue(doc, "gold");
                 gold = Integer.parseInt(goldInAccount.get(0));
+                exp = getTextValue(doc, "exp");
                 for(int i = 0;i<id.size();i++){
-                    contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "not needed"));
+                    contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "not needed", exp.get(i)));
                 }
             }
             

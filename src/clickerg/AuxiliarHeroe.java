@@ -11,22 +11,24 @@ package clickerg;
  */
 public class AuxiliarHeroe {
 
-    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String active) {
+    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String active, String exp) {
         this.id = id;
         this.name = name;
         this.lvl = lvl;
         this.base_atk = base_atk;
         this.prob = prob;
         this.active = active;
+        this.exp = exp;
     }
     
-    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob) {
+    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String exp) {
         this.id = id;
         this.name = name;
         this.lvl = lvl;
         this.base_atk = base_atk;
         this.prob = prob;
         this.active = "irrelevante";
+        this.exp = exp;
     }
 
     public String getActive() {
@@ -87,5 +89,14 @@ public class AuxiliarHeroe {
     private String base_atk;
     private String prob;
     private String active;
+    private String exp;
+
+    public String getExp() {
+        return exp;
+    }
+
+    public void setExp(String exp) {
+        this.exp = exp;
+    }
     
 }

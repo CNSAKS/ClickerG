@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <accountInfo>
-    <gold>0</gold>
+    <gold>20</gold>
     <heroes>
         <heroe>
             <active>true</active>
+            <base_atk>90</base_atk>
+            <exp>0</exp>
+            <id>2</id>
+            <lvl>1</lvl>
+            <name>Zephu</name>
+        </heroe>
+    <heroe>
+            <active>true</active>
             <base_atk>50</base_atk>
-            <base_atk>50</base_atk>
+            <exp>0</exp>
             <id>3</id>
             <lvl>1</lvl>
             <name>Vargas</name>
