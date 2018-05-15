@@ -160,7 +160,7 @@ public class Town implements Initializable{
         
         int heroesData = doc.getElementsByTagName("heroes").item(0).getChildNodes().getLength();
         
-        System.out.println(heroesData);
+        
         if(heroesData == 0){
             nueva = true;
         }
