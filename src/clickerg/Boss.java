@@ -5,19 +5,24 @@
  */
 package clickerg;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -39,11 +44,13 @@ public class Boss implements Initializable {
     private ProgressBar hp_bar;
     
     int bossHp = 100;
-    int heroDamage = 0;
+    int heroDamage = 20;
     @FXML
     private Label currenthp;
     @FXML
     private Pane panehp;
+    @FXML
+    private ImageView ImageBoss;
     
 
     /**
@@ -58,9 +65,13 @@ public class Boss implements Initializable {
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroDamage = Integer.parseInt(contratados.get(x).getBase_atk());
+                System.out.println(heroDamage);
              }
         }
-               
+        //game loop
+        
+        GameLoop game = new GameLoop(10, 0, ImageBoss);
+        game.startGame();
     }    
 
     @FXML

@@ -70,8 +70,12 @@ public class Gacha implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadfromXML("src/clickerg/gacha/gacha.xml", 0);
-        loadfromXML("src/clickerg/main/accountInfo.xml", 1);
+        TemplateXMLonlyRead readerGacha = new readGachaFileGacha();
+        contratos = readerGacha.readXML();
+        //loadfromXML("src/clickerg/gacha/gacha.xml", 0);
+        TemplateXMLonlyRead readerAccount = new readGachaFileAccountInfo();
+        contratados = readerAccount.readXML();
+        gold = readerAccount.gold;
         
     }
     
@@ -127,15 +131,23 @@ public class Gacha implements Initializable {
             Node goldEle = dom.getElementsByTagName("gold").item(0);
             
             goldEle.setTextContent(gold + "");
-
-            for(int x =0;x<contratadosToSave.size();x++){
+            
+            int toActive = dom.getElementsByTagName("heroe").getLength();
+            
+            for(int x = 0;x<contratadosToSave.size();x++){
                 heroe = dom.createElement("heroe");
                 
                 //borrar esta linea solo pruebas
-                if(x==0){
-                    e = dom.createElement("active");
-                    e.appendChild(dom.createTextNode("true"));
-                    heroe.appendChild(e);
+                if(toActive == 0){
+                    if(x==0){
+                        e = dom.createElement("active");
+                        e.appendChild(dom.createTextNode("true"));
+                        heroe.appendChild(e);
+                    }else{
+                        e = dom.createElement("active");
+                        e.appendChild(dom.createTextNode("false"));
+                        heroe.appendChild(e);
+                    }
                 }else{
                     e = dom.createElement("active");
                     e.appendChild(dom.createTextNode("false"));

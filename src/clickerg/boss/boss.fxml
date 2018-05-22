@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -34,6 +35,9 @@
             </Pane>
          </children>
       </HBox>
-      <Pane fx:id="pn_Mine" onMousePressed="#damageBoss" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <Pane fx:id="pn_Mine" onMousePressed="#damageBoss" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="ImageBoss" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
+         </children></Pane>
    </children>
 </VBox>
