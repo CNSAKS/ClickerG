@@ -48,7 +48,6 @@ public class Exp implements Initializable {
 
     @FXML
     private Label lb_expCount;
-    private int exp = 0;
     private int expPerClick = 1;
     @FXML
     private Label label_expPerClick;
