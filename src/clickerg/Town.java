@@ -47,6 +47,8 @@ public class Town implements Initializable{
     private AnchorPane AnchorPane_main;
     @FXML
     private Button bt_gacha;
+    @FXML
+    private Button bt_heroes;
 
     /**
      * Initializes the controller class.
@@ -181,6 +183,16 @@ public class Town implements Initializable{
         }
          
     
+    }
+
+    @FXML
+    private void clickHeroes(ActionEvent event) throws IOException {
+         Parent reserva = FXMLLoader.load(getClass().getResource("heroes/heroes.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(reserva));
+        //Preguntar por cierre
+        stage.setTitle("Heroes");
+        stage.show();
     }
 
 }

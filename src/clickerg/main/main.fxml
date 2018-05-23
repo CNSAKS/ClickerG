@@ -26,5 +26,10 @@
             <Font size="15.0" />
          </font>
       </Button>
+      <Button fx:id="bt_heroes" layoutX="132.0" layoutY="67.0" mnemonicParsing="false" onAction="#clickHeroes" prefHeight="25.0" prefWidth="78.0" text="Heroes" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
