@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -66,8 +67,15 @@ public class Exp implements Initializable {
     ArrayList<String> active;
     ArrayList<String> expList;
     
+    int baseLvlExp = 100;
+    int nextLvlExp = baseLvlExp;
+    int heroeLvl = 1;
     int heroExperience = 0;
     String idActual;
+    @FXML
+    private ProgressBar exp_bar;
+    @FXML
+    private Label currentexp;
     
     
     /**
@@ -77,14 +85,23 @@ public class Exp implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
          label_expPerClick.setText(expPerClick + "");
          
+       
          loadfromXML("src/clickerg/main/accountInfo.xml", 1);
          for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
                 idActual = contratados.get(x).getId();
+                heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
              }
         }
-         lb_expCount.setText(heroExperience + "");
+        lb_expCount.setText(heroExperience + "");
+        nextLvlExp =  (int)( baseLvlExp *  Math.pow(1.16, heroeLvl-1));
+        exp_bar.setProgress(0);
+        exp_bar.setProgress((exp_bar.getProgress()+ heroExperience) / nextLvlExp );
+        currentexp.setText((int) heroExperience +" / "+(int) nextLvlExp);
+        
+        
+        
     }    
 
     @FXML
@@ -95,8 +112,19 @@ public class Exp implements Initializable {
     
     @FXML
     private void expIncrease(MouseEvent event) {
-         heroExperience += expPerClick;
-         lb_expCount.setText(heroExperience + "");
+        exp_bar.setProgress((exp_bar.getProgress() *  nextLvlExp + expPerClick) / nextLvlExp );
+        heroExperience += expPerClick;
+        lb_expCount.setText(heroExperience + "");
+        if(exp_bar.getProgress() * nextLvlExp >= nextLvlExp ){
+            heroExperience = 0;
+            exp_bar.setProgress(0);        
+            lb_expCount.setText("0");
+            heroeLvl++;
+            nextLvlExp  = (int) (baseLvlExp * Math.pow(1.16, heroeLvl-1));
+            nextLvlExp = (int) Math.floor(nextLvlExp);
+            
+        }
+        currentexp.setText(lb_expCount.getText() + " / " + nextLvlExp);
         
     } 
 
@@ -174,9 +202,11 @@ public class Exp implements Initializable {
             Element eleX = (Element) eleL.getElementsByTagName("id").item(0);
             if(eleX.getFirstChild().getNodeValue().equals(idActual)){
                 Node expData =eleL.getElementsByTagName("exp").item(0);
-            
+                
                 expData.setTextContent(heroExperience + "");
-            
+                
+                Node lvlData =eleL.getElementsByTagName("lvl").item(0);
+                lvlData.setTextContent(heroeLvl + "");
             }
             
             
