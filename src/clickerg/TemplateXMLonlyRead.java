@@ -17,6 +17,7 @@ import org.w3c.dom.NodeList;
 public abstract class TemplateXMLonlyRead {
     Document xml;
     int gold;
+    int bossLvl;
     public final ArrayList<AuxiliarHeroe> readXML() {
       openDocument();
       return readDocument();

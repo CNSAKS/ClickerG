@@ -75,6 +75,12 @@ public class Town implements Initializable{
 
                     rootElement.appendChild(goldXm);
 
+                    // staff elements
+                    Element bossLvl = doc.createElement("bossLvl");
+
+                    bossLvl.appendChild(doc.createTextNode("1"));
+
+                    rootElement.appendChild(bossLvl);
 
                     // firstname elements
                     Element heroesXm = doc.createElement("heroes");

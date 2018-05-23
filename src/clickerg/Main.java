@@ -6,10 +6,12 @@
 package clickerg;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 
 
@@ -24,10 +26,12 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main/main.fxml"));
         
         Scene scene = new Scene(root);
+        
         scene.getStylesheets().add(getClass().getResource("main/main.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Town");
         stage.show();
+ 
         
     }
      

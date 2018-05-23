@@ -10,18 +10,27 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -39,19 +48,28 @@ import org.xml.sax.SAXException;
 public class Boss implements Initializable {
 
     @FXML
-    private Pane pn_Mine;
-    @FXML
     private ProgressBar hp_bar;
     
-    int bossHp = 100;
+    int baseHp = 100;
+    double bossHp = baseHp;
     int heroDamage = 20;
+    int bossLvl = 1;
     @FXML
     private Label currenthp;
     @FXML
     private Pane panehp;
     @FXML
-    private ImageView ImageBoss;
+    private VBox VBox_Boss;
+    @FXML
+    private ImageView imageBack;
+    @FXML
+    private ImageView imageBoss;
+    @FXML
+    private Pane containerPane;
     
+    GameLoop gameBoss;
+    GameLoop gameBack;
+   
 
     /**
      * Initializes the controller class.
@@ -59,30 +77,53 @@ public class Boss implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         hp_bar.setProgress(1);
-        currenthp.setText(bossHp+" / "+bossHp);
+        currenthp.setText((int) bossHp+" / "+(int) bossHp);
         
-        loadfromXML("src/clickerg/main/accountInfo.xml", 1);
+        TemplateXMLonlyRead bossReader = new readBossFileAccountInfo();
+        contratados = bossReader.readXML();
+        bossLvl = bossReader.bossLvl;
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroDamage = Integer.parseInt(contratados.get(x).getBase_atk());
                 System.out.println(heroDamage);
              }
         }
-        //game loop
         
-        GameLoop game = new GameLoop(10, 0, ImageBoss);
-        game.startGame();
+        //game loop
+        gameBoss = new GameLoop(bossLvl%3, imageBoss, "boss");
+        gameBoss.startGame();
+        gameBack = new GameLoop(0, imageBack, "background");
+        gameBack.startGame();
+        
+        bossHp = baseHp *  Math.pow(1.16, bossLvl-1);
+        
+        imageBack.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) hp_bar.getScene().getWindow();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                gameBack.setClose(true);
+                gameBoss.setClose(true);
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        });
+    });
     }    
 
     @FXML
     private void damageBoss(MouseEvent event) {
-        hp_bar.setProgress((hp_bar.getProgress()*bossHp-heroDamage)/bossHp);
+        hp_bar.setProgress((hp_bar.getProgress()*bossHp-heroDamage)/(int)bossHp);
         if(hp_bar.getProgress()<=0){
             hp_bar.setProgress(1);
-            bossHp*=1.16;
-            System.out.println("Para, ya esta muerto, Nuevo boss con "+bossHp+"hp");
+            bossLvl++;
+            bossHp = baseHp * Math.pow(1.16, bossLvl-1);
+            bossHp = Math.floor(bossHp);
+            gameBoss.setId(bossLvl%3);
         }
-        currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+bossHp);
+        currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(int)bossHp);
     }
 
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
@@ -137,4 +178,5 @@ public class Boss implements Initializable {
         }
         return value;
     }
+    
 }

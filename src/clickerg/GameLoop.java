@@ -8,6 +8,7 @@ package clickerg;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -25,13 +26,16 @@ public class GameLoop{
     private int actual;
     private int frames;
     private ImageView img;
+    private String type;
+    private boolean close = false;
 
     
-    public GameLoop(int frames, int id, ImageView img) {
-        this.frames = frames;
+    public GameLoop(int id, ImageView img, String type) {
+        this.frames = new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length;
         this.id = id;
         this.img = img;
         this.actual = 1;
+        this.type = type;
     }
   
     public void startGame() {
@@ -41,19 +45,20 @@ public class GameLoop{
             @Override
             public void run() {
                 updateGame();
+                if(close){executor.shutdown();}
             }
         }, 0, 1000 / frames, TimeUnit.MILLISECONDS);
+        
     }
 
     private void updateGame() {
-        System.out.println("game updated");
         BufferedImage bufferedImage;
         File file;
         if(actual <= frames){
-             file = new File("src/clickerg/animations/id"+id+"/id"+id+"-"+actual+".gif");
+            file = new File("src/clickerg/animations/"+type+"/id"+id+"/id"+id+" ("+actual+").gif");
             actual++;
         }else{
-            file = new File("src/clickerg/animations/id"+id+"/id"+id+"-"+1+".gif");
+            file = new File("src/clickerg/animations/"+type+"/id"+id+"/id"+id+" ("+1+").gif");
             actual = 1;
             actual++;
         }
@@ -61,9 +66,50 @@ public class GameLoop{
         try {
         bufferedImage = ImageIO.read(file);
         img.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+        switch(type){
+            case "background":  img.setFitHeight(400);
+                                img.setFitWidth(600);
+                                break;
+            case "boss":        img.setFitHeight(200);
+                                img.setFitWidth(200);
+                                break;
+            case "heroe":       img.setFitHeight(200);
+                                img.setFitWidth(200);
+                                break;
+            default:            img.setFitHeight(400);
+                                img.setFitWidth(600);
+                                break;
+        }
+        img.setPreserveRatio(false);
         } catch (IOException e1) {
         // TODO Auto-generated catch block
         e1.printStackTrace();
 }
     }
+
+    public void setId(int id) {
+        this.id = id;
+        setFrames(new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length);
+    }
+
+    public void setActual(int actual) {
+        this.actual = actual;
+    }
+
+    public void setFrames(int frames) {
+        this.frames = frames;
+    }
+
+    public void setImg(ImageView img) {
+        this.img = img;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setClose(boolean close) {
+        this.close = close;
+    }
+    
 }
