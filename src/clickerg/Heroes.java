@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,6 +36,8 @@ public class Heroes implements Initializable{
     private GridPane gridPaneHe;
 
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
+    
+    public static AuxiliarHeroe selectedHeroe;
     
     @FXML
     private void irATown(ActionEvent event) throws IOException {
@@ -70,11 +75,41 @@ public class Heroes implements Initializable{
                     b.setId("bHeroe" + i);
                     b.setMaxWidth(Double.MAX_VALUE);
                     b.setMaxHeight(Double.MAX_VALUE);
+                   /* b.setOnAction(e -> {
+                        try {
+                            irAHeroInfo();
+                        } catch (IOException ex) {
+                           
+                        }
+                    });*/
+                   b.setOnAction(new EventHandler<ActionEvent>(){
+                   
+                   @Override
+                   public void handle(ActionEvent event){
+                       try{
+                          //selectedHeroe = contratados.get(b.getId().charAt(b.getId().length()-1));
+                          char x =(b.getId().charAt(b.getId().length()-1));
+                          selectedHeroe = contratados.get(Integer.parseInt(""+x,10));
+                       Parent reserva = FXMLLoader.load(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+                        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(new Scene(reserva));
+                        //Preguntar por cierre
+                        stage.setTitle("HeroesInfo");
+                        stage.show();
+                        } catch(IOException e){}
+                   }
+                   });
+                   
                     
                     gridPaneHe.add(b,columna, fila);
                }
            
           
+    }
+    
+    private void irAHeroInfo() throws IOException{
+         
+    
     }
     
 }
