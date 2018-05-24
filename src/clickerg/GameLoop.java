@@ -28,7 +28,7 @@ public class GameLoop{
     private ImageView img;
     private String type;
     private boolean close = false;
-
+    ScheduledExecutorService executor;
     
     public GameLoop(int id, ImageView img, String type) {
         this.frames = new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length;
@@ -39,15 +39,15 @@ public class GameLoop{
     }
   
     public void startGame() {
-        ScheduledExecutorService executor = Executors
-                .newSingleThreadScheduledExecutor();
+        executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
                 updateGame();
                 if(close){executor.shutdown();}
+                
             }
-        }, 0, 1000 / frames, TimeUnit.MILLISECONDS);
+        }, 0, 125, TimeUnit.MILLISECONDS);
         
     }
 

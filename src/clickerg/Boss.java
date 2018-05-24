@@ -18,9 +18,13 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -51,7 +55,7 @@ public class Boss implements Initializable {
     private ProgressBar hp_bar;
     
     int baseHp = 100;
-    double bossHp = baseHp;
+    double bossHp;
     int heroDamage = 20;
     int bossLvl = 1;
     @FXML
@@ -69,6 +73,8 @@ public class Boss implements Initializable {
     
     GameLoop gameBoss;
     GameLoop gameBack;
+    @FXML
+    private Button backButton;
    
 
     /**
@@ -77,11 +83,15 @@ public class Boss implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         hp_bar.setProgress(1);
-        currenthp.setText((int) bossHp+" / "+(int) bossHp);
+        
         
         TemplateXMLonlyRead bossReader = new readBossFileAccountInfo();
         contratados = bossReader.readXML();
         bossLvl = bossReader.bossLvl;
+        
+        bossHp = baseHp * Math.pow(1.16, bossLvl-1);
+        currenthp.setText((int) bossHp+" / "+(int) bossHp);
+        
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroDamage = Integer.parseInt(contratados.get(x).getBase_atk());
@@ -103,8 +113,7 @@ public class Boss implements Initializable {
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                gameBack.setClose(true);
-                gameBoss.setClose(true);
+                closeMethod();
                 Platform.exit();
                 System.exit(0);
             }
@@ -178,5 +187,22 @@ public class Boss implements Initializable {
         }
         return value;
     }
+
+    @FXML
+    private void irATown(ActionEvent event) throws IOException {
+        closeMethod();
+        Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(reserva));
+        //Preguntar por cierre
+        stage.setTitle("Town");
+        stage.show();
+    }
     
+    public void closeMethod(){
+        gameBack.setClose(true);
+        gameBoss.setClose(true);
+        TemplateXMLWriter bossWriter = new writeBossFileAccountInfo();
+        bossWriter.modifyXML(null, bossLvl);
+    }
 }
