@@ -22,7 +22,7 @@ import javax.imageio.ImageIO;
  */
 public class GameLoop{
     private static final int FPS = 100;
-    private int id;
+    private String id;
     private int actual;
     private int frames;
     private ImageView img;
@@ -30,7 +30,7 @@ public class GameLoop{
     private boolean close = false;
     ScheduledExecutorService executor;
     
-    public GameLoop(int id, ImageView img, String type) {
+    public GameLoop(String id, ImageView img, String type) {
         this.frames = new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length;
         this.id = id;
         this.img = img;
@@ -87,7 +87,7 @@ public class GameLoop{
 }
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
         setFrames(new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length);
     }

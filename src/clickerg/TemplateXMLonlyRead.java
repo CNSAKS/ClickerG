@@ -18,13 +18,13 @@ public abstract class TemplateXMLonlyRead {
     Document xml;
     int gold;
     int bossLvl;
-    public final ArrayList<AuxiliarHeroe> readXML() {
+    public final <T> ArrayList<T> readXML() {
       openDocument();
       return readDocument();
     }
     //Template methods
     protected abstract void openDocument();
-    protected abstract ArrayList<AuxiliarHeroe> readDocument();
+    protected abstract <T> ArrayList<T> readDocument();
     
     protected ArrayList<String> getTextValue(Element doc, String tag) {
         ArrayList<String> value = new ArrayList<String>();

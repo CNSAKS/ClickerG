@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -58,6 +59,10 @@ public class Boss implements Initializable {
     double bossHp;
     int heroDamage = 20;
     int bossLvl = 1;
+    int numberOfBosses;
+    int randomNumberGenerated;
+    Random random = new Random();
+    
     @FXML
     private Label currenthp;
     @FXML
@@ -75,7 +80,19 @@ public class Boss implements Initializable {
     GameLoop gameBack;
     @FXML
     private Button backButton;
+    @FXML
+    private Label label_bossName;
    
+    
+    ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
+    ArrayList<AuxiliarBoss> bosses = new ArrayList<AuxiliarBoss>();
+    Document xml;
+    ArrayList<String> id;
+    ArrayList<String> name;
+    ArrayList<String> lvl;
+    ArrayList<String> base_atk;
+    ArrayList<String> prob;
+    ArrayList<String> active;
 
     /**
      * Initializes the controller class.
@@ -85,9 +102,19 @@ public class Boss implements Initializable {
         hp_bar.setProgress(1);
         
         
-        TemplateXMLonlyRead bossReader = new readBossFileAccountInfo();
-        contratados = bossReader.readXML();
-        bossLvl = bossReader.bossLvl;
+        TemplateXMLonlyRead AccountInfoReader = new readBossFileAccountInfo();
+        contratados = AccountInfoReader.readXML();
+        bossLvl = AccountInfoReader.bossLvl;
+        
+        TemplateXMLonlyRead bossReader = new readBossFileBoss();
+        bosses = bossReader.readXML();
+        
+        numberOfBosses = new File("src/clickerg/animations/boss").listFiles().length;
+        
+        randomNumberGenerated = random.nextInt(numberOfBosses);
+        
+        baseHp = Integer.parseInt(bosses.get(randomNumberGenerated).getBase_hp());
+        label_bossName.setText(bosses.get(randomNumberGenerated).getName()+" Lvl:"+bossLvl);
         
         bossHp = baseHp * Math.pow(1.16, bossLvl-1);
         currenthp.setText((int) bossHp+" / "+(int) bossHp);
@@ -100,9 +127,9 @@ public class Boss implements Initializable {
         }
         
         //game loop
-        gameBoss = new GameLoop(bossLvl%3, imageBoss, "boss");
+        gameBoss = new GameLoop(bosses.get(randomNumberGenerated).getId(), imageBoss, "boss");
         gameBoss.startGame();
-        gameBack = new GameLoop(0, imageBack, "background");
+        gameBack = new GameLoop("0", imageBack, "background");
         gameBack.startGame();
         
         bossHp = baseHp *  Math.pow(1.16, bossLvl-1);
@@ -128,21 +155,17 @@ public class Boss implements Initializable {
         if(hp_bar.getProgress()<=0){
             hp_bar.setProgress(1);
             bossLvl++;
+            randomNumberGenerated = random.nextInt(numberOfBosses);
+            baseHp = Integer.parseInt(bosses.get(randomNumberGenerated).getBase_hp());
+            label_bossName.setText(bosses.get(randomNumberGenerated).getName()+" Lvl:"+bossLvl);
             bossHp = baseHp * Math.pow(1.16, bossLvl-1);
             bossHp = Math.floor(bossHp);
-            gameBoss.setId(bossLvl%3);
+            gameBoss.setId(bosses.get(randomNumberGenerated).getId());
         }
         currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(int)bossHp);
     }
 
-    ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
-    Document xml;
-    ArrayList<String> id;
-    ArrayList<String> name;
-    ArrayList<String> lvl;
-    ArrayList<String> base_atk;
-    ArrayList<String> prob;
-    ArrayList<String> active;
+    
     
     public void loadfromXML(String xmlRoute, int mode) {
         // Make an  instance of the DocumentBuilderFactory
