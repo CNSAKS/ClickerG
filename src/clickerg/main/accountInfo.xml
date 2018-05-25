@@ -1,168 +1,59 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<accountInfo>
-    <gold>11500</gold>
-    <bossLvl>3</bossLvl>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><accountInfo>
+    <gold>17500</gold>
+    <bossLvl>1</bossLvl>
     <heroes>
-    <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
-        </heroe>
         <heroe>
             <active>false</active>
-            <base_atk>80</base_atk>
-            <exp>0</exp>
-            <id>4</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Selena</lvl>
-            <name>Selena</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
             <base_atk>50</base_atk>
-            <exp>0</exp>
+            <exp>91</exp>
             <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
+            <id_heroe>0</id_heroe>
+            <lvl>1</lvl>
             <name>Vargas</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
-        </heroe>
-        <heroe>
-            <active>false</active>
-            <base_atk>80</base_atk>
-            <exp>0</exp>
-            <id>4</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Selena</lvl>
-            <name>Selena</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
-        </heroe>
-        <heroe>
-            <active>false</active>
-            <base_atk>90</base_atk>
-            <exp>0</exp>
-            <id>2</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Zephu</lvl>
-            <name>Zephu</name>
         </heroe>
     <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
+            <active>false</active>
+            <base_atk>100</base_atk>
+            <exp>14</exp>
+            <id>1</id>
             <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
+            <lvl>50</lvl>
+            <name>Elza</name>
         </heroe>
         <heroe>
             <active>false</active>
             <base_atk>80</base_atk>
             <exp>0</exp>
             <id>4</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Selena</lvl>
+            <id_heroe>2</id_heroe>
+            <lvl>1</lvl>
             <name>Selena</name>
         </heroe>
         <heroe>
             <active>true</active>
             <base_atk>50</base_atk>
-            <exp>0</exp>
+            <exp>4</exp>
             <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
-            <name>Vargas</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
-            <base_atk>50</base_atk>
-            <exp>0</exp>
-            <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
+            <id_heroe>3</id_heroe>
+            <lvl>1</lvl>
             <name>Vargas</name>
         </heroe>
         <heroe>
             <active>false</active>
-            <base_atk>80</base_atk>
-            <exp>0</exp>
-            <id>4</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Selena</lvl>
-            <name>Selena</name>
-        </heroe>
-        <heroe>
-            <active>true</active>
             <base_atk>50</base_atk>
-            <exp>0</exp>
+            <exp>8</exp>
             <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
+            <id_heroe>4</id_heroe>
+            <lvl>3</lvl>
             <name>Vargas</name>
         </heroe>
         <heroe>
             <active>false</active>
-            <base_atk>90</base_atk>
-            <exp>0</exp>
-            <id>2</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Zephu</lvl>
-            <name>Zephu</name>
-        </heroe>
-        <heroe>
-            <active>false</active>
-            <base_atk>90</base_atk>
-            <exp>0</exp>
-            <id>2</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Zephu</lvl>
-            <name>Zephu</name>
-        </heroe>
-    <heroe>
-            <active>true</active>
             <base_atk>50</base_atk>
             <exp>0</exp>
             <id>3</id>
-            <id_heroe>1</id_heroe>
-            <lvl>Vargas</lvl>
+            <id_heroe>5</id_heroe>
+            <lvl>1</lvl>
             <name>Vargas</name>
         </heroe>
     </heroes>

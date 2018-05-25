@@ -162,15 +162,15 @@ public class Boss implements Initializable {
         if(hp_bar.getProgress()<=0){
             hp_bar.setProgress(1);
             bossLvl++;
+            if(random.nextInt(10)<=200){
+                searchItem(randomNumberGenerated);
+            }
             randomNumberGenerated = random.nextInt(numberOfBosses);
             baseHp = Integer.parseInt(bosses.get(randomNumberGenerated).getBase_hp());
             label_bossName.setText(bosses.get(randomNumberGenerated).getName()+" Lvl:"+bossLvl);
             bossHp = baseHp * Math.pow(1.16, bossLvl-1);
             bossHp = Math.floor(bossHp);
             gameBoss.setId(bosses.get(randomNumberGenerated).getId());
-            if(random.nextInt(10)<=2){
-                searchItem(randomNumberGenerated);
-            }
         }
         currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(int)bossHp);
     }
@@ -241,9 +241,8 @@ public class Boss implements Initializable {
     
     public void searchItem(int id){
         for(int counter = 0; counter < items.size();  counter++){
-            if(Integer.parseInt(items.get(counter).getId())==randomNumberGenerated){
-                itemsToSave.add(items.get(counter));
-                itemsToSave.get(itemsToSave.size()-1).setBase_mult(Double.parseDouble(itemsToSave.get(itemsToSave.size()-1).getBase_mult())*(random.nextInt(bossLvl)+1)+"");
+            if(items.get(counter).getId().equals(gameBoss.getId())){
+                itemsToSave.add(new AuxiliarItem(items.get(counter).getId(), items.get(counter).getName(), (String.format("%.2f",Double.parseDouble(items.get(counter).getBase_mult())*(random.nextInt(bossLvl)+1)))));
                 label_msg.setText("Te ha tocado el item "+itemsToSave.get(itemsToSave.size()-1).getName()+" que te otorga un multiplicador de "+itemsToSave.get(itemsToSave.size()-1).getBase_mult());
             }
         }

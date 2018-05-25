@@ -87,6 +87,10 @@ public class GameLoop{
 }
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setId(String id) {
         this.id = id;
         setFrames(new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length);

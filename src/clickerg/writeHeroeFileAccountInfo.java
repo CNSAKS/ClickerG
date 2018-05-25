@@ -39,38 +39,26 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
     }
     protected void writeDocument(ArrayList<AuxiliarHeroe> heroes, int auxiliar){
             
-            Element e = null;
-            Element heroe;
-            
-            NodeList heroesData = xml.getElementsByTagName("heroe");
+        Element e = null;
+        Node heroe;
 
-            for(int x = 0;x<heroes.size();x++){
-                Node heroeInfo = heroesData.item(x);
-                
-                Node active = heroeInfo.getChildNodes().item(1);
-                
-                active.getChildNodes().item(0).setNodeValue(heroes.get(x).getActive());
-                
-                Node atk = heroeInfo.getChildNodes().item(3);
-                
-                atk.getChildNodes().item(0).setNodeValue(heroes.get(x).getBase_atk());
-                
-                Node exp = heroeInfo.getChildNodes().item(5);
-                
-                exp.getChildNodes().item(0).setNodeValue(heroes.get(x).getExp());
-                
-                Node id = heroeInfo.getChildNodes().item(7);
-                
-                id.getChildNodes().item(0).setNodeValue(heroes.get(x).getId());
-                
-                Node lvl = heroeInfo.getChildNodes().item(9);
-                
-                lvl.getChildNodes().item(0).setNodeValue(heroes.get(x).getLvl());
-                
-                Node name = heroeInfo.getChildNodes().item(11);
-                
-                name.getChildNodes().item(0).setNodeValue(heroes.get(x).getName());
-                
+        NodeList heroesData = xml.getElementsByTagName("heroe");
+
+        for(int i = 0; i<heroesData.getLength(); i++ ){
+
+            Node n = heroesData.item(i);
+            Element eleL = (Element) n;
+            eleL.getElementsByTagName("active").item(0).setTextContent("false");
+            Element eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
+            if(eleX.getFirstChild().getNodeValue().equals(auxiliar+"")){
+                eleL.getElementsByTagName("active").item(0).setTextContent("true");
+            }
+
+
+
+        }
+            
+            
                
                 /*
                     e = xml.createElement("active");
@@ -103,9 +91,9 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
                 
                 HeroesData.appendChild(heroeNode);
             */
-            }
+    }
             
            
             
-    }
 }
+

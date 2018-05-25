@@ -102,6 +102,14 @@ public class AuxiliarHeroe {
     public String toString() {
         return "AuxiliarHeroe{" + "id=" + id + ", name=" + name + ", lvl=" + lvl + ", base_atk=" + base_atk + ", prob=" + prob + ", active=" + active + ", exp=" + exp + ", id_heroe=" + id_heroe + '}';
     }
+
+    public String getId_heroe() {
+        return id_heroe;
+    }
+
+    public void setId_heroe(String id_heroe) {
+        this.id_heroe = id_heroe;
+    }
     
     
 }

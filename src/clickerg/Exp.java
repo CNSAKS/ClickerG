@@ -101,7 +101,7 @@ public class Exp implements Initializable {
          for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
-                idActual = contratados.get(x).getId();
+                idActual = contratados.get(x).getId_heroe();
                 heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
              }
         }
@@ -114,19 +114,19 @@ public class Exp implements Initializable {
         
         
         
-      //  imageHeroe.sceneProperty().addListener((obs, oldScene, newScene) -> {
-       // Platform.runLater(() -> {
-          //  Stage stage = (Stage) imageHeroe.getScene().getWindow();
-          //  stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-          //  @Override
-           // public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-             //   closeMethod();
-              //  Platform.exit();
-              //  System.exit(0);
-     //       }
-    //    });
-      //  });
-    // });
+        imageHeroe.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) imageHeroe.getScene().getWindow();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                closeMethod();
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        });
+     });
         
     }    
 
@@ -156,6 +156,7 @@ public class Exp implements Initializable {
 
     @FXML
     private void backTown(ActionEvent event) throws IOException {
+        closeMethod();
         Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
@@ -210,8 +211,8 @@ public class Exp implements Initializable {
         }
         return value;
     }
-    @FXML
-    private void pruebaActu(ActionEvent event){
+    
+    private void pruebaActu(){
         try{
         String filepath = "src/clickerg/main/accountInfo.xml";
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -227,7 +228,7 @@ public class Exp implements Initializable {
             Node n = heroesData.item(i);
             Element eleL = (Element) n;
             System.out.print(eleL.toString());
-            Element eleX = (Element) eleL.getElementsByTagName("id").item(0);
+            Element eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
             if(eleX.getFirstChild().getNodeValue().equals(idActual)){
                 Node expData =eleL.getElementsByTagName("exp").item(0);
                 
@@ -265,10 +266,11 @@ public class Exp implements Initializable {
         }
     }
     
-   // public void closeMethod(){
+    public void closeMethod(){
        // gameHeroe.setClose(true);
      //     TemplateXMLWriter heroeWriter = new writeHeroeFileAccountInfo();
-       //   heroeWriter.modifyXML(contratados, 0);         
-   // }
+       //   heroeWriter.modifyXML(contratados, 0);   
+       pruebaActu();
+    }
     
 }

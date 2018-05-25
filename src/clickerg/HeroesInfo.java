@@ -49,11 +49,13 @@ public class HeroesInfo implements Initializable{
     private ImageView img_heroe;
     
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
+    boolean needSave;
     @FXML
     private Label lb_heroeAc;
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        needSave = false;
         heroesInfo = Heroes.selectedHeroe;
         lb_name.setText(heroesInfo.getName());
         lb_lvl.setText("Nivel : " + heroesInfo.getLvl());
@@ -118,6 +120,7 @@ public class HeroesInfo implements Initializable{
     @FXML
     private void setActive(ActionEvent event) {
         lb_heroeAc.setVisible(true);
+        needSave=true;
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 contratados.get(x).setActive("false");
@@ -132,8 +135,11 @@ public class HeroesInfo implements Initializable{
     
     
     public void closeMethod(){
-        TemplateXMLWriter heroeWriter = new writeHeroeFileAccountInfo();
-        heroeWriter.modifyXML(contratados, 0);
+        if(needSave){
+            TemplateXMLWriter heroeWriter = new writeHeroeFileAccountInfo();
+            heroeWriter.modifyXML(contratados, Integer.parseInt(heroesInfo.getId_heroe()));
+        }
+        
     }
     
 }
