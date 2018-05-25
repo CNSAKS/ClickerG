@@ -86,6 +86,7 @@ public class Boss implements Initializable {
     
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
     ArrayList<AuxiliarBoss> bosses = new ArrayList<AuxiliarBoss>();
+    ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
     Document xml;
     ArrayList<String> id;
     ArrayList<String> name;
@@ -108,6 +109,9 @@ public class Boss implements Initializable {
         
         TemplateXMLonlyRead bossReader = new readBossFileBoss();
         bosses = bossReader.readXML();
+        
+        TemplateXMLonlyRead itemReader = new readBossFileItem();
+        items = itemReader.readXML();
         
         numberOfBosses = new File("src/clickerg/animations/boss").listFiles().length;
         
@@ -161,6 +165,9 @@ public class Boss implements Initializable {
             bossHp = baseHp * Math.pow(1.16, bossLvl-1);
             bossHp = Math.floor(bossHp);
             gameBoss.setId(bosses.get(randomNumberGenerated).getId());
+            if(random.nextInt(10)<=2){
+                
+            }
         }
         currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(int)bossHp);
     }
