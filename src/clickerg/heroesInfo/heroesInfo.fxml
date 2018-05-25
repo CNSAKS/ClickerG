@@ -35,11 +35,12 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="b_activar" mnemonicParsing="false" onAction="#setActive" prefHeight="25.0" prefWidth="131.0" text="Activar" translateX="220.0">
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin>
-      </Button>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="b_activar" mnemonicParsing="false" onAction="#setActive" prefHeight="25.0" prefWidth="131.0" text="Activar" translateX="-20.0" />
+            <Label fx:id="lb_heroeAc" text="Héroe activo " />
+         </children>
+      </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="150.0">
          <children>
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Item1" />

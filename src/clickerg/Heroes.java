@@ -19,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
@@ -101,7 +103,25 @@ public class Heroes implements Initializable{
                         } catch(IOException e){}
                    }
                    });
+                   ImageView iv = new ImageView();
+                   if(contratados.get(i).getId().equals("3")){
+                   iv = new ImageView(new Image("/clickerg/heroes/images/Vargas.png"));
+                   } 
+                   if(contratados.get(i).getId().equals("1")){
+                   iv = new ImageView(new Image("/clickerg/heroes/images/Elza.png"));
+                   } 
+                   if(contratados.get(i).getId().equals("2")){
+                   iv = new ImageView(new Image("/clickerg/heroes/images/Zephu.png"));
+                   } 
+                   if(contratados.get(i).getId().equals("4")){
+                   iv = new ImageView(new Image("/clickerg/heroes/images/Selena.png"));
+                   }
                    
+                   iv.setFitHeight(97);
+                   iv.setFitWidth(97);
+                   b.setGraphic(iv);
+                   b.setStyle("-fx-background-color: transparent;");
+
                     
                     gridPaneHe.add(b,columna, fila);
                }

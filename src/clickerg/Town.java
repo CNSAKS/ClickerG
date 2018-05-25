@@ -112,6 +112,7 @@ public class Town implements Initializable{
              bt_gold.setDisable(true);
              bt_boss.setDisable(true);
              bt_exp.setDisable(true);
+             bt_heroes.setDisable(true);
          
          }
     }

@@ -49,6 +49,8 @@ public class HeroesInfo implements Initializable{
     private ImageView img_heroe;
     
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
+    @FXML
+    private Label lb_heroeAc;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,7 +58,7 @@ public class HeroesInfo implements Initializable{
         lb_name.setText(heroesInfo.getName());
         lb_lvl.setText("Nivel : " + heroesInfo.getLvl());
         lb_experiencia.setText("Experiencia : " + heroesInfo.getExp());
-        lb_ataque.setText("Ataque : " + heroesInfo.getBase_atk());
+        lb_ataque.setText("Ataque : " + (int) ((int) (Double.parseDouble(heroesInfo.getBase_atk()))* Math.pow(1.16, Double.parseDouble(heroesInfo.getLvl())-1)));
         Image image = new Image("/clickerg/heroes/images/Vargas.png");
         if(heroesInfo.getId().equals("3")){
             image = new Image("/clickerg/heroes/images/Vargas.png");
@@ -70,9 +72,18 @@ public class HeroesInfo implements Initializable{
         if(heroesInfo.getId().equals("4")){
             image = new Image("/clickerg/heroes/images/Selena.png");
                 }
+        if(heroesInfo.getActive().equals("true")){
+            lb_heroeAc.setVisible(true);
+        }
+        else if(heroesInfo.getActive().equals("false")) {
+            lb_heroeAc.setVisible(false);
+        }
+        
         img_heroe.setImage(image);
         TemplateXMLonlyRead heroeReader = new readGachaFileAccountInfo();
         contratados = heroeReader.readXML();
+        
+        
         
         
         img_heroe.sceneProperty().addListener((obs, oldScene, newScene) -> {
@@ -106,6 +117,7 @@ public class HeroesInfo implements Initializable{
 
     @FXML
     private void setActive(ActionEvent event) {
+        lb_heroeAc.setVisible(true);
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 contratados.get(x).setActive("false");
