@@ -66,7 +66,6 @@ public class Heroes implements Initializable{
                 int columna = 0;
                 int fila = 0;
                 for(int i = 0; i< numHeroes; i++){
-                    System.out.println(i%6);
                     if(i % 6 == 0 && i!=0){
                         columna = 0;
                         fila = fila + 1;

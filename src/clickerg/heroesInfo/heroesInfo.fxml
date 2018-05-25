@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.HeroesInfo">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="94.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#irATown" text="Button">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="img_heroe" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lb_name" text="Nombre" translateX="150.0">
+                     <font>
+                        <Font name="Andalus" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lb_lvl" text="Nivel : " />
+                  <Label fx:id="lb_ataque" text="Ataque :" />
+                  <Label fx:id="lb_experiencia" text="Experiencia :" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="b_activar" mnemonicParsing="false" onAction="#setActive" prefHeight="25.0" prefWidth="131.0" text="Activar" translateX="220.0">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </Button>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Item1" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Item2" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Item3" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

@@ -51,10 +51,12 @@ public class readGachaFileAccountInfo extends TemplateXMLonlyRead{
             
             gold = Integer.parseInt(goldInAccount.get(0));
             
+            ArrayList<String> active = getTextValue(doc, "active");
+            
             ArrayList<String> exp = getTextValue(doc, "exp");
             
             for(int i = 0;i<id.size();i++){
-                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "not needed", exp.get(i)));
+                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i),"not nedeed", active.get(i), exp.get(i)));
             }
             
             return contratos;
