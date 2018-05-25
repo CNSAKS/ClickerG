@@ -12,12 +12,15 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -25,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,7 +52,7 @@ public class Exp implements Initializable {
 
     @FXML
     private Label lb_expCount;
-    private int expPerClick = 1;
+    private int expPerClick;
     @FXML
     private Label label_expPerClick;
     @FXML
@@ -68,22 +72,29 @@ public class Exp implements Initializable {
     
     int baseLvlExp = 100;
     int nextLvlExp = baseLvlExp;
-    int heroeLvl = 1;
-    int heroExperience = 0;
+    int heroeLvl;
+    int heroExperience;
     String idActual;
     @FXML
     private ProgressBar exp_bar;
     @FXML
     private Label currentexp;
+    @FXML
+    private ImageView imageHeroe;
     
     
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         label_expPerClick.setText(expPerClick + "");
-         
+        
+        TemplateXMLonlyRead AccountInfoReader = new readBossFileAccountInfo();
+        contratados = AccountInfoReader.readXML();
+        expPerClick = AccountInfoReader.bossLvl;
+        
+        label_expPerClick.setText(expPerClick + "");
        
          loadfromXML("src/clickerg/main/accountInfo.xml", 1);
          for(int x = 0;x<contratados.size();x++){
@@ -98,8 +109,23 @@ public class Exp implements Initializable {
         exp_bar.setProgress(0);
         exp_bar.setProgress((exp_bar.getProgress()+ heroExperience) / nextLvlExp );
         currentexp.setText((int) heroExperience +" / "+(int) nextLvlExp);
+       
         
         
+        
+      //  imageHeroe.sceneProperty().addListener((obs, oldScene, newScene) -> {
+       // Platform.runLater(() -> {
+          //  Stage stage = (Stage) imageHeroe.getScene().getWindow();
+          //  stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+          //  @Override
+           // public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+             //   closeMethod();
+              //  Platform.exit();
+              //  System.exit(0);
+     //       }
+    //    });
+      //  });
+    // });
         
     }    
 
@@ -235,5 +261,11 @@ public class Exp implements Initializable {
             e.printStackTrace();
         }
     }
+    
+   // public void closeMethod(){
+       // gameHeroe.setClose(true);
+     //     TemplateXMLWriter heroeWriter = new writeHeroeFileAccountInfo();
+       //   heroeWriter.modifyXML(contratados, 0);         
+   // }
     
 }
