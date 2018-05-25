@@ -64,6 +64,7 @@ public class Exp implements Initializable {
     Document xml;
     ArrayList<String> id;
     ArrayList<String> name;
+    ArrayList<String> id_heroe;
     ArrayList<String> lvl;
     ArrayList<String> base_atk;
     ArrayList<String> prob;
@@ -178,6 +179,8 @@ public class Exp implements Initializable {
             id = getTextValue(doc, "id");
 
             name = getTextValue(doc, "name");
+            
+            id_heroe = getTextValue(doc, "id_heroe");
 
             lvl = getTextValue(doc, "lvl");
 
@@ -188,7 +191,7 @@ public class Exp implements Initializable {
             expList = getTextValue(doc, "exp");
             
             for(int i = 0;i<id.size();i++){
-                contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "0", active.get(i), expList.get(i)));
+                contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "0", active.get(i), expList.get(i), id_heroe.get(i)));
             }
             
         } catch (ParserConfigurationException pce) {

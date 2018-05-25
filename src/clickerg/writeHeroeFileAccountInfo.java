@@ -42,13 +42,8 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
             Element e = null;
             Element heroe;
             
-
-            
             NodeList heroesData = xml.getElementsByTagName("heroe");
-            
-            
 
-            
             for(int x = 0;x<heroes.size();x++){
                 Node heroeInfo = heroesData.item(x);
                 

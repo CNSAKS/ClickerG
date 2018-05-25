@@ -87,6 +87,7 @@ public class Boss implements Initializable {
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
     ArrayList<AuxiliarBoss> bosses = new ArrayList<AuxiliarBoss>();
     ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
+    ArrayList<AuxiliarItem> itemsToSave = new ArrayList<AuxiliarItem>();
     Document xml;
     ArrayList<String> id;
     ArrayList<String> name;
@@ -94,6 +95,8 @@ public class Boss implements Initializable {
     ArrayList<String> base_atk;
     ArrayList<String> prob;
     ArrayList<String> active;
+    @FXML
+    private Label label_msg;
 
     /**
      * Initializes the controller class.
@@ -125,7 +128,7 @@ public class Boss implements Initializable {
         
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
-                heroDamage = Integer.parseInt(contratados.get(x).getBase_atk());
+                heroDamage = (int) ((int) (Double.parseDouble(contratados.get(x).getBase_atk()))* Math.pow(1.16, Double.parseDouble(contratados.get(x).getLvl())-1));
                 System.out.println(heroDamage);
              }
         }
@@ -166,7 +169,7 @@ public class Boss implements Initializable {
             bossHp = Math.floor(bossHp);
             gameBoss.setId(bosses.get(randomNumberGenerated).getId());
             if(random.nextInt(10)<=2){
-                
+                searchItem(randomNumberGenerated);
             }
         }
         currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(int)bossHp);
@@ -234,5 +237,15 @@ public class Boss implements Initializable {
         gameBoss.setClose(true);
         TemplateXMLWriter bossWriter = new writeBossFileAccountInfo();
         bossWriter.modifyXML(null, bossLvl);
+    }
+    
+    public void searchItem(int id){
+        for(int counter = 0; counter < items.size();  counter++){
+            if(Integer.parseInt(items.get(counter).getId())==randomNumberGenerated){
+                itemsToSave.add(items.get(counter));
+                itemsToSave.get(itemsToSave.size()-1).setBase_mult(Double.parseDouble(itemsToSave.get(itemsToSave.size()-1).getBase_mult())*(random.nextInt(bossLvl)+1)+"");
+                label_msg.setText("Te ha tocado el item "+itemsToSave.get(itemsToSave.size()-1).getName()+" que te otorga un multiplicador de "+itemsToSave.get(itemsToSave.size()-1).getBase_mult());
+            }
+        }
     }
 }

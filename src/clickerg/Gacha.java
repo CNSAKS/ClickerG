@@ -5,24 +5,11 @@
  */
 package clickerg;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.lang.ProcessBuilder.Redirect.Type;
-import static java.lang.System.in;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -132,13 +119,13 @@ public class Gacha implements Initializable {
             
             goldEle.setTextContent(gold + "");
             
-            int toActive = dom.getElementsByTagName("heroe").getLength();
+            int heroesNumber = dom.getElementsByTagName("heroe").getLength();
             
             for(int x = 0;x<contratadosToSave.size();x++){
                 heroe = dom.createElement("heroe");
                 
                 //borrar esta linea solo pruebas
-                if(toActive == 0){
+                if(heroesNumber == 0){
                     if(x==0){
                         e = dom.createElement("active");
                         e.appendChild(dom.createTextNode("true"));
@@ -166,6 +153,10 @@ public class Gacha implements Initializable {
                 e = dom.createElement("id");
                 e.appendChild(dom.createTextNode(contratadosToSave.get(x).getId()));
                 heroe.appendChild(e);
+                
+                e = dom.createElement("id_heroe");
+                e.appendChild(dom.createTextNode(heroesNumber+""));
+                heroe.appendChild(e);
 
                 e = dom.createElement("lvl");
                 e.appendChild(dom.createTextNode(contratadosToSave.get(x).getLvl()));
@@ -178,6 +169,8 @@ public class Gacha implements Initializable {
                 Node heroeNode = (Node)heroe;
                 
                 HeroesData.appendChild(heroeNode);
+                
+                heroesNumber++;
             }
             try {
                 Transformer tr = TransformerFactory.newInstance().newTransformer();

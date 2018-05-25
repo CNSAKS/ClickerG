@@ -43,6 +43,8 @@ public class readBossFileAccountInfo extends TemplateXMLonlyRead{
             ArrayList<String> id = getTextValue(doc, "id");
 
             ArrayList<String> name = getTextValue(doc, "name");
+            
+            ArrayList<String> id_heroe = getTextValue(doc, "id_heroe");
 
             ArrayList<String> lvl = getTextValue(doc, "lvl");
 
@@ -57,7 +59,7 @@ public class readBossFileAccountInfo extends TemplateXMLonlyRead{
             ArrayList<String> active = getTextValue(doc, "active");
             
             for(int i = 0;i<id.size();i++){
-                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "prob",active.get(i), exp.get(i)));
+                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i),"not nedeed", active.get(i), exp.get(i), id_heroe.get(i)));
             }
             
             return contratos;

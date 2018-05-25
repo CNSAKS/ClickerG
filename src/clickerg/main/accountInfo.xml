@@ -1,31 +1,169 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <accountInfo>
-    <gold>56</gold>
-    <bossLvl>1</bossLvl>
+    <gold>11500</gold>
+    <bossLvl>3</bossLvl>
     <heroes>
-        <heroe>
-            <active>false</active>
+    <heroe>
+            <active>true</active>
             <base_atk>50</base_atk>
             <exp>0</exp>
             <id>3</id>
-            <lvl>1</lvl>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
             <name>Vargas</name>
         </heroe>
-    <heroe>
+        <heroe>
             <active>true</active>
-            <base_atk>100</base_atk>
-            <exp>26</exp>
-            <id>1</id>
-            <lvl>4</lvl>
-            <name>Elza</name>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>0</exp>
+            <id>4</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Selena</lvl>
+            <name>Selena</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>0</exp>
+            <id>4</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Selena</lvl>
+            <name>Selena</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
         </heroe>
         <heroe>
             <active>false</active>
             <base_atk>90</base_atk>
             <exp>0</exp>
             <id>2</id>
-            <lvl>1</lvl>
+            <id_heroe>1</id_heroe>
+            <lvl>Zephu</lvl>
             <name>Zephu</name>
+        </heroe>
+    <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>0</exp>
+            <id>4</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Selena</lvl>
+            <name>Selena</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>0</exp>
+            <id>4</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Selena</lvl>
+            <name>Selena</name>
+        </heroe>
+        <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>90</base_atk>
+            <exp>0</exp>
+            <id>2</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Zephu</lvl>
+            <name>Zephu</name>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>90</base_atk>
+            <exp>0</exp>
+            <id>2</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Zephu</lvl>
+            <name>Zephu</name>
+        </heroe>
+    <heroe>
+            <active>true</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>1</id_heroe>
+            <lvl>Vargas</lvl>
+            <name>Vargas</name>
         </heroe>
     </heroes>
 </accountInfo>

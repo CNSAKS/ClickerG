@@ -11,7 +11,7 @@ package clickerg;
  */
 public class AuxiliarHeroe {
 
-    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String active, String exp) {
+    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String active, String exp, String id_heroe) {
         this.id = id;
         this.name = name;
         this.lvl = lvl;
@@ -19,6 +19,7 @@ public class AuxiliarHeroe {
         this.prob = prob;
         this.active = active;
         this.exp = exp;
+        this.id_heroe = id_heroe;
     }
     
     public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String exp) {
@@ -29,6 +30,7 @@ public class AuxiliarHeroe {
         this.prob = prob;
         this.active = "irrelevante";
         this.exp = exp;
+        this.id_heroe = id_heroe;
     }
 
     public String getActive() {
@@ -79,10 +81,6 @@ public class AuxiliarHeroe {
         this.prob = prob;
     }
 
-    @Override
-    public String toString() {
-        return "AuxiliarHeroe{" + "id=" + id + ", name=" + name + ", lvl=" + lvl + ", base_atk=" + base_atk + ", prob=" + prob + '}';
-    }
     private String id;
     private String name;
     private String lvl;
@@ -90,6 +88,7 @@ public class AuxiliarHeroe {
     private String prob;
     private String active;
     private String exp;
+    private String id_heroe;
 
     public String getExp() {
         return exp;
@@ -98,5 +97,11 @@ public class AuxiliarHeroe {
     public void setExp(String exp) {
         this.exp = exp;
     }
+
+    @Override
+    public String toString() {
+        return "AuxiliarHeroe{" + "id=" + id + ", name=" + name + ", lvl=" + lvl + ", base_atk=" + base_atk + ", prob=" + prob + ", active=" + active + ", exp=" + exp + ", id_heroe=" + id_heroe + '}';
+    }
+    
     
 }

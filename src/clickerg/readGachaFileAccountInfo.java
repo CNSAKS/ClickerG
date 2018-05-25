@@ -42,6 +42,8 @@ public class readGachaFileAccountInfo extends TemplateXMLonlyRead{
             ArrayList<String> id = getTextValue(doc, "id");
 
             ArrayList<String> name = getTextValue(doc, "name");
+            
+            ArrayList<String> id_heroe = getTextValue(doc, "id_heroe");
 
             ArrayList<String> lvl = getTextValue(doc, "lvl");
 
@@ -56,7 +58,7 @@ public class readGachaFileAccountInfo extends TemplateXMLonlyRead{
             ArrayList<String> exp = getTextValue(doc, "exp");
             
             for(int i = 0;i<id.size();i++){
-                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i),"not nedeed", active.get(i), exp.get(i)));
+                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i),"not nedeed", active.get(i), exp.get(i), id_heroe.get(i)));
             }
             
             return contratos;
