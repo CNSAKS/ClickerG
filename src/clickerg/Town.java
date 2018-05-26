@@ -133,7 +133,7 @@ public class Town implements Initializable{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
-        stage.setTitle("Reserva de entradas");
+        stage.setTitle("Boss");
         stage.show();
     }
 

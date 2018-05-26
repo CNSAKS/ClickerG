@@ -26,7 +26,7 @@
                   </Label>
                   <Label fx:id="label_goldPerClick" layoutX="327.0" layoutY="12.0" prefHeight="17.0" prefWidth="8.0" />
                   <Button layoutX="367.0" layoutY="8.0" mnemonicParsing="false" onAction="#moreGPC" text="Button" />
-                  <Button layoutX="527.0" layoutY="8.0" mnemonicParsing="false" onAction="#pruebaActu" text="Guardar" />
+                  <Button layoutX="527.0" layoutY="8.0" mnemonicParsing="false" text="Guardar" />
                </children>
             </AnchorPane>
          </children>

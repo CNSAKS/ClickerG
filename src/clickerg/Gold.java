@@ -13,13 +13,16 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -78,9 +82,25 @@ public class Gold implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadDataGold("src/clickerg/main/accountInfo.xml");
+       
+        TemplateXMLonlyRead AccountInfoReader = new readGoldFileAccountInfo();
+        gold = Integer.parseInt(AccountInfoReader.readXML().get(0).toString());
         label_goldPerClick.setText(goldPerClick+"");
         lb_goldCount.setText(gold+"");
+        
+        imageContainer_roca1.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) imageContainer_roca1.getScene().getWindow();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                closeMethod();
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        });
+     });
     }    
 
     @FXML
@@ -95,44 +115,11 @@ public class Gold implements Initializable {
         label_goldPerClick.setText(goldPerClick+"");
     }
    
-    @FXML
-    private void pruebaActu(ActionEvent event){
-        try{
-        String filepath = "src/clickerg/main/accountInfo.xml";
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-        Document doc = docBuilder.parse(filepath);
-        
-        Node data = doc.getFirstChild();
-        
-        Node goldData = doc.getElementsByTagName("gold").item(0);
-        
-        goldData.setTextContent(gold + "");
-        
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File(filepath));
-        transformer.transform(source, result);
-        
-        }catch (ParserConfigurationException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        // TODO Auto-generated catch block
-        } catch (SAXException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+    
     
     @FXML
     private void irATown(ActionEvent event) throws IOException {
+        closeMethod();
         Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
@@ -141,36 +128,10 @@ public class Gold implements Initializable {
         stage.show();
     }
     
-    private void loadDataGold(String xmlRoute){
-    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
-            // use the factory to take an instance of the document builder
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            // parse using the builder to get the DOM mapping of the    
-            // XML file
-            xml = db.parse(xmlRoute);
-            
-            Element doc = xml.getDocumentElement();
-            
-            goldInAccount = getTextValue(doc, "gold");  
-            
-            gold = Integer.parseInt(goldInAccount.get(0));
-        } catch (ParserConfigurationException pce) {
-            System.out.println(pce.getMessage());
-        } catch (SAXException se) {
-            System.out.println(se.getMessage());
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
-        }
-    }
-    
-    private ArrayList<String> getTextValue(Element doc, String tag) {
-        ArrayList<String> value = new ArrayList<String>();
-        NodeList nl= doc.getElementsByTagName(tag);
-        
-        for(int x = 0;x<nl.getLength();x++){
-           value.add(nl.item(x).getFirstChild().getNodeValue());
-        }
-        return value;
+     public void closeMethod(){
+      
+            TemplateXMLWriter goldWriter = new writeGoldFileAccountInfo();
+            goldWriter.modifyXML(null, gold);  
+
     }
 }
