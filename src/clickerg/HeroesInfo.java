@@ -127,7 +127,7 @@ public class HeroesInfo implements Initializable{
              }     
         }
         for(int x = 0;x<contratados.size();x++){
-             if(contratados.get(x).getId().equals(heroesInfo.getId())){
+             if(contratados.get(x).getId_heroe().equals(heroesInfo.getId_heroe())){
                 contratados.get(x).setActive("true");
              }     
         }

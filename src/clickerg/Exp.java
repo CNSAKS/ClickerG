@@ -97,7 +97,9 @@ public class Exp implements Initializable {
         
         label_expPerClick.setText(expPerClick + "");
        
-         loadfromXML("src/clickerg/main/accountInfo.xml", 1);
+         
+          TemplateXMLonlyRead readerExp = new readExpFileAccountInfo();
+            contratados = readerExp.readXML();
          for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
@@ -165,112 +167,18 @@ public class Exp implements Initializable {
     }
     
     
-    public void loadfromXML(String xmlRoute, int mode) {
-        // Make an  instance of the DocumentBuilderFactory
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
-            // use the factory to take an instance of the document builder
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            // parse using the builder to get the DOM mapping of the    
-            // XML file
-            xml = db.parse(xmlRoute);
-            
-            Element doc = xml.getDocumentElement();
-            
-            id = getTextValue(doc, "id");
-
-            name = getTextValue(doc, "name");
-            
-            id_heroe = getTextValue(doc, "id_heroe");
-
-            lvl = getTextValue(doc, "lvl");
-
-            base_atk = getTextValue(doc, "base_atk");
-            
-            active = getTextValue(doc, "active");
-            
-            expList = getTextValue(doc, "exp");
-            
-            for(int i = 0;i<id.size();i++){
-                contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "0", active.get(i), expList.get(i), id_heroe.get(i)));
-            }
-            
-        } catch (ParserConfigurationException pce) {
-            System.out.println(pce.getMessage());
-        } catch (SAXException se) {
-            System.out.println(se.getMessage());
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
-        }
-    }
-    private ArrayList<String> getTextValue(Element doc, String tag) {
-        ArrayList<String> value = new ArrayList<String>();
-        NodeList nl= doc.getElementsByTagName(tag);
-        for(int x = 0;x<nl.getLength();x++){
-           value.add(nl.item(x).getFirstChild().getNodeValue());
-        }
-        return value;
-    }
     
-    private void pruebaActu(){
-        try{
-        String filepath = "src/clickerg/main/accountInfo.xml";
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-        Document doc = docBuilder.parse(filepath);
-        
-      
-        
-        NodeList heroesData = doc.getElementsByTagName("heroe");
-        
-        for(int i = 0; i<heroesData.getLength(); i++ ){
-        
-            Node n = heroesData.item(i);
-            Element eleL = (Element) n;
-            System.out.print(eleL.toString());
-            Element eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
-            if(eleX.getFirstChild().getNodeValue().equals(idActual)){
-                Node expData =eleL.getElementsByTagName("exp").item(0);
-                
-                expData.setTextContent(heroExperience + "");
-                
-                Node lvlData =eleL.getElementsByTagName("lvl").item(0);
-                lvlData.setTextContent(heroeLvl + "");
-            }
-            
-            
-        
-        }
-        
-        
-        
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File(filepath));
-        transformer.transform(source, result);
-        
-        }catch (ParserConfigurationException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        // TODO Auto-generated catch block
-        } catch (SAXException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-    
+
     public void closeMethod(){
-       // gameHeroe.setClose(true);
-     //     TemplateXMLWriter heroeWriter = new writeHeroeFileAccountInfo();
-       //   heroeWriter.modifyXML(contratados, 0);   
-       pruebaActu();
+        for(int x = 0;x<contratados.size();x++){
+             if(contratados.get(x).getId_heroe().equals(idActual)){
+                contratados.get(x).setExp(heroExperience+"");
+                contratados.get(x).setLvl(heroeLvl+"");
+             }     
+        }
+            TemplateXMLWriter expWriter = new writeExpFileAccountInfo();
+            expWriter.modifyXML(contratados, Integer.parseInt(idActual));  
+
     }
     
 }

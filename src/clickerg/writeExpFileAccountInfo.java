@@ -21,8 +21,8 @@ import org.xml.sax.SAXException;
  *
  * @author Dragon
  */
-public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
-     protected void openDocument(){
+public class writeExpFileAccountInfo extends TemplateXMLWriter{
+    protected void openDocument(){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db;
         try {
@@ -41,17 +41,32 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
             
         Element e = null;
         Node heroe;
-
+        String exp = "0";
+        String lvl = "0";
+        
+        for(int i = 0; i<heroes.size(); i++){
+        
+            if(heroes.get(i).getId_heroe().equals(auxiliar+"")){
+                
+                exp = heroes.get(i).getExp();
+                lvl = heroes.get(i).getLvl();
+                System.out.println("Experiencia : " + exp + ". Nivel : " + lvl);
+            }
+        }
         NodeList heroesData = xml.getElementsByTagName("heroe");
 
         for(int i = 0; i<heroesData.getLength(); i++ ){
 
             Node n = heroesData.item(i);
             Element eleL = (Element) n;
-            eleL.getElementsByTagName("active").item(0).setTextContent("false");
+           // eleL.getElementsByTagName("active").item(0).setTextContent("false");
+           
             Element eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
+            
             if(eleX.getFirstChild().getNodeValue().equals(auxiliar+"")){
-                eleL.getElementsByTagName("active").item(0).setTextContent("true");
+                eleL.getElementsByTagName("lvl").item(0).setTextContent(lvl);
+                eleL.getElementsByTagName("exp").item(0).setTextContent(exp);
+                
             }
 
 
@@ -61,7 +76,4 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
           
     }
             
-           
-            
 }
-
