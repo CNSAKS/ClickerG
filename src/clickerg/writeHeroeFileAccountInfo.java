@@ -57,11 +57,7 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
 
 
         }
-            
-          
     }
-            
-           
             
 }
 

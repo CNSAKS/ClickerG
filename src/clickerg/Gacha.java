@@ -245,6 +245,7 @@ public class Gacha implements Initializable {
 
     @FXML
     private void irATown(ActionEvent event) throws IOException {
+        closeMethod();
          Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
@@ -254,6 +255,11 @@ public class Gacha implements Initializable {
     }
     
         
-  
+  public void closeMethod(){
+      
+            TemplateXMLWriter gachaWriter = new writeGachaFileAccountInfo();
+            gachaWriter.modifyXML(contratadosToSave, gold);  
+
+    }
     
 }
