@@ -36,6 +36,7 @@ public class readGachaFileGacha extends TemplateXMLonlyRead{
     }
     protected ArrayList<AuxiliarHeroe> readDocument(){
         ArrayList<AuxiliarHeroe> contratos = new ArrayList<AuxiliarHeroe>();
+        //ArrayList<GachaHeroe> contratos1 = new ArrayList<GachaHeroe>();
         Element doc = xml.getDocumentElement();
             
             ArrayList<String> id = getTextValue(doc, "id");
@@ -49,6 +50,7 @@ public class readGachaFileGacha extends TemplateXMLonlyRead{
             ArrayList<String> prob = getTextValue(doc, "prob");
             for(int i = 0;i<id.size();i++){
                 contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i), "0"));
+             //   GachaHeroe gh = new GachaHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i));
             }
             return contratos;
     }
