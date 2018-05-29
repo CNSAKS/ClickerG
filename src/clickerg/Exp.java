@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -105,6 +106,7 @@ public class Exp implements Initializable {
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
                 idActual = contratados.get(x).getId_heroe();
                 heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
+                imageHeroe.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(x).getId()+".png"));
              }
         }
         lb_expCount.setText(heroExperience + "");
@@ -114,7 +116,7 @@ public class Exp implements Initializable {
         currentexp.setText((int) heroExperience +" / "+(int) nextLvlExp);
        
         
-        
+       
         
         imageHeroe.sceneProperty().addListener((obs, oldScene, newScene) -> {
         Platform.runLater(() -> {
