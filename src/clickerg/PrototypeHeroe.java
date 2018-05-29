@@ -15,7 +15,6 @@ public abstract class PrototypeHeroe {
     protected String lvl;
     protected String base_atk;
     protected String exp;
-    protected String id_heroe;
     
     protected PrototypeHeroe(PrototypeHeroe ph){
         if(ph != null){
@@ -24,7 +23,6 @@ public abstract class PrototypeHeroe {
             this.lvl = ph.lvl;
             this.base_atk = ph.base_atk;
             this.exp = ph.exp;
-            this.id_heroe = ph.id_heroe;
         }
     }
     

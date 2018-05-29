@@ -61,25 +61,8 @@ public class HeroesInfo implements Initializable{
         lb_lvl.setText("Nivel : " + heroesInfo.getLvl());
         lb_experiencia.setText("Experiencia : " + heroesInfo.getExp());
         lb_ataque.setText("Ataque : " + (int) ((int) (Double.parseDouble(heroesInfo.getBase_atk()))* Math.pow(1.16, Double.parseDouble(heroesInfo.getLvl())-1)));
-        Image image = new Image("/clickerg/heroes/images/Vargas.png");
-        if(heroesInfo.getId().equals("3")){
-            image = new Image("/clickerg/heroes/images/Vargas.png");
-                }
-        if(heroesInfo.getId().equals("1")){
-            image = new Image("/clickerg/heroes/images/Elza.png");
-                }
-        if(heroesInfo.getId().equals("2")){
-            image = new Image("/clickerg/heroes/images/Zephu.png");
-                }
-        if(heroesInfo.getId().equals("4")){
-            image = new Image("/clickerg/heroes/images/Selena.png");
-                }
-        if(heroesInfo.getActive().equals("true")){
-            lb_heroeAc.setVisible(true);
-        }
-        else if(heroesInfo.getActive().equals("false")) {
-            lb_heroeAc.setVisible(false);
-        }
+        Image image = new Image("/clickerg/heroes/images/id_" + heroesInfo.getId()+".png");
+
         
         img_heroe.setImage(image);
         TemplateXMLonlyRead heroeReader = new readGachaFileAccountInfo();

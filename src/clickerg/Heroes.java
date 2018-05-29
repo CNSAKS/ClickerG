@@ -103,19 +103,10 @@ public class Heroes implements Initializable{
                         } catch(IOException e){}
                    }
                    });
+                   
                    ImageView iv = new ImageView();
-                   if(contratados.get(i).getId().equals("3")){
-                   iv = new ImageView(new Image("/clickerg/heroes/images/Vargas.png"));
-                   } 
-                   if(contratados.get(i).getId().equals("1")){
-                   iv = new ImageView(new Image("/clickerg/heroes/images/Elza.png"));
-                   } 
-                   if(contratados.get(i).getId().equals("2")){
-                   iv = new ImageView(new Image("/clickerg/heroes/images/Zephu.png"));
-                   } 
-                   if(contratados.get(i).getId().equals("4")){
-                   iv = new ImageView(new Image("/clickerg/heroes/images/Selena.png"));
-                   }
+                   iv.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(i).getId()+".png"));
+                   
                    
                    iv.setFitHeight(97);
                    iv.setFitWidth(97);

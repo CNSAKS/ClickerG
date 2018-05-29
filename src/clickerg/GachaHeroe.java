@@ -18,9 +18,11 @@ public class GachaHeroe extends PrototypeHeroe{
         if(e!=null){
             this.prob = e.prob;
         }
-   // public GachaHeroe(String id, String name, String lvl, String atk, String prob){
+
     
     }
+    
+    
      /*public GachaHeroe(String id, String name, String lvl, String atk, String prob){
      }*/
      
@@ -80,14 +82,7 @@ public class GachaHeroe extends PrototypeHeroe{
 
     @Override
     public String toString() {
-        return "AuxiliarHeroe{" + "id=" + id + ", name=" + name + ", lvl=" + lvl + ", base_atk=" + base_atk + ", prob=" + prob + ", exp=" + exp + ", id_heroe=" + id_heroe + '}';
+        return "AuxiliarHeroe{" + "id=" + id + ", name=" + name + ", lvl=" + lvl + ", base_atk=" + base_atk + ", prob=" + prob + ", exp=" + exp + '}';
     }
 
-    public String getId_heroe() {
-        return id_heroe;
-    }
-
-    public void setId_heroe(String id_heroe) {
-        this.id_heroe = id_heroe;
-    }
 }

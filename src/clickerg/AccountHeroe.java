@@ -12,11 +12,13 @@ package clickerg;
 public class AccountHeroe extends PrototypeHeroe{
 
     protected String active;
+    protected String id_heroe;
     
     public AccountHeroe(AccountHeroe e){
         super(e);
         if(e!=null){
             this.active = e.active;
+            this.id_heroe = e.id_heroe;
         }
     
     

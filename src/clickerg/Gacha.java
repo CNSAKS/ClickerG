@@ -16,6 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -50,7 +53,17 @@ public class Gacha implements Initializable {
     ArrayList<String> exp;
     int gold;
     @FXML
-    private VBox vBox_Gacha;
+    private ImageView iv_gold;
+    @FXML
+    private Label lb_gold;
+    @FXML
+    private ImageView iw_heroe;
+    @FXML
+    private Label lb_summon;
+    @FXML
+    private ImageView iv_back;
+    
+     GameLoop gameBack;
     
     /**
      * Initializes the controller class.
@@ -63,6 +76,10 @@ public class Gacha implements Initializable {
         TemplateXMLonlyRead readerAccount = new readGachaFileAccountInfo();
         contratados = readerAccount.readXML();
         gold = readerAccount.gold;
+        lb_gold.setText(""+gold);
+        
+        gameBack = new GameLoop("1", iv_back, "background");
+        gameBack.startGame();
         
     }
     
@@ -94,6 +111,9 @@ public class Gacha implements Initializable {
                 contratados.add(contratos.get(x));
                 contratadosToSave.add(contratos.get(x));
                 gold-=500;
+                lb_gold.setText(""+gold);
+                iw_heroe.setImage(new Image("/clickerg/heroes/images/id_" + contratos.get(x).getId()+".png"));
+                lb_summon.setText("¡"+ contratos.get(x).getName() + " se ha unido a tu equipo!");
                 return;
             }
             actualSearch+=Integer.parseInt(contratos.get(x).getProb());
@@ -238,7 +258,6 @@ public class Gacha implements Initializable {
             System.err.println(ioe.getMessage());
         }
     }
-    @FXML
     private void savePrueba(ActionEvent event) throws SAXException, IOException {
         saveToXML("src/clickerg/main/accountInfo.xml");
     }
@@ -246,6 +265,7 @@ public class Gacha implements Initializable {
     @FXML
     private void irATown(ActionEvent event) throws IOException {
         closeMethod();
+        
          Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
@@ -256,7 +276,7 @@ public class Gacha implements Initializable {
     
         
   public void closeMethod(){
-      
+            gameBack.setClose(true);
             TemplateXMLWriter gachaWriter = new writeGachaFileAccountInfo();
             gachaWriter.modifyXML(contratadosToSave, gold);  
 
