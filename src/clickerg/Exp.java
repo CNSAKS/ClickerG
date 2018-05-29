@@ -106,6 +106,7 @@ public class Exp implements Initializable {
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
                 idActual = contratados.get(x).getId_heroe();
                 heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
+                
                 imageHeroe.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(x).getId()+".png"));
              }
         }
