@@ -8,6 +8,6 @@ and open the template in the editor.
     Author     : Dani
 */
 #vBox_exp{
-    -fx-background-image: url("expRoom.png");
-    -fx-background-size: cover;
+    /*-fx-background-image: url("expRoom.png");*/
+    /*-fx-background-size: cover;*/
 }

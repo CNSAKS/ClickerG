@@ -10,39 +10,46 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBox_exp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@exp.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Exp">
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Exp">
    <children>
-      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+      <ImageView fx:id="imgBack" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox fx:id="vBox_exp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@exp.css">
          <children>
-            <Button mnemonicParsing="false" onAction="#backTown" text="Back" translateX="-180.0">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-            <Label text="Exp: " />
-            <Label fx:id="lb_expCount" />
-            <Label text="ExpPC: ">
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="label_expPerClick" />
-            <Button mnemonicParsing="false" onAction="#moreExpPC" text="Button">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backTown" text="Back" translateX="-180.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Label text="Exp: " />
+                  <Label fx:id="lb_expCount" />
+                  <Label text="ExpPC: ">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="label_expPerClick" />
+                  <Button mnemonicParsing="false" onAction="#moreExpPC" text="Button">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Pane fx:id="pn_ExpRoom" onMousePressed="#expIncrease" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ProgressBar fx:id="exp_bar" layoutX="138.0" layoutY="5.0" prefHeight="18.0" prefWidth="325.0" progress="0.0" />
+                  <Label fx:id="currentexp" alignment="CENTER" layoutX="138.0" layoutY="7.0" prefHeight="15.0" prefWidth="325.0" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imageHeroe" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
          </children>
-      </HBox>
-      <Pane fx:id="pn_ExpRoom" onMousePressed="#expIncrease" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-         <children>
-            <ProgressBar fx:id="exp_bar" layoutX="138.0" layoutY="5.0" prefHeight="18.0" prefWidth="325.0" progress="0.0" />
-            <Label fx:id="currentexp" alignment="CENTER" layoutX="138.0" layoutY="7.0" prefHeight="15.0" prefWidth="325.0" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="imageHeroe" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
-         </children></Pane>
+      </VBox>
    </children>
-</VBox>
+</Pane>

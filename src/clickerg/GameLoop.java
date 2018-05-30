@@ -21,7 +21,7 @@ import javax.imageio.ImageIO;
  * @author cnsak
  */
 public class GameLoop{
-    private static final int FPS = 100;
+    private int FPS = 100;
     private String id;
     private int actual;
     private int frames;
@@ -47,7 +47,7 @@ public class GameLoop{
                 if(close){executor.shutdown();}
                 
             }
-        }, 0, 125, TimeUnit.MILLISECONDS);
+        }, 100, FPS, TimeUnit.MILLISECONDS);
         
     }
 

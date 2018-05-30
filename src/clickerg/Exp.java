@@ -83,7 +83,9 @@ public class Exp implements Initializable {
     private Label currentexp;
     @FXML
     private ImageView imageHeroe;
-    
+    GameLoop gameBack;
+    @FXML
+    private ImageView imgBack;
     
 
     /**
@@ -132,7 +134,8 @@ public class Exp implements Initializable {
         });
         });
      });
-        
+        gameBack = new GameLoop("2", imgBack, "background");
+        gameBack.startGame();
     }    
 
     @FXML
@@ -173,6 +176,7 @@ public class Exp implements Initializable {
     
 
     public void closeMethod(){
+        gameBack.setClose(true);
         for(int x = 0;x<contratados.size();x++){
              if(contratados.get(x).getId_heroe().equals(idActual)){
                 contratados.get(x).setExp(heroExperience+"");
