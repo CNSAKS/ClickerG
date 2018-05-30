@@ -10,18 +10,24 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -65,6 +71,8 @@ public class Gacha implements Initializable {
     private ImageView iv_back;
     
     GameLoop gameBack;
+    @FXML
+    private Button bBack;
     
     /**
      * Initializes the controller class.
@@ -82,9 +90,39 @@ public class Gacha implements Initializable {
         contratados = readerAccount.readXML();
         gold = readerAccount.gold;
         lb_gold.setText(""+gold);
+        lb_gold.setTextFill(Color.web("#FFFFFF"));
+        lb_gold.setStyle("-fx-font-weight: bold");
+        
+        lb_summon.setTextFill(Color.web("#FFFFFF"));
+        lb_summon.setStyle("-fx-font-weight: bold");
+        
         
         gameBack = new GameLoop("1", iv_back, "background");
         gameBack.startGame();
+        
+        iv_gold.setImage(new Image("/clickerg/gacha/goldBag.gif"));
+        
+         ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/gacha/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          bBack.setStyle("-fx-background-color: transparent;");
+        bBack.setGraphic(iv);
+        
+        bBack.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) bBack.getScene().getWindow();
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                closeMethod();
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        });
+    });
+        
         
     }
     
