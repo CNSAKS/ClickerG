@@ -100,10 +100,10 @@ public class Gacha implements Initializable {
         gameBack = new GameLoop("1", iv_back, "background");
         gameBack.startGame();
         
-        iv_gold.setImage(new Image("/clickerg/gacha/goldBag.gif"));
+        iv_gold.setImage(new Image("/clickerg/icons/goldBag.gif"));
         
          ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/gacha/back.png"));
+         iv.setImage(new Image("/clickerg/icons/back.png"));
          iv.setFitHeight(50);
          iv.setFitWidth(80);
           bBack.setStyle("-fx-background-color: transparent;");

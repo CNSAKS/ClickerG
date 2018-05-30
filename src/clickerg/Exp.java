@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -86,6 +87,8 @@ public class Exp implements Initializable {
     GameLoop gameBack;
     @FXML
     private ImageView imgBack;
+    @FXML
+    private Button bBack;
     
 
     /**
@@ -136,6 +139,13 @@ public class Exp implements Initializable {
      });
         gameBack = new GameLoop("2", imgBack, "background");
         gameBack.startGame();
+        
+        ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          bBack.setStyle("-fx-background-color: transparent;");
+        bBack.setGraphic(iv);
     }    
 
     @FXML

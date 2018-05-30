@@ -116,6 +116,13 @@ public class Heroes implements Initializable{
                     
                     gridPaneHe.add(b,columna, fila);
                }
+                
+                ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          butBack.setStyle("-fx-background-color: transparent;");
+        butBack.setGraphic(iv);
            
           
     }

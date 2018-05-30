@@ -154,6 +154,13 @@ public class Boss implements Initializable {
         });
         });
     });
+        
+        ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          backButton.setStyle("-fx-background-color: transparent;");
+        backButton.setGraphic(iv);
     }    
 
     @FXML
