@@ -78,7 +78,7 @@ public class HeroesInfo implements Initializable{
         
         
         img_heroe.setImage(image);
-        TemplateXMLonlyRead heroeReader = new readGachaFileAccountInfo();
+        TemplateXMLonlyRead heroeReader = new readHeroeFileAccountInfo();
         contratados = heroeReader.readXML();
         
         
