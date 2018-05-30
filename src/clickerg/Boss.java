@@ -236,7 +236,7 @@ public class Boss implements Initializable {
         gameBack.setClose(true);
         gameBoss.setClose(true);
         TemplateXMLWriter bossWriter = new writeBossFileAccountInfo();
-        bossWriter.modifyXML(null, bossLvl);
+        bossWriter.modifyXML(itemsToSave, bossLvl);
     }
     
     public void searchItem(int id){

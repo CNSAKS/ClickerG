@@ -86,6 +86,8 @@ public class Town implements Initializable{
                     Element heroesXm = doc.createElement("heroes");
                     rootElement.appendChild(heroesXm);
 
+                    Element itemXm = doc.createElement("items");
+                    rootElement.appendChild(itemXm);
                     // write the content into xml file
                     TransformerFactory transformerFactory = TransformerFactory.newInstance();
                     Transformer transformer = transformerFactory.newTransformer();

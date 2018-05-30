@@ -13,11 +13,19 @@ public class AuxiliarItem {
     private String id;
     private String name;
     private String base_mult;
+    private String equipado;
     
      public AuxiliarItem(String id, String name, String base_mult) {
         this.id = id;
         this.name = name;
         this.base_mult = base_mult;
+    }
+     
+    public AuxiliarItem(String id, String name, String base_mult, String equipado) {
+        this.id = id;
+        this.name = name;
+        this.base_mult = base_mult;
+        this.equipado = equipado;
     }
 
     public String getId() {
@@ -43,6 +51,13 @@ public class AuxiliarItem {
     public void setBase_mult(String base_mult) {
         this.base_mult = base_mult;
     }
+
+    public String getEquipado() {
+        return equipado;
+    }
+
+    public void setEquipado(String equipado) {
+        this.equipado = equipado;
+    }
      
-    
 }

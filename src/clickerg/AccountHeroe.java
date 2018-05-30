@@ -13,20 +13,20 @@ public class AccountHeroe extends PrototypeHeroe{
 
     protected String active;
     protected String id_heroe;
-    
-    public AccountHeroe(AccountHeroe e){
-        super(e);
-        if(e!=null){
-            this.active = e.active;
-            this.id_heroe = e.id_heroe;
-        }
-    
-    
+
+    public AccountHeroe(String active, String id_heroe, String name, String id, String lvl, String base_atk, String exp) {
+        super(name, id, lvl, base_atk, exp);
+        this.active = active;
+        this.id_heroe = id_heroe;
     }
+
+    
+    
+    
     
     @Override
-    protected PrototypeHeroe clone() {
-       return new AccountHeroe(this);
+    protected PrototypeHeroe cloneObject() throws CloneNotSupportedException{
+       return (AccountHeroe)this.clone();
     }
     
     public String getActive() {
@@ -35,47 +35,6 @@ public class AccountHeroe extends PrototypeHeroe{
 
     public void setActive(String active) {
         this.active = active;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLvl() {
-        return lvl;
-    }
-
-    public void setLvl(String lvl) {
-        this.lvl = lvl;
-    }
-
-    public String getBase_atk() {
-        return base_atk;
-    }
-
-    public void setBase_atk(String base_atk) {
-        this.base_atk = base_atk;
-    }
-
-
-    public String getExp() {
-        return exp;
-    }
-
-    public void setExp(String exp) {
-        this.exp = exp;
     }
 
     @Override

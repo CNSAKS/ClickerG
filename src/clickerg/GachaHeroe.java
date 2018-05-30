@@ -12,55 +12,21 @@ package clickerg;
 public class GachaHeroe extends PrototypeHeroe{
 
     protected String prob;
-    
-    public GachaHeroe(GachaHeroe e){
-        super(e);
-        if(e!=null){
-            this.prob = e.prob;
-        }
 
-    
+    public GachaHeroe(String prob, String name, String id, String lvl, String base_atk, String exp) {
+        super(name, id, lvl, base_atk, exp);
+        this.prob = prob;
     }
+    
+    
     
     
      /*public GachaHeroe(String id, String name, String lvl, String atk, String prob){
      }*/
      
     @Override
-    protected PrototypeHeroe clone() {
-       return new GachaHeroe(this);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLvl() {
-        return lvl;
-    }
-
-    public void setLvl(String lvl) {
-        this.lvl = lvl;
-    }
-
-    public String getBase_atk() {
-        return base_atk;
-    }
-
-    public void setBase_atk(String base_atk) {
-        this.base_atk = base_atk;
+    protected PrototypeHeroe cloneObject() throws CloneNotSupportedException{
+       return (PrototypeHeroe)this.clone();
     }
 
     public String getProb() {

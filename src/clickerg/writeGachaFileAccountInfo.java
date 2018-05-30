@@ -37,7 +37,7 @@ public class writeGachaFileAccountInfo extends TemplateXMLWriter{
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    protected void writeDocument(ArrayList<AuxiliarHeroe> heroes, int auxiliar){
+    protected <T> void writeDocument(ArrayList<T> heroes, int auxiliar){
             
         
         Element e = null;
@@ -72,15 +72,15 @@ public class writeGachaFileAccountInfo extends TemplateXMLWriter{
                 
                 
                 e = xml.createElement("base_atk");
-                e.appendChild(xml.createTextNode(heroes.get(x).getBase_atk()));
+                e.appendChild(xml.createTextNode(((AccountHeroe)heroes.get(x)).getBase_atk()));
                 heroe.appendChild(e);
                 
                 e = xml.createElement("exp");
-                e.appendChild(xml.createTextNode(heroes.get(x).getExp()));
+                e.appendChild(xml.createTextNode(((AccountHeroe)heroes.get(x)).getExp()));
                 heroe.appendChild(e);
 
                 e = xml.createElement("id");
-                e.appendChild(xml.createTextNode(heroes.get(x).getId()));
+                e.appendChild(xml.createTextNode(((AccountHeroe)heroes.get(x)).getId()));
                 heroe.appendChild(e);
                 
                 e = xml.createElement("id_heroe");
@@ -88,11 +88,11 @@ public class writeGachaFileAccountInfo extends TemplateXMLWriter{
                 heroe.appendChild(e);
 
                 e = xml.createElement("lvl");
-                e.appendChild(xml.createTextNode(heroes.get(x).getLvl()));
+                e.appendChild(xml.createTextNode(((AccountHeroe)heroes.get(x)).getLvl()));
                 heroe.appendChild(e);
 
                 e = xml.createElement("name");
-                e.appendChild(xml.createTextNode(heroes.get(x).getName()));
+                e.appendChild(xml.createTextNode(((AccountHeroe)heroes.get(x)).getName()));
                 heroe.appendChild(e);
 
                 Node heroeNode = (Node)heroe;

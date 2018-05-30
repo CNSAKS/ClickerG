@@ -53,7 +53,7 @@ public class Heroes implements Initializable{
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         TemplateXMLonlyRead readerAccount = new readGachaFileAccountInfo();
+         TemplateXMLonlyRead readerAccount = new readHeroeFileAccountInfo();
            contratados = readerAccount.readXML();
             int aux = contratados.size()/6;
                if(contratados.size()%6 != 0){

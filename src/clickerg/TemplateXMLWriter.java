@@ -27,15 +27,15 @@ public abstract class TemplateXMLWriter {
     String route;
     int gold;
     int bossLvl;
-    public final void modifyXML(ArrayList<AuxiliarHeroe> heroes, int auxiliar) {
+    public final <T> void modifyXML(ArrayList<T> lista, int auxiliar) {
       openDocument();
-      writeDocument(heroes, auxiliar);
+      writeDocument(lista, auxiliar);
       closeDocument();
     }
     //Template methods
     protected abstract void openDocument();
     
-    protected abstract void writeDocument(ArrayList<AuxiliarHeroe> heroes, int auxiliar);
+    protected abstract <T> void writeDocument(ArrayList<T> lista, int auxiliar);
     
     protected void closeDocument(){
         try {

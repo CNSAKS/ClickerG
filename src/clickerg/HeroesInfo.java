@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,6 +40,7 @@ public class HeroesInfo implements Initializable{
     private Label lb_lvl;
     
     public static AuxiliarHeroe heroesInfo;
+    public static String itemToChange;
     @FXML
     private Label lb_ataque;
     @FXML
@@ -52,6 +54,12 @@ public class HeroesInfo implements Initializable{
     boolean needSave;
     @FXML
     private Label lb_heroeAc;
+    @FXML
+    private Button button_item1;
+    @FXML
+    private Button button_item2;
+    @FXML
+    private Button button_item3;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,7 +70,12 @@ public class HeroesInfo implements Initializable{
         lb_experiencia.setText("Experiencia : " + heroesInfo.getExp());
         lb_ataque.setText("Ataque : " + (int) ((int) (Double.parseDouble(heroesInfo.getBase_atk()))* Math.pow(1.16, Double.parseDouble(heroesInfo.getLvl())-1)));
         Image image = new Image("/clickerg/heroes/images/id_" + heroesInfo.getId()+".png");
-
+        if(heroesInfo.getActive().equals("true")){
+            lb_heroeAc.setVisible(true);
+        }else{
+            lb_heroeAc.setVisible(false);
+        }
+        
         
         img_heroe.setImage(image);
         TemplateXMLonlyRead heroeReader = new readGachaFileAccountInfo();
@@ -123,6 +136,19 @@ public class HeroesInfo implements Initializable{
             heroeWriter.modifyXML(contratados, Integer.parseInt(heroesInfo.getId_heroe()));
         }
         
+    }
+
+    @FXML
+    private void addItem(ActionEvent event) throws IOException {
+        closeMethod();
+        itemToChange = ((Control) event.getSource()).getId();
+        itemToChange = itemToChange.substring(itemToChange.length()-1, itemToChange.length());
+        Parent reserva = FXMLLoader.load(getClass().getResource("items/items.fxml"));
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(reserva));
+        //Preguntar por cierre
+        stage.setTitle("Items");
+        stage.show();
     }
     
 }

@@ -13,22 +13,20 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
  *
- * @author Dragon
+ * @author cnsak
  */
-public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
-     protected void openDocument(){
+
+public class readItemsFileAccountInfo extends TemplateXMLonlyRead{
+    protected void openDocument(){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db;
         try {
             db = dbf.newDocumentBuilder();
             xml = db.parse("src/clickerg/main/accountInfo.xml");
-            route = "src/clickerg/main/accountInfo.xml";
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -37,27 +35,24 @@ public class writeHeroeFileAccountInfo extends TemplateXMLWriter{
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    protected <T> void writeDocument(ArrayList<T> heroes, int auxiliar){
+    protected ArrayList<AuxiliarItem> readDocument(){
+        ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
+        Element doc = xml.getDocumentElement();
             
-        Element e = null;
-        Node heroe;
+            ArrayList<String> id = getTextValue(doc, "id_item");
 
-        NodeList heroesData = xml.getElementsByTagName("heroe");
-
-        for(int i = 0; i<heroesData.getLength(); i++ ){
-
-            Node n = heroesData.item(i);
-            Element eleL = (Element) n;
-            eleL.getElementsByTagName("active").item(0).setTextContent("false");
-            Element eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
-            if(eleX.getFirstChild().getNodeValue().equals(auxiliar+"")){
-                eleL.getElementsByTagName("active").item(0).setTextContent("true");
+            ArrayList<String> name = getTextValue(doc, "name_item");
+            
+            ArrayList<String> base_mult = getTextValue(doc, "base_mult");
+            
+            ArrayList<String> equipado = getTextValue(doc, "id_heroe_owner");
+            
+            for(int i = 0;i<id.size();i++){
+                items.add(new AuxiliarItem(id.get(i), name.get(i), base_mult.get(i), equipado.get(i)));
             }
-
-
-
-        }
-    }
             
+            return items;
+    }
+    
+    
 }
-

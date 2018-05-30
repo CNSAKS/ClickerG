@@ -41,8 +41,9 @@ import org.w3c.dom.*;
 public class Gacha implements Initializable {
 
     ArrayList<AuxiliarHeroe> contratos = new ArrayList<AuxiliarHeroe>();
-    ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
-    ArrayList<AuxiliarHeroe> contratadosToSave = new ArrayList<AuxiliarHeroe>();
+    ArrayList<AccountHeroe> contratosToClone = new ArrayList<AccountHeroe>();
+    ArrayList<AccountHeroe> contratados = new ArrayList<AccountHeroe>();
+    ArrayList<AccountHeroe> contratadosToSave = new ArrayList<AccountHeroe>();
     Document xml;
     ArrayList<String> goldInAccount;
     ArrayList<String> id;
@@ -63,7 +64,7 @@ public class Gacha implements Initializable {
     @FXML
     private ImageView iv_back;
     
-     GameLoop gameBack;
+    GameLoop gameBack;
     
     /**
      * Initializes the controller class.
@@ -72,6 +73,10 @@ public class Gacha implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         TemplateXMLonlyRead readerGacha = new readGachaFileGacha();
         contratos = readerGacha.readXML();
+        
+        TemplateXMLonlyRead readerGachaToClone = new readGachaToCloneFileGacha();
+        contratosToClone = readerGachaToClone.readXML();
+        
         //loadfromXML("src/clickerg/gacha/gacha.xml", 0);
         TemplateXMLonlyRead readerAccount = new readGachaFileAccountInfo();
         contratados = readerAccount.readXML();
@@ -97,7 +102,7 @@ public class Gacha implements Initializable {
    
 
     @FXML
-    private void summon(MouseEvent event) {
+    private void summon(MouseEvent event) throws CloneNotSupportedException {
         System.out.println("Oro:"+gold);
         if(gold<500){
             System.out.println("No tienes oro suficiente ("+(gold-500)+"), vete a farmear");
@@ -108,8 +113,16 @@ public class Gacha implements Initializable {
         for(int x = 0; x<contratos.size();x++){
             if(actualSearch+Integer.parseInt(contratos.get(x).getProb())>value){
                 System.out.println("Te toco "+contratos.get(x).toString());
-                contratados.add(contratos.get(x));
-                contratadosToSave.add(contratos.get(x));
+                //contratados.add(contratos.get(x));
+                //contratadosToSave.add(contratos.get(x));
+                searchClone:
+                for(AccountHeroe heroe : contratosToClone){
+                    if(heroe.getId().equals(contratos.get(x).getId())){
+                        contratados.add((AccountHeroe) heroe.cloneObject());
+                        contratadosToSave.add((AccountHeroe) heroe.cloneObject());
+                        break searchClone;
+                    }
+                }
                 gold-=500;
                 lb_gold.setText(""+gold);
                 iw_heroe.setImage(new Image("/clickerg/heroes/images/id_" + contratos.get(x).getId()+".png"));
@@ -215,7 +228,7 @@ public class Gacha implements Initializable {
     }
 
     
-    public void loadfromXML(String xmlRoute, int mode) {
+    /*public void loadfromXML(String xmlRoute, int mode) {
 
         // Make an  instance of the DocumentBuilderFactory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -260,7 +273,7 @@ public class Gacha implements Initializable {
     }
     private void savePrueba(ActionEvent event) throws SAXException, IOException {
         saveToXML("src/clickerg/main/accountInfo.xml");
-    }
+    }*/
 
     @FXML
     private void irATown(ActionEvent event) throws IOException {
