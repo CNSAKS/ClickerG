@@ -18,6 +18,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.xml.parsers.DocumentBuilder;
@@ -117,6 +119,20 @@ public class Town implements Initializable{
              bt_heroes.setDisable(true);
          
          }
+         
+         ImageView iv1 = new ImageView();
+         iv1.setImage(new Image("/clickerg/icons/boss.png"));
+         iv1.setFitHeight(50);
+         iv1.setFitWidth(80);
+         bt_boss.setStyle("-fx-background-color: transparent;");
+        bt_boss.setGraphic(iv1);
+        
+        ImageView iv2 = new ImageView();
+        iv2.setImage(new Image("/clickerg/icons/goldIcon.png"));
+         iv2.setFitHeight(50);
+         iv2.setFitWidth(80);
+         bt_gold.setStyle("-fx-background-color: transparent;");
+        bt_gold.setGraphic(iv2);
     }
 
     @FXML

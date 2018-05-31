@@ -60,6 +60,8 @@ public class HeroesInfo implements Initializable{
     private Button button_item2;
     @FXML
     private Button button_item3;
+    @FXML
+    private Button bBack;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,6 +101,12 @@ public class HeroesInfo implements Initializable{
     });
         
         
+         ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          bBack.setStyle("-fx-background-color: transparent;");
+         bBack.setGraphic(iv);
     }
     
     @FXML

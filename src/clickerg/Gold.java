@@ -23,11 +23,14 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -54,13 +57,11 @@ import org.xml.sax.SAXException;
 public class Gold implements Initializable {
     
     private Label label;
-    @FXML
     private Label lb_goldCount;
     private int gold = 0;
     private int goldPerClick = 1;
     @FXML
     private Pane pn_Mine;
-    @FXML
     private Label label_goldPerClick;
     @FXML
     private VBox vBox_Gold;
@@ -78,6 +79,15 @@ public class Gold implements Initializable {
     ArrayList<String> prob;
     @FXML
     private ImageView imageContainer_roca1;
+    GameLoop gameBack;
+    @FXML
+    private ImageView iv_back;
+    @FXML
+    private Button bBack;
+    @FXML
+    private ImageView iv_gold;
+    @FXML
+    private Label lb_gold;
     
     
     @Override
@@ -85,8 +95,9 @@ public class Gold implements Initializable {
        
         TemplateXMLonlyRead AccountInfoReader = new readGoldFileAccountInfo();
         gold = Integer.parseInt(AccountInfoReader.readXML().get(0).toString());
-        label_goldPerClick.setText(goldPerClick+"");
-        lb_goldCount.setText(gold+"");
+        lb_gold.setText(gold+"");
+        
+         goldPerClick = AccountInfoReader.bossLvl;
         
         imageContainer_roca1.sceneProperty().addListener((obs, oldScene, newScene) -> {
         Platform.runLater(() -> {
@@ -101,18 +112,27 @@ public class Gold implements Initializable {
         });
         });
      });
+        
+        gameBack = new GameLoop("3", iv_back, "background");
+        gameBack.startGame();
+        
+         iv_gold.setImage(new Image("/clickerg/icons/goldBag.gif"));
+        
+         ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          bBack.setStyle("-fx-background-color: transparent;");
+        bBack.setGraphic(iv);
+        
+        lb_gold.setTextFill(Color.web("#FFFFFF"));
+        lb_gold.setStyle("-fx-font-weight: bold");
     }    
 
     @FXML
     private void goldIncrease(MouseEvent event) {
         gold += goldPerClick;
-        lb_goldCount.setText(gold+"");
-    }
-
-    @FXML
-    private void moreGPC(ActionEvent event) {
-        goldPerClick++;
-        label_goldPerClick.setText(goldPerClick+"");
+        lb_gold.setText(gold+"");
     }
    
     
@@ -129,7 +149,7 @@ public class Gold implements Initializable {
     }
     
      public void closeMethod(){
-      
+            gameBack.setClose(true);
             TemplateXMLWriter goldWriter = new writeGoldFileAccountInfo();
             goldWriter.modifyXML(null, gold);  
 

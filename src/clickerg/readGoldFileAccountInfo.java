@@ -40,7 +40,9 @@ public class readGoldFileAccountInfo extends TemplateXMLonlyRead{
         ArrayList<String> goldInAccount = getTextValue(doc, "gold");
                       
 
+            ArrayList<String> bossLvlInAccount = getTextValue(doc, "bossLvl");
             
+            bossLvl = Integer.parseInt(bossLvlInAccount.get(0));
             
             return goldInAccount;
     }

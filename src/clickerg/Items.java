@@ -21,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -40,11 +42,11 @@ public class Items implements Initializable {
     ArrayList<AuxiliarHeroe> heroes = new ArrayList<AuxiliarHeroe>();
     
     @FXML
-    private Button button_back;
-    @FXML
     private Label label_itemindicator;
     @FXML
     private VBox containerItems;
+    @FXML
+    private Button bBack;
 
     /**
      * Initializes the controller class.
@@ -100,6 +102,12 @@ public class Items implements Initializable {
         }
         
         
+         ImageView iv = new ImageView();
+         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setFitHeight(50);
+         iv.setFitWidth(80);
+          bBack.setStyle("-fx-background-color: transparent;");
+        bBack.setGraphic(iv);
     }    
 
     @FXML
