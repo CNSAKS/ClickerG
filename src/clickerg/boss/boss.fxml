@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="containerPane" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Boss">
+<Pane fx:id="containerPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Boss">
    <children>
       <ImageView fx:id="imageBack" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <VBox fx:id="VBox_Boss" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@boss.css">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0" spacing="10.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#irATown">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#irATown" prefHeight="25.0" prefWidth="17.0">
                      <HBox.margin>
-                        <Insets left="10.0" right="30.0" />
+                        <Insets left="10.0" right="20.0" />
                      </HBox.margin>
                   </Button>
                   <VBox alignment="CENTER" prefHeight="47.0" prefWidth="435.0" spacing="10.0">
@@ -28,7 +28,7 @@
                         <HBox spacing="10.0">
                            <children>
                               <Label text="HP:" />
-                              <Pane fx:id="panehp">
+                              <Pane fx:id="panehp" prefWidth="338.0">
                                  <children>
                                     <ProgressBar fx:id="hp_bar" prefHeight="18.0" prefWidth="401.0" progress="0.0" />
                                     <Label fx:id="currenthp" alignment="CENTER" layoutY="3.0" prefHeight="15.0" prefWidth="401.0" textAlignment="CENTER">
@@ -53,7 +53,7 @@
             <Pane onMousePressed="#damageBoss" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <ImageView fx:id="imageBoss" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="label_msg" alignment="CENTER" layoutX="9.0" layoutY="331.0" prefHeight="17.0" prefWidth="585.0" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="label_msg" alignment="CENTER" layoutX="8.0" layoutY="63.0" prefHeight="17.0" prefWidth="585.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>

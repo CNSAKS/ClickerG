@@ -97,12 +97,15 @@ public class Boss implements Initializable {
     ArrayList<String> active;
     @FXML
     private Label label_msg;
+    LabelTextVolatile labelDe1Segundo;
+    boolean firstTime;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        firstTime = true;
         hp_bar.setProgress(1);
         
         
@@ -171,6 +174,7 @@ public class Boss implements Initializable {
             bossLvl++;
             if(random.nextInt(10)<=200){
                 searchItem(randomNumberGenerated);
+                
             }
             randomNumberGenerated = random.nextInt(numberOfBosses);
             baseHp = Integer.parseInt(bosses.get(randomNumberGenerated).getBase_hp());
@@ -247,10 +251,15 @@ public class Boss implements Initializable {
     }
     
     public void searchItem(int id){
+        if(!firstTime){
+            labelDe1Segundo.closeThread();
+        }
         for(int counter = 0; counter < items.size();  counter++){
             if(items.get(counter).getId().equals(gameBoss.getId())){
                 itemsToSave.add(new AuxiliarItem(items.get(counter).getId(), items.get(counter).getName(), (String.format("%.2f",Double.parseDouble(items.get(counter).getBase_mult())*(random.nextInt(bossLvl)+1)))));
-                label_msg.setText("Te ha tocado el item "+itemsToSave.get(itemsToSave.size()-1).getName()+" que te otorga un multiplicador de "+itemsToSave.get(itemsToSave.size()-1).getBase_mult());
+                labelDe1Segundo = new LabelTextVolatile(2500, label_msg, "Te ha tocado el item "+itemsToSave.get(itemsToSave.size()-1).getName()+" que te otorga un multiplicador de "+itemsToSave.get(itemsToSave.size()-1).getBase_mult());
+                labelDe1Segundo.startTime();
+                firstTime = false;
             }
         }
     }
