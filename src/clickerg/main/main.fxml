@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorPane_main" prefHeight="400.0" prefWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Town">
+<AnchorPane fx:id="AnchorPane_main" prefHeight="400.0" prefWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Town">
    <children>
-      <Button fx:id="bt_gold" layoutX="163.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickGold" prefHeight="25.0" prefWidth="78.0" text="Gold" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="bt_gold" layoutX="163.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickGold" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
@@ -21,7 +21,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="bt_gacha" layoutX="494.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickGacha" prefHeight="25.0" prefWidth="78.0" text="Gacha" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="bt_gacha" layoutX="494.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickGacha" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>

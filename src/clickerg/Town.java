@@ -14,13 +14,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -56,6 +68,7 @@ public class Town implements Initializable{
      * Initializes the controller class.
      */
     public void initialize(URL url, ResourceBundle rb) {
+        
         File f = new File("src/clickerg/main/accountInfo.xml");
          if(!f.exists())
          {
@@ -117,8 +130,9 @@ public class Town implements Initializable{
              bt_boss.setDisable(true);
              bt_exp.setDisable(true);
              bt_heroes.setDisable(true);
-         
+          
          }
+         
          
          ImageView iv1 = new ImageView();
          iv1.setImage(new Image("/clickerg/icons/boss.png"));
@@ -133,6 +147,27 @@ public class Town implements Initializable{
          iv2.setFitWidth(80);
          bt_gold.setStyle("-fx-background-color: transparent;");
         bt_gold.setGraphic(iv2);
+        
+         ImageView iv3 = new ImageView();
+        iv3.setImage(new Image("/clickerg/icons/summon.png"));
+         iv3.setFitHeight(80);
+         iv3.setFitWidth(80);
+         bt_gacha.setStyle("-fx-background-color: transparent;");
+        bt_gacha.setGraphic(iv3);
+        
+         ImageView iv4 = new ImageView();
+        iv4.setImage(new Image("/clickerg/icons/exp.png"));
+         iv4.setFitHeight(60);
+         iv4.setFitWidth(60);
+         bt_exp.setStyle("-fx-background-color: transparent;");
+        bt_exp.setGraphic(iv4);
+        
+         ImageView iv5 = new ImageView();
+        iv5.setImage(new Image("/clickerg/icons/heroes.png"));
+         iv5.setFitHeight(80);
+         iv5.setFitWidth(80);
+         bt_heroes.setStyle("-fx-background-color: transparent;");
+        bt_heroes.setGraphic(iv5);
     }
 
     @FXML
