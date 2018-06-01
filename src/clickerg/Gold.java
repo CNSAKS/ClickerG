@@ -68,6 +68,8 @@ public class Gold implements Initializable {
     @FXML
     private ImageView imageContainer_roca;
     
+    PickaxeAnimation animation;
+    
     
      ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
     Document xml;
@@ -80,6 +82,7 @@ public class Gold implements Initializable {
     @FXML
     private ImageView imageContainer_roca1;
     GameLoop gameBack;
+    GameLoop gamePickaxe;
     @FXML
     private ImageView iv_back;
     @FXML
@@ -112,9 +115,15 @@ public class Gold implements Initializable {
         });
         });
      });
-        
+        imageContainer_roca1.setFitHeight(200);
+        imageContainer_roca1.setFitWidth(200);
+        imageContainer_roca1.setImage(new Image("/clickerg/animations/boss/id3/id3 (1).gif"));
         gameBack = new GameLoop("3", iv_back, "background");
         gameBack.startGame();
+        
+       // gamePickaxe = new GameLoop("3",imageContainer_roca1 , "boss");
+       // gamePickaxe.startGame();
+        
         
          iv_gold.setImage(new Image("/clickerg/icons/goldBag.gif"));
         
@@ -133,6 +142,9 @@ public class Gold implements Initializable {
     private void goldIncrease(MouseEvent event) {
         gold += goldPerClick;
         lb_gold.setText(gold+"");
+        animation = new PickaxeAnimation(1400, imageContainer_roca1);
+        animation.play();
+        animation.startTime();
     }
    
     

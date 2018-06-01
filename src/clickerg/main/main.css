@@ -12,23 +12,16 @@ and open the template in the editor.
     -fx-background-size: cover;
 }
 
-.button{
+/*.button{
     -fx-border-color: white;
     -fx-border-width: 1;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
     -fx-transition-duration: 0.4s;
-}
+}*/
 
 .button:hover {
     -fx-background-color: #000090; /* darkblue */
     -fx-color: white;
-}
-
-#bt_boss{
-    -fx-background-image: url("boss.png");
-    -fx-background-size: cover;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
 }
 
