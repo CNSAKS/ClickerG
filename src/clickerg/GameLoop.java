@@ -76,8 +76,8 @@ public class GameLoop{
             case "heroe":       img.setFitHeight(200);
                                 img.setFitWidth(200);
                                 break;
-            default:            img.setFitHeight(400);
-                                img.setFitWidth(600);
+            default:            img.setFitHeight(200);
+                                img.setFitWidth(200);
                                 break;
         }
         img.setPreserveRatio(false);

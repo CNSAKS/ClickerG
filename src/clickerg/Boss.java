@@ -119,7 +119,7 @@ public class Boss implements Initializable {
         TemplateXMLonlyRead itemReader = new readBossFileItem();
         items = itemReader.readXML();
         
-        numberOfBosses = new File("src/clickerg/animations/boss").listFiles().length;
+        numberOfBosses = bosses.size();
         
         randomNumberGenerated = random.nextInt(numberOfBosses);
         
@@ -247,7 +247,7 @@ public class Boss implements Initializable {
         gameBack.setClose(true);
         gameBoss.setClose(true);
         TemplateXMLWriter bossWriter = new writeBossFileAccountInfo();
-        bossWriter.modifyXML(itemsToSave, bossLvl);
+        bossWriter.modifyXML(itemsToSave, new int[]{bossLvl});
     }
     
     public void searchItem(int id){

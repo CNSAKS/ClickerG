@@ -37,12 +37,12 @@ public class writeGoldFileAccountInfo extends TemplateXMLWriter {
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    protected <T> void writeDocument(ArrayList<T> heroes, int auxiliar){
+    protected <T> void writeDocument(ArrayList<T> heroes, int[] auxiliar){
 
         Node heroesData = xml.getElementsByTagName("gold").item(0);
 
        
-        heroesData.setTextContent(auxiliar+"");
+        heroesData.setTextContent(auxiliar[0]+"");
 
 
 

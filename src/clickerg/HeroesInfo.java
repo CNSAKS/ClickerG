@@ -141,7 +141,7 @@ public class HeroesInfo implements Initializable{
     public void closeMethod(){
         if(needSave){
             TemplateXMLWriter heroeWriter = new writeHeroeFileAccountInfo();
-            heroeWriter.modifyXML(contratados, Integer.parseInt(heroesInfo.getId_heroe()));
+            heroeWriter.modifyXML(contratados, new int[]{Integer.parseInt(heroesInfo.getId_heroe())});
         }
         
     }

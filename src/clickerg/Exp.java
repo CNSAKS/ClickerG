@@ -194,7 +194,7 @@ public class Exp implements Initializable {
              }     
         }
             TemplateXMLWriter expWriter = new writeExpFileAccountInfo();
-            expWriter.modifyXML(contratados, Integer.parseInt(idActual));  
+            expWriter.modifyXML(contratados, new int[]{Integer.parseInt(idActual)});  
 
     }
     

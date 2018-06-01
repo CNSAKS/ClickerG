@@ -37,7 +37,7 @@ public class writeExpFileAccountInfo extends TemplateXMLWriter{
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    protected <T> void writeDocument(ArrayList<T> heroes, int auxiliar){
+    protected <T> void writeDocument(ArrayList<T> heroes, int[] auxiliar){
             
         Element e = null;
         Node heroe;
@@ -46,7 +46,7 @@ public class writeExpFileAccountInfo extends TemplateXMLWriter{
         
         for(T elem : heroes) {
         
-            if(((AuxiliarHeroe) elem).getId_heroe().equals(auxiliar+"")){
+            if(((AuxiliarHeroe) elem).getId_heroe().equals(auxiliar[0]+"")){
                 
                 exp = ((AuxiliarHeroe) elem).getExp();
                 lvl = ((AuxiliarHeroe) elem).getLvl();
@@ -63,7 +63,7 @@ public class writeExpFileAccountInfo extends TemplateXMLWriter{
            
             Element eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
             
-            if(eleX.getFirstChild().getNodeValue().equals(auxiliar+"")){
+            if(eleX.getFirstChild().getNodeValue().equals(auxiliar[0]+"")){
                 eleL.getElementsByTagName("lvl").item(0).setTextContent(lvl);
                 eleL.getElementsByTagName("exp").item(0).setTextContent(exp);
                 
