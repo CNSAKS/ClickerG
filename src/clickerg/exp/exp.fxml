@@ -33,6 +33,7 @@
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Label>
+                  <Label fx:id="label_msg" alignment="CENTER" contentDisplay="CENTER" layoutX="136.0" layoutY="75.0" prefHeight="17.0" prefWidth="325.0" />
                   <ImageView fx:id="imageHeroe" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>

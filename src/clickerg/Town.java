@@ -226,7 +226,8 @@ public class Town implements Initializable{
 
     @FXML
     private void clickGacha(ActionEvent event) throws IOException {
-        dialog.close();
+        if(nuevaPartida()){
+        dialog.close();}
         Parent reserva = FXMLLoader.load(getClass().getResource("gacha/gacha.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));

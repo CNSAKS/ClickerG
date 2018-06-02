@@ -76,6 +76,7 @@ public class Exp implements Initializable {
     int nextLvlExp = baseLvlExp;
     int heroeLvl;
     int heroExperience;
+    String nombre;
     String idActual;
     @FXML
     private ProgressBar exp_bar;
@@ -91,6 +92,10 @@ public class Exp implements Initializable {
     @FXML
     private Label lb_lvl;
     
+    LabelTextVolatile lvlUp;
+    @FXML
+    private Label label_msg;
+    
 
     /**
      * Initializes the controller class.
@@ -102,7 +107,8 @@ public class Exp implements Initializable {
         contratados = AccountInfoReader.readXML();
         expPerClick = AccountInfoReader.bossLvl;
         
-        
+        label_msg.setTextFill(Color.web("#FFFFFF"));
+        label_msg.setStyle("-fx-font-weight: bold");
        
          
           TemplateXMLonlyRead readerExp = new readExpFileAccountInfo();
@@ -112,6 +118,7 @@ public class Exp implements Initializable {
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
                 idActual = contratados.get(x).getId_heroe();
                 heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
+                nombre = contratados.get(x).getName();
                 lb_lvl.setText("Nivel " + heroeLvl );
                 lb_lvl.setTextFill(Color.web("#FFFFFF"));
                 lb_lvl.setStyle("-fx-font-weight: bold");
@@ -166,6 +173,8 @@ public class Exp implements Initializable {
             exp_bar.setProgress(0);        
 
             heroeLvl++;
+            lvlUp = new LabelTextVolatile(2500, label_msg, "!" + nombre+  " ha subido de nivel!");
+            lvlUp.startTime();
             lb_lvl.setText("Nivel " + heroeLvl );
             nextLvlExp  = (int) (baseLvlExp * Math.pow(1.16, heroeLvl-1));
             nextLvlExp = (int) Math.floor(nextLvlExp);

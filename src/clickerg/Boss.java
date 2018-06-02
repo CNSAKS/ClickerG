@@ -34,6 +34,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javax.imageio.ImageIO;
@@ -135,7 +136,8 @@ public class Boss implements Initializable {
                 System.out.println(heroDamage);
              }
         }
-        
+        label_bossName.setTextFill(Color.web("#FFFFFF"));
+        label_bossName.setStyle("-fx-font-weight: bold");
         //game loop
         gameBoss = new GameLoop(bosses.get(randomNumberGenerated).getId(), imageBoss, "boss");
         gameBoss.startGame();
