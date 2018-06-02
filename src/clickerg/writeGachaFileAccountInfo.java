@@ -37,7 +37,7 @@ public class writeGachaFileAccountInfo extends TemplateXMLWriter{
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    protected <T> void writeDocument(ArrayList<T> heroes, int auxiliar){
+    protected <T> void writeDocument(ArrayList<T> heroes, int[] auxiliar){
             
         
         Element e = null;
@@ -46,7 +46,7 @@ public class writeGachaFileAccountInfo extends TemplateXMLWriter{
            Node HeroesData = xml.getElementsByTagName("heroes").item(0);
             Node goldEle = xml.getElementsByTagName("gold").item(0);
             
-            goldEle.setTextContent(auxiliar + "");
+            goldEle.setTextContent(auxiliar[0] + "");
             
             int heroesNumber = xml.getElementsByTagName("heroe").getLength();
             

@@ -117,7 +117,7 @@ public class Gold implements Initializable {
      });
         imageContainer_roca1.setFitHeight(200);
         imageContainer_roca1.setFitWidth(200);
-        imageContainer_roca1.setImage(new Image("/clickerg/animations/heroe/id0/id0 (1).gif"));
+        imageContainer_roca1.setImage(new Image("/clickerg/animations/extra/id0/id0 (1).gif"));
         gameBack = new GameLoop("3", iv_back, "background");
         gameBack.startGame();
         
@@ -163,7 +163,7 @@ public class Gold implements Initializable {
      public void closeMethod(){
             gameBack.setClose(true);
             TemplateXMLWriter goldWriter = new writeGoldFileAccountInfo();
-            goldWriter.modifyXML(null, gold);  
+            goldWriter.modifyXML(null, new int[]{gold});    
 
     }
 }

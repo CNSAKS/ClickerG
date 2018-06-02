@@ -31,7 +31,7 @@ public class PickaxeAnimation {
         this.msDuration = msDuration;
         this.iv = iv;
 
-        iv.setImage(new Image("/clickerg/animations/heroe/id0/id0 (1).gif"));
+        iv.setImage(new Image("/clickerg/animations/extra/id0/id0 (1).gif"));
     }
     
     public void startTime() {
@@ -55,7 +55,7 @@ public class PickaxeAnimation {
         
     }
     public void play(){
-        gamePickaxe = new GameLoop("0",iv, "heroe");
+        gamePickaxe = new GameLoop("0", iv, "extra");
         gamePickaxe.startGame();
     }
     private void updateTime() {

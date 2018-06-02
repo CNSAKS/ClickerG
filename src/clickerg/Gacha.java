@@ -329,7 +329,7 @@ public class Gacha implements Initializable {
   public void closeMethod(){
             gameBack.setClose(true);
             TemplateXMLWriter gachaWriter = new writeGachaFileAccountInfo();
-            gachaWriter.modifyXML(contratadosToSave, gold);  
+            gachaWriter.modifyXML(contratadosToSave, new int[]{gold});  
 
     }
     

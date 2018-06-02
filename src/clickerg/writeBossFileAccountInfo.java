@@ -39,7 +39,7 @@ public class writeBossFileAccountInfo extends TemplateXMLWriter{
     }
     
     @Override
-    protected <T> void writeDocument(ArrayList<T> items, int auxiliar){
+    protected <T> void writeDocument(ArrayList<T> items, int[] auxiliar){
         Element e = null;
         Node itemNode;  
         
@@ -72,8 +72,7 @@ public class writeBossFileAccountInfo extends TemplateXMLWriter{
         }
     
         Node bossEle = xml.getElementsByTagName("bossLvl").item(0);
-
-        bossEle.setTextContent(auxiliar + "");
+        bossEle.setTextContent(auxiliar[0] + "");
         }
             
             

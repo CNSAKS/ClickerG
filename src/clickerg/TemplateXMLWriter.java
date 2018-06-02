@@ -27,7 +27,7 @@ public abstract class TemplateXMLWriter {
     String route;
     int gold;
     int bossLvl;
-    public final <T> void modifyXML(ArrayList<T> lista, int auxiliar) {
+    public final <T> void modifyXML(ArrayList<T> lista, int[] auxiliar) {
       openDocument();
       writeDocument(lista, auxiliar);
       closeDocument();
@@ -35,7 +35,7 @@ public abstract class TemplateXMLWriter {
     //Template methods
     protected abstract void openDocument();
     
-    protected abstract <T> void writeDocument(ArrayList<T> lista, int auxiliar);
+    protected abstract <T> void writeDocument(ArrayList<T> lista, int[] auxiliar);
     
     protected void closeDocument(){
         try {
