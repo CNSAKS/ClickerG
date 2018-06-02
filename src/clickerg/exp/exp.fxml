@@ -17,24 +17,12 @@
          <children>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="bBack" mnemonicParsing="false" onAction="#backTown" translateX="-160.0">
+                  <Button fx:id="bBack" mnemonicParsing="false" onAction="#backTown" translateX="-240.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Label text="Exp: " />
-                  <Label fx:id="lb_expCount" />
-                  <Label text="ExpPC: ">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <Label fx:id="label_expPerClick" />
-                  <Button mnemonicParsing="false" onAction="#moreExpPC" text="Button">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Button>
+                  <Label fx:id="lb_lvl" translateX="-50.0" />
                </children>
             </HBox>
             <Pane fx:id="pn_ExpRoom" onMousePressed="#expIncrease" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

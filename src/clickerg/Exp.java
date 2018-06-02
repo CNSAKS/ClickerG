@@ -29,6 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javax.xml.parsers.DocumentBuilder;
@@ -52,10 +53,8 @@ import org.xml.sax.SAXException;
  */
 public class Exp implements Initializable {
 
-    @FXML
     private Label lb_expCount;
     private int expPerClick;
-    @FXML
     private Label label_expPerClick;
     @FXML
     private VBox vBox_exp;
@@ -89,6 +88,8 @@ public class Exp implements Initializable {
     private ImageView imgBack;
     @FXML
     private Button bBack;
+    @FXML
+    private Label lb_lvl;
     
 
     /**
@@ -101,7 +102,7 @@ public class Exp implements Initializable {
         contratados = AccountInfoReader.readXML();
         expPerClick = AccountInfoReader.bossLvl;
         
-        label_expPerClick.setText(expPerClick + "");
+        
        
          
           TemplateXMLonlyRead readerExp = new readExpFileAccountInfo();
@@ -111,11 +112,13 @@ public class Exp implements Initializable {
                 heroExperience = Integer.parseInt(contratados.get(x).getExp());
                 idActual = contratados.get(x).getId_heroe();
                 heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
-                
+                lb_lvl.setText("Nivel " + heroeLvl );
+                lb_lvl.setTextFill(Color.web("#FFFFFF"));
+                lb_lvl.setStyle("-fx-font-weight: bold");
                 imageHeroe.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(x).getId()+".png"));
              }
         }
-        lb_expCount.setText(heroExperience + "");
+
         nextLvlExp =  (int)( baseLvlExp *  Math.pow(1.16, heroeLvl-1));
         exp_bar.setProgress(0);
         exp_bar.setProgress((exp_bar.getProgress()+ heroExperience) / nextLvlExp );
@@ -148,27 +151,27 @@ public class Exp implements Initializable {
         bBack.setGraphic(iv);
     }    
 
-    @FXML
     private void moreExpPC(ActionEvent event) {
          expPerClick++;
-         label_expPerClick.setText(expPerClick+"");
+
     }
     
     @FXML
     private void expIncrease(MouseEvent event) {
         exp_bar.setProgress((exp_bar.getProgress() *  nextLvlExp + expPerClick) / nextLvlExp );
         heroExperience += expPerClick;
-        lb_expCount.setText(heroExperience + "");
+
         if(exp_bar.getProgress() * nextLvlExp >= nextLvlExp ){
             heroExperience = 0;
             exp_bar.setProgress(0);        
-            lb_expCount.setText("0");
+
             heroeLvl++;
+            lb_lvl.setText("Nivel " + heroeLvl );
             nextLvlExp  = (int) (baseLvlExp * Math.pow(1.16, heroeLvl-1));
             nextLvlExp = (int) Math.floor(nextLvlExp);
             
         }
-        currentexp.setText(lb_expCount.getText() + " / " + nextLvlExp);
+        currentexp.setText(heroExperience + " / " + nextLvlExp);
         
     } 
 

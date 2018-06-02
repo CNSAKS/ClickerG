@@ -5,6 +5,7 @@
  */
 package clickerg;
 
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,10 +32,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javax.swing.JTextArea;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -63,11 +70,13 @@ public class Town implements Initializable{
     private Button bt_gacha;
     @FXML
     private Button bt_heroes;
-
+    Stage dialog;
     /**
      * Initializes the controller class.
      */
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         
         File f = new File("src/clickerg/main/accountInfo.xml");
          if(!f.exists())
@@ -126,11 +135,26 @@ public class Town implements Initializable{
          
          if(nuevaPartida()){
              
-             bt_gold.setDisable(true);
-             bt_boss.setDisable(true);
-             bt_exp.setDisable(true);
-             bt_heroes.setDisable(true);
+            bt_gold.setDisable(true);
+            bt_boss.setDisable(true);
+            bt_exp.setDisable(true);
+            bt_heroes.setDisable(true);
           
+            dialog = new Stage();
+            dialog.initStyle(StageStyle.UTILITY);
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            HBox dialogHbox = new HBox(20);
+            ImageView imgV = new ImageView(new Image("/clickerg/icons/fairy.png"));
+            imgV.setFitHeight(100);
+            imgV.setFitWidth(100);
+            dialogHbox.getChildren().add(imgV);
+            dialogHbox.getChildren().add(new Text("¡Hey! Parece que eres nuevo \n por aqui. \n \n Antes que nada deberías \n reclutar algún guerrero."));
+            Scene dialogScene = new Scene(dialogHbox, 300, 130);
+            
+            dialog.setScene(dialogScene);
+            dialog.setAlwaysOnTop(true);
+            showDialog();
+            
          }
          
          
@@ -202,6 +226,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickGacha(ActionEvent event) throws IOException {
+        dialog.close();
         Parent reserva = FXMLLoader.load(getClass().getResource("gacha/gacha.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
@@ -253,6 +278,10 @@ public class Town implements Initializable{
         //Preguntar por cierre
         stage.setTitle("Heroes");
         stage.show();
+    }
+
+    private void showDialog() {
+        dialog.show();
     }
 
 }
