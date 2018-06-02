@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.HeroesInfo">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.HeroesInfo">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="94.0" prefWidth="600.0">
          <children>
@@ -41,15 +41,43 @@
             <Label fx:id="lb_heroeAc" text="Héroe activo " />
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+      <HBox alignment="TOP_CENTER" prefHeight="75.0" prefWidth="600.0" spacing="80.0">
          <children>
             <Button fx:id="button_item1" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" text="Item1" />
             <Button fx:id="button_item2" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" text="Item2" />
             <Button fx:id="button_item3" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" text="Item3" />
          </children>
          <VBox.margin>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets />
          </VBox.margin>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="75.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <Label fx:id="label_item_1" alignment="CENTER" prefHeight="17.0" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_item_2" alignment="CENTER" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_item_3" alignment="CENTER" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
       </HBox>
    </children>
 </VBox>

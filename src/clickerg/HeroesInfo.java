@@ -5,6 +5,7 @@
  */
 package clickerg;
 
+import static clickerg.Heroes.selectedHeroe;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,8 +40,8 @@ public class HeroesInfo implements Initializable{
     @FXML
     private Label lb_lvl;
     
-    public static AuxiliarHeroe heroesInfo;
-    public static String itemToChange;
+    public AuxiliarHeroe heroesInfo;
+    public String itemToChange;
     @FXML
     private Label lb_ataque;
     @FXML
@@ -50,7 +51,8 @@ public class HeroesInfo implements Initializable{
     @FXML
     private ImageView img_heroe;
     
-    ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
+    public ArrayList<AuxiliarHeroe> contratados = new ArrayList<>();
+    public ArrayList<AuxiliarItem> items = new ArrayList<>();
     boolean needSave;
     @FXML
     private Label lb_heroeAc;
@@ -62,11 +64,21 @@ public class HeroesInfo implements Initializable{
     private Button button_item3;
     @FXML
     private Button bBack;
+    @FXML
+    private Label label_item_1;
+    @FXML
+    private Label label_item_2;
+    @FXML
+    private Label label_item_3;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+    }
+    
+    public void initData (AuxiliarHeroe heroe){
+        heroesInfo = Heroes.selectedHeroe;;
         needSave = false;
-        heroesInfo = Heroes.selectedHeroe;
         lb_name.setText(heroesInfo.getName());
         lb_lvl.setText("Nivel : " + heroesInfo.getLvl());
         lb_experiencia.setText("Experiencia : " + heroesInfo.getExp());
@@ -83,7 +95,20 @@ public class HeroesInfo implements Initializable{
         TemplateXMLonlyRead heroeReader = new readHeroeFileAccountInfo();
         contratados = heroeReader.readXML();
         
+        TemplateXMLonlyRead itemReader = new readHeroeInfoFileAccountInfo();
+        items = itemReader.readXML();
         
+        for(AuxiliarItem i:items){
+            if(heroesInfo.getItem_1().equals(i.getId())){
+                label_item_1.setText(i.getName()+" ATK: x"+i.getBase_mult());
+            }
+            if(heroesInfo.getItem_2().equals(i.getId())){
+                label_item_2.setText(i.getName()+" ATK: x"+i.getBase_mult());
+            }
+            if(heroesInfo.getItem_3().equals(i.getId())){
+                label_item_3.setText(i.getName()+" ATK: x"+i.getBase_mult());
+            }
+        }
         
         
         img_heroe.sceneProperty().addListener((obs, oldScene, newScene) -> {
@@ -151,7 +176,10 @@ public class HeroesInfo implements Initializable{
         closeMethod();
         itemToChange = ((Control) event.getSource()).getId();
         itemToChange = itemToChange.substring(itemToChange.length()-1, itemToChange.length());
-        Parent reserva = FXMLLoader.load(getClass().getResource("items/items.fxml"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("items/items.fxml"));
+        Parent reserva = (Parent) loader.load();
+        loader.<Items>getController().initData(selectedHeroe,itemToChange);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre

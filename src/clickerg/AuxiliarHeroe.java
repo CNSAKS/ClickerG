@@ -22,6 +22,20 @@ public class AuxiliarHeroe {
         this.id_heroe = id_heroe;
     }
     
+    public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String active, String exp, String id_heroe, String item_1, String item_2, String item_3) {
+        this.id = id;
+        this.name = name;
+        this.lvl = lvl;
+        this.base_atk = base_atk;
+        this.prob = prob;
+        this.active = active;
+        this.exp = exp;
+        this.id_heroe = id_heroe;
+        this.item_1 = item_1;
+        this.item_2 = item_2; 
+        this.item_3 = item_3; 
+    }
+    
     public AuxiliarHeroe(String id, String name, String lvl, String base_atk, String prob, String exp) {
         this.id = id;
         this.name = name;
@@ -89,6 +103,9 @@ public class AuxiliarHeroe {
     private String active;
     private String exp;
     private String id_heroe;
+    private String item_1;
+    private String item_2;
+    private String item_3;
 
     public String getExp() {
         return exp;
@@ -109,6 +126,30 @@ public class AuxiliarHeroe {
 
     public void setId_heroe(String id_heroe) {
         this.id_heroe = id_heroe;
+    }
+
+    public String getItem_1() {
+        return item_1;
+    }
+
+    public void setItem_1(String item_1) {
+        this.item_1 = item_1;
+    }
+
+    public String getItem_2() {
+        return item_2;
+    }
+
+    public void setItem_2(String item_2) {
+        this.item_2 = item_2;
+    }
+
+    public String getItem_3() {
+        return item_3;
+    }
+
+    public void setItem_3(String item_3) {
+        this.item_3 = item_3;
     }
     
     

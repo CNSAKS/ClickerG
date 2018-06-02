@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -40,6 +42,7 @@ public class Items implements Initializable {
     private String itemPosSelected;
     ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
     ArrayList<AuxiliarHeroe> heroes = new ArrayList<AuxiliarHeroe>();
+    TemplateXMLWriter itemWriter = new writeItemsFileAccountInfo();
     
     @FXML
     private Label label_itemindicator;
@@ -47,14 +50,19 @@ public class Items implements Initializable {
     private VBox containerItems;
     @FXML
     private Button bBack;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        heroeToEquip = HeroesInfo.heroesInfo;
-        itemPosSelected = HeroesInfo.itemToChange;
+        
+    }    
+    
+    public void initData (AuxiliarHeroe heroeInfo, String itemToChange){
+        heroeToEquip = heroeInfo;
+        itemPosSelected = itemToChange;
         TemplateXMLonlyRead readerAccount = new readItemsFileAccountInfo();
         items = readerAccount.readXML();
         TemplateXMLonlyRead bossAccount = new readExpFileAccountInfo();
@@ -81,38 +89,63 @@ public class Items implements Initializable {
                     }
                 }
             }
-                
+
             temp_button.setId("item-"+item.getId());
             temp_button.setMinSize(50,20);
             temp_button.setText("Equipar");
             temp_button.setOnAction(new EventHandler<ActionEvent>(){
-                   
+
                 @Override
                 public void handle(ActionEvent event){
-                     String idItem =(temp_button.getId().replaceAll("[A-z]*-", ""));
-                     System.out.print(idItem);
-                     
+                    String idItem =(temp_button.getId().replaceAll("[A-z]*-", ""));
+                    itemWriter.modifyXML(null, new int[]{Integer.parseInt(idItem), Integer.parseInt(heroeToEquip.getId_heroe()), Integer.parseInt(itemPosSelected)});
+                    if(heroeToEquip.getItem_1().equals(idItem)){
+                        heroeToEquip.setItem_1(-1+"");
+                    }
+                    if(heroeToEquip.getItem_2().equals(idItem)){
+                        heroeToEquip.setItem_2(-1+"");
+                    }
+                    if(heroeToEquip.getItem_3().equals(idItem)){
+                        heroeToEquip.setItem_3(-1+"");
+                    }
+                    
+                    switch (itemPosSelected){
+                        case "1": heroeToEquip.setItem_1(idItem);
+                                  break;
+                        case "2": heroeToEquip.setItem_2(idItem);
+                                  break;
+                        case "3": heroeToEquip.setItem_3(idItem);
+                                  break;
+                        default:  heroeToEquip.setItem_1(idItem);
+                    }
+                    try {
+                        returnToHeroesInfo(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Items.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             });
-            
+
             temp_hbox.getChildren().add(temp_label);
             temp_hbox.getChildren().add(temp_label2);
             temp_hbox.getChildren().add(temp_button);
             containerItems.getChildren().add(temp_hbox);
         }
-        
-        
-         ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/icons/back.png"));
-         iv.setFitHeight(50);
-         iv.setFitWidth(80);
-          bBack.setStyle("-fx-background-color: transparent;");
-        bBack.setGraphic(iv);
-    }    
 
+
+        ImageView iv = new ImageView();
+        iv.setImage(new Image("/clickerg/icons/back.png"));
+        iv.setFitHeight(50);
+        iv.setFitWidth(80);
+        bBack.setStyle("-fx-background-color: transparent;");
+        bBack.setGraphic(iv);
+    }
+    
     @FXML
     private void returnToHeroesInfo(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+        Parent reserva = (Parent) loader.load();
+        loader.<HeroesInfo>getController().initData(heroeToEquip);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre

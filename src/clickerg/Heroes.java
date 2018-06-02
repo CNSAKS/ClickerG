@@ -16,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -91,10 +92,11 @@ public class Heroes implements Initializable{
                    public void handle(ActionEvent event){
                        try{
                         //selectedHeroe = contratados.get(b.getId().charAt(b.getId().length()-1));
-                        String idHeroe =(b.getId().toString().replaceAll("[A-z]*-", ""));
-                        System.out.print(idHeroe);
+                        String idHeroe =(b.getId().replaceAll("[A-z]*-", ""));
                         selectedHeroe = contratados.get(Integer.parseInt(""+idHeroe,10));
-                        Parent reserva = FXMLLoader.load(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+                        Parent reserva = (Parent) loader.load();
+                        loader.<HeroesInfo>getController().initData(selectedHeroe);
                         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                         stage.setScene(new Scene(reserva));
                         //Preguntar por cierre

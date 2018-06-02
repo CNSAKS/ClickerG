@@ -94,6 +94,18 @@ public class writeGachaFileAccountInfo extends TemplateXMLWriter{
                 e = xml.createElement("name");
                 e.appendChild(xml.createTextNode(((AccountHeroe)heroes.get(x)).getName()));
                 heroe.appendChild(e);
+                
+                e = xml.createElement("item_1");
+                e.appendChild(xml.createTextNode(-1+""));
+                heroe.appendChild(e);
+                
+                e = xml.createElement("item_2");
+                e.appendChild(xml.createTextNode(-1+""));
+                heroe.appendChild(e);
+                
+                e = xml.createElement("item_3");
+                e.appendChild(xml.createTextNode(-1+""));
+                heroe.appendChild(e);
 
                 Node heroeNode = (Node)heroe;
                 
