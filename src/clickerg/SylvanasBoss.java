@@ -39,7 +39,9 @@ public class SylvanasBoss extends PatternBoss{
     }
 
  
-    
+    static{
+        BossFactory.registerBoss("2", new SylvanasBoss());
+    }
 
     @Override
     public PatternBoss createBoss() {

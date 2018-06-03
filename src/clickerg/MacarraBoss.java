@@ -38,7 +38,9 @@ public class MacarraBoss extends PatternBoss{
     String id = "0";
     String name = "Macarra";
 
-    
+    static{
+        BossFactory.registerBoss("0", new MacarraBoss());
+    }
 
     @Override
     public PatternBoss createBoss() {

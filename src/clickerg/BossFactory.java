@@ -6,28 +6,23 @@
 package clickerg;
 
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
  *
  * @author Dragon
  */
-public class BossFactory {
+public class BossFactory{
     
-    private static HashMap m_RegisteredBosses = new HashMap();
+    private static final HashMap m_RegisteredBosses = new HashMap();
     
-
-    static {
-        m_RegisteredBosses.put("2", new SylvanasBoss());
-        m_RegisteredBosses.put("0", new MacarraBoss());
-        m_RegisteredBosses.put("1", new KindredBoss());
-        
-    }
-    public void registerBoss(String bossID, PatternBoss b){
+    public static void registerBoss(String bossID, PatternBoss b){
         m_RegisteredBosses.put(bossID, b);
     }
     
-    public static PatternBoss createBoss(String bossID){
+    public PatternBoss createBoss(String bossID){
       return ((PatternBoss) m_RegisteredBosses.get(bossID)).createBoss();
     }
     

@@ -35,18 +35,19 @@ public class readBossFileBoss extends TemplateXMLonlyRead{
         }
     }
     protected ArrayList<PatternBoss> readDocument(){
+        BossFactory bossFactory = new BossFactory();
         ArrayList<PatternBoss> bosses = new ArrayList<PatternBoss>();
         Element doc = xml.getDocumentElement();
             
            // ArrayList<String> base_hp = getTextValue(doc, "base_hp");
 
             //ArrayList<String> name = getTextValue(doc, "name");
-
+            
             ArrayList<String> id = getTextValue(doc, "id");
             System.out.println(id.size());
             for(int i = 0;i<id.size();i++){
                 System.out.println("Hey");
-                bosses.add(BossFactory.createBoss(id.get(i)));
+                bosses.add(bossFactory.createBoss(id.get(i)));
             }
             return bosses;
     }

@@ -5,6 +5,8 @@
  */
 package clickerg;
 
+import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
+
 /**
  *
  * @author cnsak
@@ -151,6 +153,5 @@ public class AuxiliarHeroe {
     public void setItem_3(String item_3) {
         this.item_3 = item_3;
     }
-    
     
 }

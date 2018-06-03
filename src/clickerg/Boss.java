@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
@@ -113,6 +115,14 @@ public class Boss implements Initializable {
         TemplateXMLonlyRead AccountInfoReader = new readBossFileAccountInfo();
         contratados = AccountInfoReader.readXML();
         bossLvl = AccountInfoReader.bossLvl;
+        
+        try {
+            Class.forName("clickerg.KindredBoss");
+            Class.forName("clickerg.SylvanasBoss");
+            Class.forName("clickerg.MacarraBoss");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         TemplateXMLonlyRead bossReader = new readBossFileBoss();
         bosses = bossReader.readXML();

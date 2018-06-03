@@ -5,7 +5,7 @@
  */
 package clickerg;
 
-import clickerg.BossFactory;
+
 
 /**
  *
@@ -41,7 +41,9 @@ public class KindredBoss extends PatternBoss {
     }
 
     
-    
+    static{
+        BossFactory.registerBoss("1", new KindredBoss());
+    }
     
     
 
