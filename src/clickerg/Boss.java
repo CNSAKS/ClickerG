@@ -86,7 +86,7 @@ public class Boss implements Initializable {
    
     
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
-    ArrayList<AuxiliarBoss> bosses = new ArrayList<AuxiliarBoss>();
+    ArrayList<PatternBoss> bosses = new ArrayList<PatternBoss>();
     ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
     ArrayList<AuxiliarItem> itemsToSave = new ArrayList<AuxiliarItem>();
     Document xml;
