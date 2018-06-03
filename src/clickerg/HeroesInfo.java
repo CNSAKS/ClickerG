@@ -77,12 +77,23 @@ public class HeroesInfo implements Initializable{
     }
     
     public void initData (AuxiliarHeroe heroe){
+        TemplateXMLonlyRead heroeReader = new readHeroeFileAccountInfo();
+        contratados = heroeReader.readXML();
+        
+        TemplateXMLonlyRead itemReader = new readHeroeInfoFileAccountInfo();
+        items = itemReader.readXML();
+        
         heroesInfo = Heroes.selectedHeroe;;
         needSave = false;
         lb_name.setText(heroesInfo.getName());
         lb_lvl.setText("Nivel : " + heroesInfo.getLvl());
         lb_experiencia.setText("Experiencia : " + heroesInfo.getExp());
-        lb_ataque.setText("Ataque : " + (int) ((int) (Double.parseDouble(heroesInfo.getBase_atk()))* Math.pow(1.16, Double.parseDouble(heroesInfo.getLvl())-1)));
+        HeroeDamageCalculator HDC = new HeroeDamageCalculatorBase(heroesInfo);
+        HDC = new HeroeDamageCalculatorSlot1(HDC,heroesInfo,items);
+        HDC = new HeroeDamageCalculatorSlot2(HDC,heroesInfo,items);
+        HDC = new HeroeDamageCalculatorSlot3(HDC,heroesInfo,items);
+        lb_ataque.setText("Ataque : "+((int) HDC.calcularAtaque()));
+        
         Image image = new Image("/clickerg/heroes/images/id_" + heroesInfo.getId()+".png");
         if(heroesInfo.getActive().equals("true")){
             lb_heroeAc.setVisible(true);
@@ -92,11 +103,6 @@ public class HeroesInfo implements Initializable{
         
         
         img_heroe.setImage(image);
-        TemplateXMLonlyRead heroeReader = new readHeroeFileAccountInfo();
-        contratados = heroeReader.readXML();
-        
-        TemplateXMLonlyRead itemReader = new readHeroeInfoFileAccountInfo();
-        items = itemReader.readXML();
         
         for(AuxiliarItem i:items){
             if(heroesInfo.getItem_1().equals(i.getId())){
@@ -130,7 +136,7 @@ public class HeroesInfo implements Initializable{
          iv.setImage(new Image("/clickerg/icons/back.png"));
          iv.setFitHeight(50);
          iv.setFitWidth(80);
-          bBack.setStyle("-fx-background-color: transparent;");
+         bBack.setStyle("-fx-background-color: transparent;");
          bBack.setGraphic(iv);
     }
     

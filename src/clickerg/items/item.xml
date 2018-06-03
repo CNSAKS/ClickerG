@@ -10,16 +10,16 @@ and open the template in the editor.
     <item>
         <id>0</id>
         <name>Laca Macarra</name>
-        <base_mult>0.1</base_mult>
+        <base_mult>0.05</base_mult>
     </item>
     <item>
         <id>1</id>
         <name>Ultimas Palabras</name>
-        <base_mult>0.225</base_mult>
+        <base_mult>0.09</base_mult>
     </item>
     <item>
         <id>2</id>
         <name>Flecha negra</name>
-        <base_mult>0.35</base_mult>
+        <base_mult>0.13</base_mult>
     </item>
 </items>

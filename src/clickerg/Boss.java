@@ -60,7 +60,7 @@ public class Boss implements Initializable {
     
     int baseHp = 100;
     double bossHp;
-    int heroDamage = 20;
+    int heroDamage = 5;
     int bossLvl = 1;
     int numberOfBosses;
     int randomNumberGenerated;
@@ -90,7 +90,10 @@ public class Boss implements Initializable {
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
     ArrayList<PatternBoss> bosses = new ArrayList<PatternBoss>();
     ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
+    ArrayList<AuxiliarItem> itemsOwned = new ArrayList<AuxiliarItem>();
     ArrayList<AuxiliarItem> itemsToSave = new ArrayList<AuxiliarItem>();
+    
+    
     Document xml;
     ArrayList<String> id;
     ArrayList<String> name;
@@ -130,6 +133,10 @@ public class Boss implements Initializable {
         TemplateXMLonlyRead itemReader = new readBossFileItem();
         items = itemReader.readXML();
         
+        TemplateXMLonlyRead itemsOwnedReader = new readBossItemFileAccountInfo();
+        itemsOwned = itemsOwnedReader.readXML();
+        
+        
         numberOfBosses = bosses.size();
         
         randomNumberGenerated = random.nextInt(numberOfBosses);
@@ -142,8 +149,11 @@ public class Boss implements Initializable {
         
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
-                heroDamage = (int) ((int) (Double.parseDouble(contratados.get(x).getBase_atk()))* Math.pow(1.16, Double.parseDouble(contratados.get(x).getLvl())-1));
-                System.out.println(heroDamage);
+                HeroeDamageCalculator HDC = new HeroeDamageCalculatorBase(contratados.get(x));
+                HDC = new HeroeDamageCalculatorSlot1(HDC,contratados.get(x),itemsOwned);
+                HDC = new HeroeDamageCalculatorSlot2(HDC,contratados.get(x),itemsOwned);
+                HDC = new HeroeDamageCalculatorSlot3(HDC,contratados.get(x),itemsOwned);
+                heroDamage = (int) HDC.calcularAtaque();
              }
         }
         label_bossName.setTextFill(Color.web("#FFFFFF"));

@@ -100,7 +100,7 @@ public class Gold implements Initializable {
         gold = Integer.parseInt(AccountInfoReader.readXML().get(0).toString());
         lb_gold.setText(gold+"");
         
-         goldPerClick = AccountInfoReader.bossLvl;
+        goldPerClick = AccountInfoReader.bossLvl + ((int) Math.pow(1.08,AccountInfoReader.bossLvl));
         
         imageContainer_roca1.sceneProperty().addListener((obs, oldScene, newScene) -> {
         Platform.runLater(() -> {

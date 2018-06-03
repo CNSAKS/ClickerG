@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
  * @author cnsak
  */
 
-public class readBossFileAccountInfo extends TemplateXMLonlyRead{
+public class readBossItemFileAccountInfo extends TemplateXMLonlyRead{
     protected void openDocument(){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db;
@@ -36,39 +36,22 @@ public class readBossFileAccountInfo extends TemplateXMLonlyRead{
         }
     }
     
-    protected ArrayList<AuxiliarHeroe> readDocument(){
-        ArrayList<AuxiliarHeroe> contratos = new ArrayList<AuxiliarHeroe>();
+    protected ArrayList<AuxiliarItem> readDocument(){
+        ArrayList<AuxiliarItem> items = new ArrayList<AuxiliarItem>();
         Element doc = xml.getDocumentElement();
-            
-            ArrayList<String> id = getTextValue(doc, "id");
+            ArrayList<String> id_item = getTextValue(doc, "id_item");
 
-            ArrayList<String> name = getTextValue(doc, "name");
+            ArrayList<String> name_item = getTextValue(doc, "name_item");
             
-            ArrayList<String> id_heroe = getTextValue(doc, "id_heroe");
+            ArrayList<String> base_mult = getTextValue(doc, "base_mult");
 
-            ArrayList<String> lvl = getTextValue(doc, "lvl");
-
-            ArrayList<String> base_atk = getTextValue(doc, "base_atk");
+            ArrayList<String> id_heroe_owner = getTextValue(doc, "id_heroe_owner");
             
-            ArrayList<String> bossLvlInAccount = getTextValue(doc, "bossLvl");
-            
-            bossLvl = Integer.parseInt(bossLvlInAccount.get(0));
-            
-            ArrayList<String> exp = getTextValue(doc, "exp");
-            
-            ArrayList<String> active = getTextValue(doc, "active");
-            
-            ArrayList<String> item_1 = getTextValue(doc, "item_1");
-            
-            ArrayList<String> item_2 = getTextValue(doc, "item_2");
-            
-            ArrayList<String> item_3 = getTextValue(doc, "item_3");
-            
-            for(int i = 0;i<id.size();i++){
-                contratos.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i),"not nedeed", active.get(i), exp.get(i), id_heroe.get(i), item_1.get(i), item_2.get(i), item_3.get(i)));
+            for(int i = 0;i<id_item.size();i++){
+                items.add(new AuxiliarItem(id_item.get(i), name_item.get(i), base_mult.get(i), id_heroe_owner.get(i)));
             }
             
-            return contratos;
+            return items;
     }
     
     

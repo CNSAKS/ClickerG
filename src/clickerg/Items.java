@@ -63,11 +63,13 @@ public class Items implements Initializable {
     public void initData (AuxiliarHeroe heroeInfo, String itemToChange){
         heroeToEquip = heroeInfo;
         itemPosSelected = itemToChange;
+        label_itemindicator.setText("Cambiando item del slot "+itemToChange);
         TemplateXMLonlyRead readerAccount = new readItemsFileAccountInfo();
         items = readerAccount.readXML();
+        items.sort(new SortByAtk());
         TemplateXMLonlyRead bossAccount = new readExpFileAccountInfo();
         heroes = bossAccount.readXML();
-        System.out.println(items.size());
+        
         for(AuxiliarItem item : items){
             HBox temp_hbox = new HBox();
             Label temp_label = new Label();
@@ -76,7 +78,7 @@ public class Items implements Initializable {
             temp_hbox.setMinSize(584, 50);
             temp_hbox.setStyle("-fx-alignment: center ;-fx-border-color: black;");
             temp_label.setMinSize(250,20);
-            temp_label.setText(item.getName()+" - multiplicador de ataque: "+item.getBase_mult());
+            temp_label.setText(item.getName()+" - ATK : x"+item.getBase_mult());
             temp_label2.setMinSize(250,20);
             if(item.getEquipado().equals("-1")){
                 temp_label2.setText("No equipado");
@@ -91,6 +93,9 @@ public class Items implements Initializable {
             }
 
             temp_button.setId("item-"+item.getId());
+            if(item.getEquipado().equals(heroeToEquip.getId_heroe())){
+                temp_button.setDisable(true);
+            }
             temp_button.setMinSize(50,20);
             temp_button.setText("Equipar");
             temp_button.setOnAction(new EventHandler<ActionEvent>(){

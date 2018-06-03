@@ -105,7 +105,7 @@ public class Exp implements Initializable {
         
         TemplateXMLonlyRead AccountInfoReader = new readBossFileAccountInfo();
         contratados = AccountInfoReader.readXML();
-        expPerClick = AccountInfoReader.bossLvl;
+        expPerClick = AccountInfoReader.bossLvl * ((int) Math.pow(1.08,AccountInfoReader.bossLvl));
         
         label_msg.setTextFill(Color.web("#FFFFFF"));
         label_msg.setStyle("-fx-font-weight: bold");
@@ -157,29 +157,21 @@ public class Exp implements Initializable {
           bBack.setStyle("-fx-background-color: transparent;");
         bBack.setGraphic(iv);
     }    
-
-    private void moreExpPC(ActionEvent event) {
-         expPerClick++;
-
-    }
     
     @FXML
     private void expIncrease(MouseEvent event) {
-        exp_bar.setProgress((exp_bar.getProgress() *  nextLvlExp + expPerClick) / nextLvlExp );
         heroExperience += expPerClick;
 
-        if(exp_bar.getProgress() * nextLvlExp >= nextLvlExp ){
-            heroExperience = 0;
-            exp_bar.setProgress(0);        
-
+        while(heroExperience >= nextLvlExp ){
+            heroExperience = heroExperience - nextLvlExp;
             heroeLvl++;
             lvlUp = new LabelTextVolatile(2500, label_msg, "!" + nombre+  " ha subido de nivel!");
             lvlUp.startTime();
             lb_lvl.setText("Nivel " + heroeLvl );
             nextLvlExp  = (int) (baseLvlExp * Math.pow(1.16, heroeLvl-1));
             nextLvlExp = (int) Math.floor(nextLvlExp);
-            
         }
+        exp_bar.setProgress((double)heroExperience/(double)nextLvlExp);  
         currentexp.setText(heroExperience + " / " + nextLvlExp);
         
     } 
