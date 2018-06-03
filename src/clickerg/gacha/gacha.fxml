@@ -23,6 +23,7 @@
                <children>
                   <Label fx:id="lb_summon" alignment="CENTER" layoutX="193.0" layoutY="43.0" prefHeight="17.0" prefWidth="246.0" />
                   <ImageView fx:id="iw_heroe" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lb_noGold" alignment="CENTER" layoutX="177.0" layoutY="35.0" prefHeight="17.0" prefWidth="246.0" />
                </children>
             </Pane>
          </children>

@@ -73,6 +73,10 @@ public class Gacha implements Initializable {
     GameLoop gameBack;
     @FXML
     private Button bBack;
+    @FXML
+    private Label lb_noGold;
+    
+    LabelTextVolatile noGold;
     
     /**
      * Initializes the controller class.
@@ -92,6 +96,9 @@ public class Gacha implements Initializable {
         lb_gold.setText(""+gold);
         lb_gold.setTextFill(Color.web("#FFFFFF"));
         lb_gold.setStyle("-fx-font-weight: bold");
+        
+        lb_noGold.setTextFill(Color.web("#FFFFFF"));
+        lb_noGold.setStyle("-fx-font-weight: bold");
         
         lb_summon.setTextFill(Color.web("#FFFFFF"));
         lb_summon.setStyle("-fx-font-weight: bold");
@@ -143,6 +150,8 @@ public class Gacha implements Initializable {
     private void summon(MouseEvent event) throws CloneNotSupportedException {
         System.out.println("Oro:"+gold);
         if(gold<500){
+            noGold = new LabelTextVolatile(2500, lb_noGold, "¡No tienes suficiente oro! Te falta " + (500-gold));
+            noGold.startTime();
             System.out.println("No tienes oro suficiente ("+(gold-500)+"), vete a farmear");
             return;
         }
