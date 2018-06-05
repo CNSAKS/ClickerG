@@ -58,7 +58,7 @@ public class Gacha implements Initializable {
     ArrayList<String> base_atk;
     ArrayList<String> prob;
     ArrayList<String> exp;
-    int gold;
+    private int gold;
     @FXML
     private ImageView iv_gold;
     @FXML
@@ -78,83 +78,125 @@ public class Gacha implements Initializable {
     
     LabelTextVolatile noGold;
     
+    LabelTextVolatile summonHero;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        readFromXML();
+        
+        initializeTextAndStyles();
+        
+        initializeStaticImages();
+        
+        initializeAnimations();
+        
+        initializeOnClose();
+
+    }
+    
+    private void readFromXML(){
+    
         TemplateXMLonlyRead readerGacha = new readGachaFileGacha();
         contratos = readerGacha.readXML();
         
         TemplateXMLonlyRead readerGachaToClone = new readGachaToCloneFileGacha();
         contratosToClone = readerGachaToClone.readXML();
         
-        //loadfromXML("src/clickerg/gacha/gacha.xml", 0);
         TemplateXMLonlyRead readerAccount = new readGachaFileAccountInfo();
         contratados = readerAccount.readXML();
+    
         gold = readerAccount.gold;
-        lb_gold.setText(""+gold);
+    }
+    
+    private void initializeTextAndStyles(){
+    
+        lb_gold.setText(""+getGold());
         lb_gold.setTextFill(Color.web("#FFFFFF"));
         lb_gold.setStyle("-fx-font-weight: bold");
-        
+
         lb_noGold.setTextFill(Color.web("#FFFFFF"));
         lb_noGold.setStyle("-fx-font-weight: bold");
-        
+
         lb_summon.setTextFill(Color.web("#FFFFFF"));
         lb_summon.setStyle("-fx-font-weight: bold");
-        
-        
+    
+    }
+    
+    private int getGold(){
+    
+        return gold;
+    }
+    
+    private void setGold(int goldAmmount){
+    
+        this.gold = goldAmmount;
+    }
+    private void initializeAnimations(){
+    
         gameBack = new GameLoop("1", iv_back, "background");
         gameBack.startGame();
-        
+    
+    
+    }
+    private void initializeStaticImages(){
+    
         iv_gold.setImage(new Image("/clickerg/icons/goldBag.gif"));
         
-         ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/icons/back.png"));
-         iv.setFitHeight(50);
-         iv.setFitWidth(80);
-          bBack.setStyle("-fx-background-color: transparent;");
-        bBack.setGraphic(iv);
+        ImageView iv = new ImageView();
+        iv.setImage(new Image("/clickerg/icons/back.png"));
+        iv.setFitHeight(50);
+        iv.setFitWidth(80);
         
+        bBack.setStyle("-fx-background-color: transparent;");
+        bBack.setGraphic(iv);
+    
+    }
+    private void initializeOnClose(){
+    
         bBack.sceneProperty().addListener((obs, oldScene, newScene) -> {
         Platform.runLater(() -> {
             Stage stage = (Stage) bBack.getScene().getWindow();
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
-            public void handle(WindowEvent t) {Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            public void handle(WindowEvent t) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 closeMethod();
                 Platform.exit();
                 System.exit(0);
-            }
-        });
+                }       
+            });
         });
     });
-        
-        
-    }
     
-        
-    private ArrayList<String> getTextValue(Element doc, String tag) {
-        ArrayList<String> value = new ArrayList<String>();
-        NodeList nl= doc.getElementsByTagName(tag);
-        
-        for(int x = 0;x<nl.getLength();x++){
-           value.add(nl.item(x).getFirstChild().getNodeValue());
-        }
-        return value;
     }
-    
-   
-
+ 
     @FXML
-    private void summon(MouseEvent event) throws CloneNotSupportedException {
+    private void obtainRandomHero(MouseEvent event) throws CloneNotSupportedException   {
         System.out.println("Oro:"+gold);
-        if(gold<500){
-            noGold = new LabelTextVolatile(2500, lb_noGold, "¡No tienes suficiente oro! Te falta " + (500-gold));
-            noGold.startTime();
-            System.out.println("No tienes oro suficiente ("+(gold-500)+"), vete a farmear");
-            return;
+        if(checkGold()){
+            randomHeroPicker();
         }
+    }
+    
+    private boolean checkGold(){
+    
+        if(getGold()<500){
+            
+            showVolatileLabelNoGold();
+            return false;
+            
+        }
+        
+        return true;
+    
+    }
+    
+    private void randomHeroPicker() throws CloneNotSupportedException{
+    
         double value = Math.random()*100;
         double actualSearch = 0;
         for(int x = 0; x<contratos.size();x++){
@@ -165,19 +207,47 @@ public class Gacha implements Initializable {
                 searchClone:
                 for(AccountHeroe heroe : contratosToClone){
                     if(heroe.getId().equals(contratos.get(x).getId())){
-                        contratados.add((AccountHeroe) heroe.cloneObject());
-                        contratadosToSave.add((AccountHeroe) heroe.cloneObject());
+                        cloneHero(heroe);
                         break searchClone;
                     }
                 }
-                gold-=500;
-                lb_gold.setText(""+gold);
-                iw_heroe.setImage(new Image("/clickerg/heroes/images/id_" + contratos.get(x).getId()+".png"));
-                lb_summon.setText("¡"+ contratos.get(x).getName() + " se ha unido a tu equipo!");
+                actualizeGold();
+                showSummon(x);
+                
                 return;
             }
             actualSearch+=Integer.parseInt(contratos.get(x).getProb());
         }
+    }
+    
+    private void showSummon(int x){
+    
+        iw_heroe.setImage(new Image("/clickerg/heroes/images/id_" + contratos.get(x).getId()+".png"));
+        showLabelVolatileObtainedHero(x);
+    
+    }
+    private void actualizeGold(){
+    
+        setGold(getGold()-500);
+        lb_gold.setText(""+getGold());
+    }
+    private void cloneHero(AccountHeroe heroe)throws CloneNotSupportedException{
+    
+        contratados.add((AccountHeroe) heroe.cloneObject());
+        contratadosToSave.add((AccountHeroe) heroe.cloneObject());
+    }
+    
+    
+    private void showVolatileLabelNoGold(){
+        summonHero.closeThread();
+        noGold = new LabelTextVolatile(2500, lb_summon, "¡No tienes suficiente oro! Te falta " + (500-getGold()));
+        noGold.startTime();
+    }
+    
+    private void showLabelVolatileObtainedHero(int x){
+        
+        summonHero = new LabelTextVolatile(2500, lb_summon, "¡"+ contratos.get(x).getName() + " se ha unido a tu equipo!");
+        summonHero.startTime();
     }
     
     public void saveToXML(String xmlRoute) throws SAXException, IOException {
@@ -323,7 +393,7 @@ public class Gacha implements Initializable {
     }*/
 
     @FXML
-    private void irATown(ActionEvent event) throws IOException {
+    private void backToPreviousScene(ActionEvent event) throws IOException {
         closeMethod();
         
          Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
@@ -335,11 +405,22 @@ public class Gacha implements Initializable {
     }
     
         
-  public void closeMethod(){
-            gameBack.setClose(true);
-            TemplateXMLWriter gachaWriter = new writeGachaFileAccountInfo();
-            gachaWriter.modifyXML(contratadosToSave, new int[]{gold});  
+    private void closeMethod(){
+        closeGameLoops();
+        saveData();
+             
 
+    }
+  
+    private void closeGameLoops(){
+
+        gameBack.setClose(true);
+    }
+    
+    private void saveData(){
+    
+        TemplateXMLWriter gachaWriter = new writeGachaFileAccountInfo();
+        gachaWriter.modifyXML(contratadosToSave, new int[]{getGold()});  
     }
     
 }

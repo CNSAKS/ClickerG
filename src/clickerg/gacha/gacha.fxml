@@ -14,12 +14,12 @@
          <children>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="bBack" alignment="CENTER" mnemonicParsing="false" onAction="#irATown" translateX="20.0" translateY="5.0" />
+                  <Button fx:id="bBack" alignment="CENTER" mnemonicParsing="false" onAction="#backToPreviousScene" translateX="20.0" translateY="5.0" />
                   <ImageView fx:id="iv_gold" fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" translateX="80.0" translateY="10.0" />
                   <Label fx:id="lb_gold" translateX="100.0" translateY="20.0" />
                </children>
             </HBox>
-            <Pane onMouseClicked="#summon" prefHeight="350.0" prefWidth="600.0">
+            <Pane onMouseClicked="#obtainRandomHero" prefHeight="350.0" prefWidth="600.0">
                <children>
                   <Label fx:id="lb_summon" alignment="CENTER" layoutX="193.0" layoutY="43.0" prefHeight="17.0" prefWidth="246.0" />
                   <ImageView fx:id="iw_heroe" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
