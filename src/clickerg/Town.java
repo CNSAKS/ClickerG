@@ -159,7 +159,7 @@ public class Town implements Initializable{
          
          
          ImageView iv1 = new ImageView();
-         iv1.setImage(new Image("/clickerg/icons/boss.png"));
+         iv1.setImage(new Image("/clickerg/icons/boss1.png"));
          iv1.setFitHeight(50);
          iv1.setFitWidth(80);
          bt_boss.setStyle("-fx-background-color: transparent;");
@@ -173,16 +173,16 @@ public class Town implements Initializable{
         bt_gold.setGraphic(iv2);
         
          ImageView iv3 = new ImageView();
-        iv3.setImage(new Image("/clickerg/icons/summon.png"));
+        iv3.setImage(new Image("/clickerg/icons/gacha1.png"));
          iv3.setFitHeight(80);
          iv3.setFitWidth(80);
          bt_gacha.setStyle("-fx-background-color: transparent;");
         bt_gacha.setGraphic(iv3);
         
          ImageView iv4 = new ImageView();
-        iv4.setImage(new Image("/clickerg/icons/exp.png"));
-         iv4.setFitHeight(60);
-         iv4.setFitWidth(60);
+        iv4.setImage(new Image("/clickerg/icons/exp1.png"));
+         iv4.setFitHeight(100);
+         iv4.setFitWidth(100);
          bt_exp.setStyle("-fx-background-color: transparent;");
         bt_exp.setGraphic(iv4);
         

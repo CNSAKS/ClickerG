@@ -239,7 +239,7 @@ public class Gacha implements Initializable {
     
     
     private void showVolatileLabelNoGold(){
-        summonHero.closeThread();
+       
         noGold = new LabelTextVolatile(2500, lb_summon, "¡No tienes suficiente oro! Te falta " + (500-getGold()));
         noGold.startTime();
     }

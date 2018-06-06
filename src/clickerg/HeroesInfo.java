@@ -16,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -24,6 +25,8 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -70,6 +73,10 @@ public class HeroesInfo implements Initializable{
     private Label label_item_2;
     @FXML
     private Label label_item_3;
+    @FXML
+    private VBox vBox_back;
+    @FXML
+    private ImageView iv_back;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,6 +84,47 @@ public class HeroesInfo implements Initializable{
     }
     
     public void initData (AuxiliarHeroe heroe){
+        
+        iv_back.setImage(new Image("/clickerg/heroesInfo/heroeBackground1.png"));
+        
+        label_item_3.setTextFill(Color.web("#FFFFFF"));
+        label_item_2.setTextFill(Color.web("#FFFFFF"));
+        label_item_1.setTextFill(Color.web("#FFFFFF"));
+        lb_heroeAc.setTextFill(Color.web("#FFFFFF"));
+        lb_experiencia.setTextFill(Color.web("#FFFFFF"));
+        lb_ataque.setTextFill(Color.web("#FFFFFF"));
+        lb_lvl.setTextFill(Color.web("#FFFFFF"));
+        lb_name.setTextFill(Color.web("#FFFFFF"));
+       
+        ImageView iv1 = new ImageView();
+        iv1.setImage(new Image("/clickerg/icons/active.png"));
+        iv1.setFitHeight(20);
+        iv1.setFitWidth(80);
+        b_activar.setStyle("-fx-background-color: transparent;");
+        b_activar.setGraphic(iv1);
+        
+        ImageView iv2 = new ImageView();
+        iv2.setImage(new Image("/clickerg/icons/item1.png"));
+        iv2.setFitHeight(25);
+        iv2.setFitWidth(80);
+        button_item1.setStyle("-fx-background-color: transparent;");
+        button_item1.setGraphic(iv2);
+        
+        ImageView iv3 = new ImageView();
+        iv3.setImage(new Image("/clickerg/icons/item2.png"));
+        iv3.setFitHeight(25);
+        iv3.setFitWidth(80);
+        button_item2.setStyle("-fx-background-color: transparent;");
+        button_item2.setGraphic(iv3);
+        
+        ImageView iv4 = new ImageView();
+        iv4.setImage(new Image("/clickerg/icons/item3.png"));
+        iv4.setFitHeight(25);
+        iv4.setFitWidth(80);
+        button_item3.setStyle("-fx-background-color: transparent;");
+        button_item3.setGraphic(iv4);
+        
+        
         TemplateXMLonlyRead heroeReader = new readHeroeFileAccountInfo();
         contratados = heroeReader.readXML();
         

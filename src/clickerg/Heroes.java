@@ -20,10 +20,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -35,13 +37,17 @@ public class Heroes implements Initializable{
     @FXML
     private Button butBack;
     @FXML
-    private Button butSave;
-    @FXML
     private GridPane gridPaneHe;
 
     ArrayList<AuxiliarHeroe> contratados = new ArrayList<AuxiliarHeroe>();
     
     public static AuxiliarHeroe selectedHeroe;
+    @FXML
+    private VBox vBox_heroes;
+    @FXML
+    private ImageView iv_back;
+    @FXML
+    private ScrollPane scrollPane;
     
     @FXML
     private void irATown(ActionEvent event) throws IOException {
@@ -54,6 +60,7 @@ public class Heroes implements Initializable{
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        iv_back.setImage(new Image("/clickerg/heroes/heroeBackground1.png"));
          TemplateXMLonlyRead readerAccount = new readHeroeFileAccountInfo();
            contratados = readerAccount.readXML();
             int aux = contratados.size()/6;
@@ -118,6 +125,9 @@ public class Heroes implements Initializable{
                     
                     gridPaneHe.add(b,columna, fila);
                }
+                scrollPane.setStyle("-fx-control-inner-background: transparent");
+                scrollPane.setStyle("-fx-background-color: transparent");
+                gridPaneHe.setStyle("-fx-background-color: transparent");
                 
                 ImageView iv = new ImageView();
          iv.setImage(new Image("/clickerg/icons/back.png"));
@@ -128,10 +138,6 @@ public class Heroes implements Initializable{
            
           
     }
-    
-    private void irAHeroInfo() throws IOException{
-         
-    
-    }
+
     
 }

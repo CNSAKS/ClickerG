@@ -3,20 +3,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Items">
+<Pane stylesheets="@items.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Items">
    <children>
-      <Pane prefHeight="50.0" prefWidth="600.0">
+      <ImageView fx:id="iv_back" fitHeight="402.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutY="2.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Button fx:id="bBack" layoutX="54.0" layoutY="13.0" mnemonicParsing="false" onAction="#returnToHeroesInfo" translateX="-30.0" translateY="-15.0" />
-            <Label fx:id="label_itemindicator" layoutX="197.0" layoutY="17.0" text="Label" />
+            <Pane prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="bBack" layoutX="54.0" layoutY="13.0" mnemonicParsing="false" onAction="#returnToHeroesInfo" translateX="-30.0" translateY="-15.0" />
+                  <Label fx:id="label_itemindicator" layoutX="197.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0">
+               <content>
+                  <VBox fx:id="containerItems" prefWidth="600.0" />
+               </content>
+            </ScrollPane>
          </children>
-      </Pane>
-      <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0">
-         <content>
-            <VBox fx:id="containerItems" prefWidth="600.0" />
-         </content></ScrollPane>
+      </VBox>
    </children>
-</VBox>
+</Pane>

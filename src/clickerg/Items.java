@@ -29,6 +29,7 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -50,6 +51,10 @@ public class Items implements Initializable {
     private VBox containerItems;
     @FXML
     private Button bBack;
+    @FXML
+    private ImageView iv_back;
+    @FXML
+    private ScrollPane scrollPane;
     
 
     /**
@@ -61,6 +66,12 @@ public class Items implements Initializable {
     }    
     
     public void initData (AuxiliarHeroe heroeInfo, String itemToChange){
+        iv_back.setImage(new Image("/clickerg/items/heroeBackground1.png"));
+        
+        label_itemindicator.setTextFill(Color.web("#FFFFFF"));
+        
+        scrollPane.setStyle("-fx-control-inner-background: transparent");
+                scrollPane.setStyle("-fx-background-color: transparent");
         heroeToEquip = heroeInfo;
         itemPosSelected = itemToChange;
         label_itemindicator.setText("Cambiando item del slot "+itemToChange);
@@ -74,7 +85,15 @@ public class Items implements Initializable {
             HBox temp_hbox = new HBox();
             Label temp_label = new Label();
             Label temp_label2 = new Label();
+            temp_label.setTextFill(Color.web("#FFFFFF"));
+            temp_label2.setTextFill(Color.web("#FFFFFF"));
             Button temp_button = new Button();
+            ImageView iv1 = new ImageView();
+            iv1.setImage(new Image("/clickerg/icons/equipar.png"));
+            iv1.setFitHeight(20);
+            iv1.setFitWidth(80);
+            temp_button.setStyle("-fx-background-color: transparent;");
+            temp_button.setGraphic(iv1);
             temp_hbox.setMinSize(584, 50);
             temp_hbox.setStyle("-fx-alignment: center ;-fx-border-color: black;");
             temp_label.setMinSize(250,20);
@@ -97,7 +116,8 @@ public class Items implements Initializable {
                 temp_button.setDisable(true);
             }
             temp_button.setMinSize(50,20);
-            temp_button.setText("Equipar");
+            
+            
             temp_button.setOnAction(new EventHandler<ActionEvent>(){
 
                 @Override

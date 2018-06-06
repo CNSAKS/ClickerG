@@ -5,79 +5,86 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.HeroesInfo">
+<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.HeroesInfo">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="94.0" prefWidth="600.0">
+      <ImageView fx:id="iv_back" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox fx:id="vBox_back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@heroesInfo.css">
          <children>
-            <Button fx:id="bBack" mnemonicParsing="false" onAction="#irATown">
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin></Button>
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <ImageView fx:id="img_heroe" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" prefHeight="94.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="lb_name" text="Nombre" translateX="150.0">
+                  <Button fx:id="bBack" mnemonicParsing="false" onAction="#irATown">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="img_heroe" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="lb_name" text="Nombre" translateX="150.0">
+                           <font>
+                              <Font name="Andalus" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lb_lvl" text="Nivel : " />
+                        <Label fx:id="lb_ataque" text="Ataque :" />
+                        <Label fx:id="lb_experiencia" text="Experiencia :" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="b_activar" mnemonicParsing="false" onAction="#setActive" prefHeight="25.0" prefWidth="131.0" translateX="-20.0" translateY="2.0" />
+                  <Label fx:id="lb_heroeAc" text="Héroe activo " />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="75.0" prefWidth="600.0" spacing="80.0">
+               <children>
+                  <Button fx:id="button_item1" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" />
+                  <Button fx:id="button_item2" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" />
+                  <Button fx:id="button_item3" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="75.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label fx:id="label_item_1" alignment="CENTER" prefHeight="17.0" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
                      <font>
-                        <Font name="Andalus" size="18.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lb_lvl" text="Nivel : " />
-                  <Label fx:id="lb_ataque" text="Ataque :" />
-                  <Label fx:id="lb_experiencia" text="Experiencia :" />
+                  <Label fx:id="label_item_2" alignment="CENTER" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_item_3" alignment="CENTER" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
-            </VBox>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
          </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="b_activar" mnemonicParsing="false" onAction="#setActive" prefHeight="25.0" prefWidth="131.0" text="Activar" translateX="-20.0" />
-            <Label fx:id="lb_heroeAc" text="Héroe activo " />
-         </children>
-      </HBox>
-      <HBox alignment="TOP_CENTER" prefHeight="75.0" prefWidth="600.0" spacing="80.0">
-         <children>
-            <Button fx:id="button_item1" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" text="Item1" />
-            <Button fx:id="button_item2" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" text="Item2" />
-            <Button fx:id="button_item3" mnemonicParsing="false" onAction="#addItem" prefHeight="25.0" prefWidth="120.0" text="Item3" />
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets left="30.0" right="30.0" />
-         </padding>
-      </HBox>
-      <HBox prefHeight="75.0" prefWidth="600.0" spacing="20.0">
-         <children>
-            <Label fx:id="label_item_1" alignment="CENTER" prefHeight="17.0" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="label_item_2" alignment="CENTER" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="label_item_3" alignment="CENTER" prefWidth="180.0" text="Vacio" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets left="10.0" right="10.0" />
-         </padding>
-      </HBox>
+      </VBox>
    </children>
-</VBox>
+</Pane>
