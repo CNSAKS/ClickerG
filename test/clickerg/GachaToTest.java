@@ -44,7 +44,7 @@ import org.w3c.dom.*;
  *
  * @author cnsak
  */
-public class Gacha implements Initializable {
+public class GachaToTest implements Initializable {
 
     ArrayList<AuxiliarHeroe> contratos = new ArrayList<AuxiliarHeroe>();
     ArrayList<AccountHeroe> contratosToClone = new ArrayList<AccountHeroe>();
@@ -58,27 +58,27 @@ public class Gacha implements Initializable {
     ArrayList<String> base_atk;
     ArrayList<String> prob;
     ArrayList<String> exp;
-    private int gold;
+    public int gold;
     @FXML
-    private ImageView iv_gold;
+    public ImageView iv_gold;
     @FXML
-    private Label lb_gold;
+    public Label lb_gold;
     @FXML
-    private ImageView iw_heroe;
+    public ImageView iw_heroe;
     @FXML
-    private Label lb_summon;
+    public Label lb_summon;
     @FXML
-    private ImageView iv_back;
+    public ImageView iv_back;
     
-    GameLoop gameBack;
+    public GameLoop gameBack;
     @FXML
-    private Button bBack;
+    public Button bBack;
     @FXML
-    private Label lb_noGold;
+    public Label lb_noGold;
     
-    LabelTextVolatile noGold;
+    public LabelTextVolatile noGold;
     
-    LabelTextVolatile summonHero;
+    public LabelTextVolatile summonHero;
     
     /**
      * Initializes the controller class.
@@ -98,7 +98,7 @@ public class Gacha implements Initializable {
 
     }
     
-    private void readFromXML(){
+    public void readFromXML(){
     
         TemplateXMLonlyRead readerGacha = new readGachaFileGacha();
         contratos = readerGacha.readXML();
@@ -112,7 +112,7 @@ public class Gacha implements Initializable {
         gold = readerAccount.gold;
     }
     
-    private void initializeTextAndStyles(){
+    public void initializeTextAndStyles(){
     
         lb_gold.setText(""+getGold());
         lb_gold.setTextFill(Color.web("#FFFFFF"));
@@ -126,23 +126,23 @@ public class Gacha implements Initializable {
     
     }
     
-    private int getGold(){
+    public int getGold(){
     
         return gold;
     }
     
-    private void setGold(int goldAmmount){
+    public void setGold(int goldAmmount){
     
         this.gold = goldAmmount;
     }
-    private void initializeAnimations(){
+    public void initializeAnimations(){
     
         gameBack = new GameLoop("1", iv_back, "background");
         gameBack.startGame();
     
     
     }
-    private void initializeStaticImages(){
+    public void initializeStaticImages(){
     
         iv_gold.setImage(new Image("/clickerg/icons/goldBag.gif"));
         
@@ -155,7 +155,7 @@ public class Gacha implements Initializable {
         bBack.setGraphic(iv);
     
     }
-    private void initializeOnClose(){
+    public void initializeOnClose(){
     
         bBack.sceneProperty().addListener((obs, oldScene, newScene) -> {
         Platform.runLater(() -> {
@@ -175,17 +175,17 @@ public class Gacha implements Initializable {
     }
  
     @FXML
-    private void obtainRandomHero(MouseEvent event) throws CloneNotSupportedException   {
+    public void obtainRandomHero(MouseEvent event) throws CloneNotSupportedException   {
         if(checkGold()){
             randomHeroPicker();
         }
     }
     
-    private boolean checkGold(){
+    public boolean checkGold(){
     
         if(getGold()<500){
             
-            showVolatileLabelNoGold();
+            //showVolatileLabelNoGold();
             return false;
             
         }
@@ -194,7 +194,7 @@ public class Gacha implements Initializable {
     
     }
     
-    private void randomHeroPicker() throws CloneNotSupportedException{
+    public void randomHeroPicker() throws CloneNotSupportedException{
     
         double value = Math.random()*100;
         double actualSearch = 0;
@@ -211,7 +211,7 @@ public class Gacha implements Initializable {
                     }
                 }
                 actualizeGold();
-                showSummon(x);
+             //   showSummon(x);
                 
                 return;
             }
@@ -219,30 +219,30 @@ public class Gacha implements Initializable {
         }
     }
     
-    private void showSummon(int x){
+    public void showSummon(int x){
     
         iw_heroe.setImage(new Image("/clickerg/heroes/images/id_" + contratos.get(x).getId()+".png"));
         showLabelVolatileObtainedHero(x);
     
     }
-    private void actualizeGold(){
+    public void actualizeGold(){
     
         setGold(getGold()-500);
-        lb_gold.setText(""+getGold());
+       // lb_gold.setText(""+getGold());
     }
-    private void cloneHero(AccountHeroe heroe)throws CloneNotSupportedException{
+    public void cloneHero(AccountHeroe heroe)throws CloneNotSupportedException{
 
         contratadosToSave.add((AccountHeroe) heroe.cloneObject());
     }
     
     
-    private void showVolatileLabelNoGold(){
+    public void showVolatileLabelNoGold(){
        
         noGold = new LabelTextVolatile(2500, lb_summon, "¡No tienes suficiente oro! Te falta " + (500-getGold()));
         noGold.startTime();
     }
     
-    private void showLabelVolatileObtainedHero(int x){
+    public void showLabelVolatileObtainedHero(int x){
         
         summonHero = new LabelTextVolatile(2500, lb_summon, "¡"+ contratos.get(x).getName() + " se ha unido a tu equipo!");
         summonHero.startTime();
@@ -410,7 +410,7 @@ public class Gacha implements Initializable {
 
     }
   
-    private void closeGameLoops(){
+    public void closeGameLoops(){
 
         gameBack.setClose(true);
     }

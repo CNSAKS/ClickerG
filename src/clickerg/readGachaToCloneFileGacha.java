@@ -50,7 +50,6 @@ public class readGachaToCloneFileGacha extends TemplateXMLonlyRead{
             
             for(int i = 0;i<id.size();i++){
                 contratos.add(new AccountHeroe("false" , "-1", name.get(i), id.get(i), lvl.get(i), base_atk.get(i), "0"));
-             //   GachaHeroe gh = new GachaHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), prob.get(i));
             }
             return contratos;
     }

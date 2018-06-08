@@ -23,7 +23,9 @@ public abstract class PrototypeHeroe implements Cloneable {
         this.base_atk = base_atk;
         this.exp = exp;
     }
-
+    
+    protected abstract PrototypeHeroe cloneObject() throws CloneNotSupportedException;
+    
     public String getName() {
         return name;
     }
@@ -66,5 +68,5 @@ public abstract class PrototypeHeroe implements Cloneable {
     
     
     
-    protected abstract PrototypeHeroe cloneObject() throws CloneNotSupportedException;
+    
 }

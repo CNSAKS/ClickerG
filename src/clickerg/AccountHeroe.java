@@ -19,10 +19,6 @@ public class AccountHeroe extends PrototypeHeroe{
         this.active = active;
         this.id_heroe = id_heroe;
     }
-
-    
-    
-    
     
     @Override
     protected PrototypeHeroe cloneObject() throws CloneNotSupportedException{
