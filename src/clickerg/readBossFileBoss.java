@@ -44,9 +44,9 @@ public class readBossFileBoss extends TemplateXMLonlyRead{
             //ArrayList<String> name = getTextValue(doc, "name");
             
             ArrayList<String> id = getTextValue(doc, "id");
-            System.out.println(id.size());
+
             for(int i = 0;i<id.size();i++){
-                System.out.println("Hey");
+
                 bosses.add(bossFactory.createBoss(id.get(i)));
             }
             return bosses;

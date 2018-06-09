@@ -70,18 +70,6 @@ public class GachaTest {
         assertEquals(goldAmmount,instance.getGold());
     }
 
-    /**
-     * Test of obtainRandomHero method, of class Gacha.
-     */
-    @Test
-    public void testObtainRandomHero() throws Exception {
-        System.out.println("obtainRandomHero");
-        MouseEvent event = null;
-        GachaToTest instance = new GachaToTest();
-        instance.obtainRandomHero(event);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of checkGold method, of class Gacha.
@@ -100,17 +88,6 @@ public class GachaTest {
         assertEquals(expResult2, result2);
     }
 
-    /**
-     * Test of randomHeroPicker method, of class Gacha.
-     */
-    @Test
-    public void testRandomHeroPicker() throws Exception {
-        System.out.println("randomHeroPicker");
-        GachaToTest instance = new GachaToTest();
-        int x = instance.contratadosToSave.size();
-        instance.randomHeroPicker();
-        assertEquals(x , instance.contratadosToSave.size());
-    }
 
 
     /**

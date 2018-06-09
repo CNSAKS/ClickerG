@@ -20,33 +20,18 @@ public class KindredBoss extends PatternBoss {
         return base_hp;
     }
 
-    public void setBase_hp(String base_hp) {
-        this.base_hp = base_hp;
-    }
-
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    
+ 
     static{
         BossFactory.registerBoss("1", new KindredBoss());
     }
     
-    
-
     @Override
     public PatternBoss createBoss() {
         return new KindredBoss();

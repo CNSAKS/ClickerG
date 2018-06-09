@@ -6,8 +6,6 @@
 package clickerg;
 
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**

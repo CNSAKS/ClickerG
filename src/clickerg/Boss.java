@@ -5,30 +5,23 @@
  */
 package clickerg;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -39,14 +32,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javax.imageio.ImageIO;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  * FXML Controller class
@@ -93,6 +79,7 @@ public class Boss implements Initializable {
     ArrayList<AuxiliarItem> itemsOwned = new ArrayList<AuxiliarItem>();
     ArrayList<AuxiliarItem> itemsToSave = new ArrayList<AuxiliarItem>();
     
+    static final double escalado_por_nivel = 1.16;
     
     Document xml;
     ArrayList<String> id;
@@ -144,7 +131,7 @@ public class Boss implements Initializable {
         baseHp = Integer.parseInt(bosses.get(randomNumberGenerated).getBase_hp());
         label_bossName.setText(bosses.get(randomNumberGenerated).getName()+" Lvl:"+bossLvl);
         
-        bossHp = baseHp * Math.pow(1.16, bossLvl-1);
+        bossHp = baseHp * Math.pow(escalado_por_nivel, bossLvl-1);
         currenthp.setText((int) bossHp+" / "+(int) bossHp);
         
         for(int x = 0;x<contratados.size();x++){
@@ -201,7 +188,7 @@ public class Boss implements Initializable {
             randomNumberGenerated = random.nextInt(numberOfBosses);
             baseHp = Integer.parseInt(bosses.get(randomNumberGenerated).getBase_hp());
             label_bossName.setText(bosses.get(randomNumberGenerated).getName()+" Lvl:"+bossLvl);
-            bossHp = baseHp * Math.pow(1.16, bossLvl-1);
+            bossHp = baseHp * Math.pow(escalado_por_nivel, bossLvl-1);
             bossHp = Math.floor(bossHp);
             gameBoss.setId(bosses.get(randomNumberGenerated).getId());
         }
@@ -209,51 +196,7 @@ public class Boss implements Initializable {
     }
 
     
-    
-    public void loadfromXML(String xmlRoute, int mode) {
-        // Make an  instance of the DocumentBuilderFactory
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
-            // use the factory to take an instance of the document builder
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            // parse using the builder to get the DOM mapping of the    
-            // XML file
-            xml = db.parse(xmlRoute);
-            
-            Element doc = xml.getDocumentElement();
-            
-            id = getTextValue(doc, "id");
-
-            name = getTextValue(doc, "name");
-
-            lvl = getTextValue(doc, "lvl");
-
-            base_atk = getTextValue(doc, "base_atk");
-            
-            active = getTextValue(doc, "active");
-            
-            for(int i = 0;i<id.size();i++){
-                contratados.add(new AuxiliarHeroe(id.get(i), name.get(i), lvl.get(i), base_atk.get(i), "0", active.get(i)));
-            }
-            
-        } catch (ParserConfigurationException pce) {
-            System.out.println(pce.getMessage());
-        } catch (SAXException se) {
-            System.out.println(se.getMessage());
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
-        }
-    }
-    
-    private ArrayList<String> getTextValue(Element doc, String tag) {
-        ArrayList<String> value = new ArrayList<String>();
-        NodeList nl= doc.getElementsByTagName(tag);
-        for(int x = 0;x<nl.getLength();x++){
-           value.add(nl.item(x).getFirstChild().getNodeValue());
-        }
-        return value;
-    }
-
+  
     @FXML
     private void irATown(ActionEvent event) throws IOException {
         closeMethod();

@@ -50,7 +50,6 @@ public class writeExpFileAccountInfo extends TemplateXMLWriter{
                 
                 exp = ((AuxiliarHeroe) elem).getExp();
                 lvl = ((AuxiliarHeroe) elem).getLvl();
-                System.out.println("Experiencia : " + exp + ". Nivel : " + lvl);
             }
         }
         NodeList heroesData = xml.getElementsByTagName("heroe");

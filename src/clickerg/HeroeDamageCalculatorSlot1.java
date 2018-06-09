@@ -6,7 +6,6 @@
 package clickerg;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  *

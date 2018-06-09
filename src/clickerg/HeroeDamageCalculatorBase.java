@@ -12,13 +12,14 @@ package clickerg;
 public class HeroeDamageCalculatorBase extends HeroeDamageCalculator {
     AuxiliarHeroe heroe;
     
+    static final double escalado_por_nivel = 1.05;
     public HeroeDamageCalculatorBase(AuxiliarHeroe heroe){
         this.heroe = heroe;
     }
     
     @Override
     public double calcularAtaque() {
-        return Double.parseDouble(heroe.getBase_atk())* Math.pow(1.05, Double.parseDouble(heroe.getLvl())-1);
+        return Double.parseDouble(heroe.getBase_atk())* Math.pow(escalado_por_nivel, Double.parseDouble(heroe.getLvl())-1);
     }
      
 }

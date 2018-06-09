@@ -71,7 +71,6 @@ public class writeItemsFileAccountInfo extends TemplateXMLWriter{
             eleX = (Element) eleL.getElementsByTagName("id_heroe").item(0);
             if(eleX.getFirstChild().getNodeValue().equals(auxiliar[1]+"")){
                 item_to_release = eleL.getElementsByTagName("item_"+auxiliar[2]).item(0).getFirstChild().getNodeValue();
-                System.out.println(item_to_release);
                 eleL.getElementsByTagName("item_"+auxiliar[2]).item(0).setTextContent(auxiliar[0]+"");
             }
         }
