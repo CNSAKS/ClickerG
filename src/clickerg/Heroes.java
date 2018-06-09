@@ -6,11 +6,14 @@
 package clickerg;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.lang.management.*;
 import javafx.beans.binding.BooleanBinding;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -25,12 +28,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -42,6 +48,8 @@ import javafx.stage.Stage;
  */
 public class Heroes implements Initializable{
 
+    private static final int MEGABYTE = (1024*1024);
+    
     @FXML
     private Button butBack;
     @FXML
@@ -133,22 +141,14 @@ public class Heroes implements Initializable{
                 try{
                 iv.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(i).getId()+".png"));
                 } catch(Exception e){
-                    try {
-                        Alert alert = new Alert(AlertType.ERROR);
-                        alert.setTitle("Error al cargar las imagenes");
-                        alert.setHeaderText("Ha habido un error al intentar cargar las imagenes");
-                        alert.setContentText("El programa volvera a la anterior ventana, si el problema persiste reinicie el juego");
-                        
-                        alert.showAndWait();
-                        Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
-                        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-                        stage.setScene(new Scene(reserva));
-                        //Preguntar por cierre
-                        stage.setTitle("Town");
-                        stage.show();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Heroes.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    generateDialogError();
+                } catch (OutOfMemoryError e) {
+                    MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
+                    MemoryUsage heapUsage = memoryBean.getHeapMemoryUsage();
+                    long maxMemory = heapUsage.getMax() / MEGABYTE;
+                    long usedMemory = heapUsage.getUsed() / MEGABYTE;
+                    System.out.println(i+ " : Memory Use :" + usedMemory + "M/" + maxMemory + "M");
+                    generateDialogError();
                 }
                 
                 iv.setFitHeight(97);
@@ -159,6 +159,7 @@ public class Heroes implements Initializable{
 
                 gridPaneHe.add(b,columna, fila);
             }
+            
             stakingPane.getChildren().get(0).setDisable(false);
             waitingPane.setVisible(false);
         });
@@ -185,5 +186,22 @@ public class Heroes implements Initializable{
           
     }
 
-    
+    public void generateDialogError(){
+        try {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error al cargar las imagenes");
+            alert.setHeaderText("Ha habido un error al intentar cargar las imagenes");
+            alert.setContentText("El programa volvera a la anterior ventana, si el problema persiste reinicie el juego");
+
+            alert.showAndWait();
+            Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+            Stage stage = (Stage) stakingPane.getScene().getWindow();
+            stage.setScene(new Scene(reserva));
+            //Preguntar por cierre
+            stage.setTitle("Town");
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Heroes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
