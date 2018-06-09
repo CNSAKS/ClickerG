@@ -133,14 +133,24 @@ public class Heroes implements Initializable{
                 try{
                 iv.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(i).getId()+".png"));
                 } catch(Exception e){
-                    Alert alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error al cargar las imagenes");
-                    alert.setHeaderText("Ha habido un error al intentar cargar las imagenes");
-                    alert.setContentText("El programa volvera a la anterior ventana, si el problema persiste reinicie el juego");
-
-                    alert.showAndWait();
+                    try {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Error al cargar las imagenes");
+                        alert.setHeaderText("Ha habido un error al intentar cargar las imagenes");
+                        alert.setContentText("El programa volvera a la anterior ventana, si el problema persiste reinicie el juego");
+                        
+                        alert.showAndWait();
+                        Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+                        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(new Scene(reserva));
+                        //Preguntar por cierre
+                        stage.setTitle("Town");
+                        stage.show();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Heroes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-
+                
                 iv.setFitHeight(97);
                 iv.setFitWidth(97);
                 b.setGraphic(iv);
