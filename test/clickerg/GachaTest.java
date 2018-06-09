@@ -90,9 +90,14 @@ public class GachaTest {
     public void testCheckGold() {
         System.out.println("checkGold");
         GachaToTest instance = new GachaToTest();
+        instance.setGold(100);
         boolean expResult = false;
         boolean result = instance.checkGold();
         assertEquals(expResult, result);
+        instance.setGold(700);
+        boolean expResult2 = true;
+        boolean result2 = instance.checkGold();
+        assertEquals(expResult2, result2);
     }
 
     /**
@@ -131,6 +136,7 @@ public class GachaTest {
         int x = instance.contratadosToSave.size();
         instance.cloneHero(heroe);
         assertEquals(x +1, instance.contratadosToSave.size());
+        assertEquals(true, instance.compareHeroe(heroe, instance.contratadosToSave.get(instance.contratadosToSave.size()-1)));
     }
 
 

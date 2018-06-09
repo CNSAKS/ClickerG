@@ -421,4 +421,16 @@ public class GachaToTest implements Initializable {
         gachaWriter.modifyXML(contratadosToSave, new int[]{getGold()});  
     }
     
+    //compare para comprobacion de la clonacion
+    
+    public boolean compareHeroe(AccountHeroe a, AccountHeroe b){
+        return a.getActive().equals(b.getActive()) &&
+               a.getBase_atk().equals(b.getBase_atk()) &&
+               a.getExp().equals(b.getExp()) &&
+               a.getId().equals(b.getId()) &&
+               a.getId_heroe().equals(b.getId_heroe()) &&
+               a.getLvl().equals(b.getLvl()) &&
+               a.getName().equals(b.getName());
+                
+    }
 }
