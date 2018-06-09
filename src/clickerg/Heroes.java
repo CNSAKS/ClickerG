@@ -5,6 +5,8 @@
  */
 package clickerg;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -17,6 +19,7 @@ import java.lang.management.*;
 import javafx.beans.binding.BooleanBinding;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,6 +44,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -73,6 +77,7 @@ public class Heroes implements Initializable{
     
     @FXML
     private void irATown(ActionEvent event) throws IOException {
+        System.gc();
         Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
@@ -83,6 +88,7 @@ public class Heroes implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.gc();
         iv_back.setImage(new Image("/clickerg/heroes/heroeBackground1.png"));
         Task<ArrayList<AuxiliarHeroe>> taskHeroeCharger = new Task<ArrayList<AuxiliarHeroe>>() {
             @Override protected ArrayList<AuxiliarHeroe> call() throws Exception {
@@ -124,6 +130,7 @@ public class Heroes implements Initializable{
                 @Override
                 public void handle(ActionEvent event){
                     try{
+                     System.gc();
                      String idHeroe =(b.getId().replaceAll("[A-z]*-", ""));
                      selectedHeroe = contratados.get(Integer.parseInt(""+idHeroe,10));
                      FXMLLoader loader = new FXMLLoader(getClass().getResource("heroesInfo/heroesInfo.fxml"));
@@ -136,19 +143,16 @@ public class Heroes implements Initializable{
                      } catch(IOException e){}
                 }
                 });
-
+                memoryCalc();
                 ImageView iv = new ImageView();
                 try{
-                iv.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(i).getId()+".png"));
+                iv.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(i).getId()+"-icon.png"));
                 } catch(Exception e){
                     generateDialogError();
                 } catch (OutOfMemoryError e) {
-                    MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
-                    MemoryUsage heapUsage = memoryBean.getHeapMemoryUsage();
-                    long maxMemory = heapUsage.getMax() / MEGABYTE;
-                    long usedMemory = heapUsage.getUsed() / MEGABYTE;
-                    System.out.println(i+ " : Memory Use :" + usedMemory + "M/" + maxMemory + "M");
+                    System.gc();
                     generateDialogError();
+                    return;
                 }
                 
                 iv.setFitHeight(97);
@@ -163,10 +167,6 @@ public class Heroes implements Initializable{
             stakingPane.getChildren().get(0).setDisable(false);
             waitingPane.setVisible(false);
         });
-
-        
-        
-        
         
         Thread th = new Thread(taskHeroeCharger);
         th.setDaemon(true);
@@ -177,10 +177,10 @@ public class Heroes implements Initializable{
         gridPaneHe.setStyle("-fx-background-color: transparent");
 
         ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/icons/back.png"));
-         iv.setFitHeight(50);
-         iv.setFitWidth(80);
-          butBack.setStyle("-fx-background-color: transparent;");
+        iv.setImage(new Image("/clickerg/icons/back.png"));
+        iv.setFitHeight(50);
+        iv.setFitWidth(80);
+        butBack.setStyle("-fx-background-color: transparent;");
         butBack.setGraphic(iv);
            
           
@@ -194,14 +194,22 @@ public class Heroes implements Initializable{
             alert.setContentText("El programa volvera a la anterior ventana, si el problema persiste reinicie el juego");
 
             alert.showAndWait();
-            Parent reserva = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("main/main.fxml"));
             Stage stage = (Stage) stakingPane.getScene().getWindow();
-            stage.setScene(new Scene(reserva));
+            stage.setScene(new Scene(parent));
             //Preguntar por cierre
             stage.setTitle("Town");
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(Heroes.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void memoryCalc(){
+        MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
+        MemoryUsage heapUsage = memoryBean.getHeapMemoryUsage();
+        long maxMemory = heapUsage.getMax() / MEGABYTE;
+        long usedMemory = heapUsage.getUsed() / MEGABYTE;
+        System.out.println("Memory Use :" + usedMemory + "M/" + maxMemory + "M");
     }
 }
