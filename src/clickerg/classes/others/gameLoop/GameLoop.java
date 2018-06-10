@@ -12,6 +12,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
 
@@ -81,9 +82,14 @@ public class GameLoop{
         }
         img.setPreserveRatio(false);
         } catch (IOException e1) {
-        // TODO Auto-generated catch block
-        e1.printStackTrace();
-}
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error al cargar las imagenes");
+            alert.setHeaderText("Ha habido un error al intentar cargar las imagenes");
+            alert.setContentText("El juego se va a cerrar");
+
+            alert.showAndWait();
+            System.exit(0);
+        }
     }
 
     public String getId() {

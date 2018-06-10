@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.gacha.logic.Gacha">
+<Pane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.gacha.logic.Gacha">
    <children>
       <ImageView fx:id="iv_back" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="600.0">
@@ -19,7 +19,7 @@
                   <Label fx:id="lb_gold" translateX="100.0" translateY="20.0" />
                </children>
             </HBox>
-            <Pane onMouseClicked="#obtainRandomHero" prefHeight="350.0" prefWidth="600.0">
+            <Pane fx:id="paneGacha" onMouseClicked="#obtainRandomHero" prefHeight="350.0" prefWidth="600.0">
                <children>
                   <Label fx:id="lb_summon" alignment="CENTER" layoutX="193.0" layoutY="43.0" prefHeight="17.0" prefWidth="246.0" />
                   <ImageView fx:id="iw_heroe" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />

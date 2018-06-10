@@ -61,8 +61,6 @@ public class Town implements Initializable{
      */
     public void initialize(URL url, ResourceBundle rb) {
         
-        
-        
         File f = new File("src/clickerg/visualsAndFiles/main/accountInfo.xml");
          if(!f.exists())
          {

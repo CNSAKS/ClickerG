@@ -197,7 +197,7 @@ public class Boss implements Initializable {
         if(hp_bar.getProgress()<=0){
             hp_bar.setProgress(1);
             bossLvl++;
-            if(random.nextInt(10)<=200){
+            if(random.nextInt(10)<=3){
                 searchItem(randomNumberGenerated);
                 
             }

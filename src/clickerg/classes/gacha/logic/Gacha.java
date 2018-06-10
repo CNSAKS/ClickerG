@@ -14,10 +14,13 @@ import clickerg.classes.gacha.persistence.readGachaFileAccountInfo;
 import clickerg.classes.gacha.persistence.writeGachaFileAccountInfo;
 import clickerg.classes.gacha.persistence.readGachaFileGacha;
 import clickerg.classes.gacha.persistence.readGachaToCloneFileGacha;
+import clickerg.classes.others.volatiles.DisablerVolatile;
+import clickerg.classes.others.volatiles.ImageVolatile;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,6 +35,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -77,6 +81,8 @@ public class Gacha implements Initializable {
     LabelTextVolatile noGold;
     
     LabelTextVolatile summonHero;
+    @FXML
+    private Pane paneGacha;
     
     /**
      * Initializes the controller class.
@@ -215,9 +221,9 @@ public class Gacha implements Initializable {
     }
     
     private void showSummon(int x){
-    
-        iw_heroe.setImage(new Image("/clickerg/visualsAndFiles/heroes/images/id_" + contratos.get(x).getId()+".png"));
+        showImageVolatile(x);
         showLabelVolatileObtainedHero(x);
+        disableEventPane();
     
     }
     private void actualizeGold(){
@@ -243,16 +249,27 @@ public class Gacha implements Initializable {
         summonHero.startTime();
     }
     
+    private void showImageVolatile(int x){
+        
+        ImageVolatile img = new ImageVolatile(2500, iw_heroe, "/clickerg/visualsAndFiles/heroes/images/id_" + contratos.get(x).getId()+".png");
+        img.startTime();
+    }
+    
+    private void disableEventPane(){
+        
+        DisablerVolatile paneDisabler = new DisablerVolatile(2500, paneGacha);
+        paneDisabler.startTime();
+    }
 
 
     @FXML
     private void backToPreviousScene(ActionEvent event) throws IOException {
         closeMethod();
         
-         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(reserva));
-        //Preguntar por cierre
+        stage.setScene(new Scene(parent));
+
         stage.setTitle("Town");
         stage.show();
     }
@@ -262,18 +279,20 @@ public class Gacha implements Initializable {
         closeGameLoops();
         saveData();
              
-
     }
   
     private void closeGameLoops(){
 
         gameBack.setClose(true);
+        
     }
     
     private void saveData(){
     
         TemplateXMLWriter gachaWriter = new writeGachaFileAccountInfo();
         gachaWriter.modifyXML(contratadosToSave, new int[]{getGold()});  
+        
     }
+
     
 }

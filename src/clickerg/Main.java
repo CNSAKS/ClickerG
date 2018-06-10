@@ -20,15 +20,15 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
          
+    @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main/main.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
+        stage.setResizable(false);
+        stage.setMaxHeight(400);
+        stage.setMaxWidth(600);
         Scene scene = new Scene(root);
-        
-        scene.getStylesheets().add(getClass().getResource("main/main.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Town");
-        stage.setResizable(false);
         stage.show();
  
         
