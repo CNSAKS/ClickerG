@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 23-abr-2018, 15:59:08
     Author     : CNSAKS
 */
-#AnchorPane_main{
+#pane_main{
     -fx-background-image: url("main.png");
     -fx-background-size: cover;
 }

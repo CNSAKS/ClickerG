@@ -5,6 +5,16 @@
  */
 package clickerg;
 
+import clickerg.classes.others.templates.TemplateXMLonlyRead;
+import clickerg.classes.others.templates.TemplateXMLWriter;
+import clickerg.classes.others.auxiliars.AuxiliarHeroe;
+import clickerg.classes.others.gameLoop.GameLoop;
+import clickerg.classes.others.volatiles.LabelTextVolatile;
+import clickerg.classes.gacha.logic.AccountHeroe;
+import clickerg.classes.gacha.persistence.readGachaFileGacha;
+import clickerg.classes.gacha.persistence.readGachaFileAccountInfo;
+import clickerg.classes.gacha.persistence.readGachaToCloneFileGacha;
+import clickerg.classes.gacha.persistence.writeGachaFileAccountInfo;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;

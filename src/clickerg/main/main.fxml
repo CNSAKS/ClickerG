@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorPane_main" prefHeight="400.0" prefWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Town">
+
+<Pane fx:id="pane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Town">
    <children>
-      <Button fx:id="bt_gold" layoutX="163.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickGold" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="bt_gold" layoutX="182.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickGold" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="bt_boss" layoutX="494.0" layoutY="326.0" mnemonicParsing="false" onAction="#clickBoss" prefHeight="25.0" prefWidth="78.0" textFill="#1ef50f">
+      <Button fx:id="bt_boss" layoutX="480.0" layoutY="341.0" mnemonicParsing="false" onAction="#clickBoss" prefHeight="25.0" prefWidth="78.0" textFill="#1ef50f">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="bt_exp" layoutX="199.0" layoutY="326.0" mnemonicParsing="false" onAction="#clickExp" prefHeight="25.0" prefWidth="78.0" text="EXP">
+      <Button fx:id="bt_exp" layoutX="210.0" layoutY="341.0" mnemonicParsing="false" onAction="#clickExp" prefHeight="25.0" prefWidth="78.0">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="bt_gacha" layoutX="494.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickGacha" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="bt_gacha" layoutX="480.0" layoutY="49.0" mnemonicParsing="false" onAction="#clickGacha" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="bt_heroes" layoutX="132.0" layoutY="67.0" mnemonicParsing="false" onAction="#clickHeroes" prefHeight="25.0" prefWidth="78.0" text="Heroes" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="bt_heroes" layoutX="199.0" layoutY="49.0" mnemonicParsing="false" onAction="#clickHeroes" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
    </children>
-</AnchorPane>
+</Pane>

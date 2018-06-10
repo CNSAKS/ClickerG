@@ -5,6 +5,7 @@
  */
 package clickerg;
 
+import clickerg.classes.gacha.logic.AccountHeroe;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.input.MouseEvent;
