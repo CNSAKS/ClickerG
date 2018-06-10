@@ -72,7 +72,7 @@ public class Items implements Initializable {
     }    
     
     public void initData (AuxiliarHeroe heroeInfo, String itemToChange){
-        iv_back.setImage(new Image("/clickerg/items/heroeBackground1.png"));
+        iv_back.setImage(new Image("/clickerg/visualsAndFiles/items/heroeBackground1.png"));
         
         label_itemindicator.setTextFill(Color.web("#FFFFFF"));
         
@@ -95,7 +95,7 @@ public class Items implements Initializable {
             temp_label2.setTextFill(Color.web("#FFFFFF"));
             Button temp_button = new Button();
             ImageView iv1 = new ImageView();
-            iv1.setImage(new Image("/clickerg/icons/equipar.png"));
+            iv1.setImage(new Image("/clickerg/visualsAndFiles/icons/equipar.png"));
             iv1.setFitHeight(20);
             iv1.setFitWidth(80);
             temp_button.setStyle("-fx-background-color: transparent;");
@@ -165,7 +165,7 @@ public class Items implements Initializable {
 
 
         ImageView iv = new ImageView();
-        iv.setImage(new Image("/clickerg/icons/back.png"));
+        iv.setImage(new Image("/clickerg/visualsAndFiles/icons/back.png"));
         iv.setFitHeight(50);
         iv.setFitWidth(80);
         bBack.setStyle("-fx-background-color: transparent;");
@@ -174,7 +174,7 @@ public class Items implements Initializable {
     
     @FXML
     private void returnToHeroesInfo(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/clickerg/heroesInfo/heroesInfo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/clickerg/visualsAndFiles/heroesInfo/heroesInfo.fxml"));
         Parent reserva = (Parent) loader.load();
         loader.<HeroesInfo>getController().initData(heroeToEquip);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

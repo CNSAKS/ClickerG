@@ -184,7 +184,7 @@ public class Boss implements Initializable {
     });
         
         ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setImage(new Image("/clickerg/visualsAndFiles/icons/back.png"));
          iv.setFitHeight(50);
          iv.setFitWidth(80);
           backButton.setStyle("-fx-background-color: transparent;");
@@ -216,7 +216,7 @@ public class Boss implements Initializable {
     @FXML
     private void irATown(ActionEvent event) throws IOException {
         closeMethod();
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/main/main.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre

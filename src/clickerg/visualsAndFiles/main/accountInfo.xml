@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <accountInfo>
-    <gold>11070</gold>
-    <bossLvl>75</bossLvl>
+    <gold>10070</gold>
+    <bossLvl>83</bossLvl>
     <heroes>
         <heroe>
             <active>false</active>
@@ -604,7 +604,7 @@
             <item_3>-1</item_3>
         </heroe>
         <heroe>
-            <active>false</active>
+            <active>true</active>
             <base_atk>100</base_atk>
             <exp>19813</exp>
             <id>1</id>
@@ -796,13 +796,37 @@
             <item_3>-1</item_3>
         </heroe>
         <heroe>
-            <active>true</active>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>666</exp>
+            <id>4</id>
+            <id_heroe>66</id_heroe>
+            <lvl>33</lvl>
+            <name>Selena</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+    <heroe>
+            <active>false</active>
             <base_atk>80</base_atk>
             <exp>0</exp>
             <id>4</id>
-            <id_heroe>66</id_heroe>
+            <id_heroe>67</id_heroe>
             <lvl>1</lvl>
             <name>Selena</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>68</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
             <item_1>-1</item_1>
             <item_2>-1</item_2>
             <item_3>-1</item_3>
@@ -1293,6 +1317,102 @@
             <base_mult>0,15</base_mult>
             <name_item>Laca Macarra</name_item>
             <id_item>80</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+    <item>
+            <base_mult>1,95</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>81</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>3,15</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>82</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>2,70</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>83</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>6,48</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>84</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>2,47</base_mult>
+            <name_item>Flecha negra</name_item>
+            <id_item>85</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>1,75</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>86</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>1,25</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>87</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>3,10</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>88</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+    <item>
+            <base_mult>1,95</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>89</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>3,15</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>90</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>2,70</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>91</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>6,48</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>92</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>2,47</base_mult>
+            <name_item>Flecha negra</name_item>
+            <id_item>93</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>1,75</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>94</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>1,25</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>95</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>3,10</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>96</id_item>
             <id_heroe_owner>-1</id_heroe_owner>
         </item>
     </items>

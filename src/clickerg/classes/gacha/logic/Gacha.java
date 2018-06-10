@@ -142,10 +142,10 @@ public class Gacha implements Initializable {
     }
     private void initializeStaticImages(){
     
-        iv_gold.setImage(new Image("/clickerg/icons/goldBag.gif"));
+        iv_gold.setImage(new Image("/clickerg/visualsAndFiles/icons/goldBag.gif"));
         
         ImageView iv = new ImageView();
-        iv.setImage(new Image("/clickerg/icons/back.png"));
+        iv.setImage(new Image("/clickerg/visualsAndFiles/icons/back.png"));
         iv.setFitHeight(50);
         iv.setFitWidth(80);
         
@@ -216,7 +216,7 @@ public class Gacha implements Initializable {
     
     private void showSummon(int x){
     
-        iw_heroe.setImage(new Image("/clickerg/heroes/images/id_" + contratos.get(x).getId()+".png"));
+        iw_heroe.setImage(new Image("/clickerg/visualsAndFiles/heroes/images/id_" + contratos.get(x).getId()+".png"));
         showLabelVolatileObtainedHero(x);
     
     }
@@ -249,7 +249,7 @@ public class Gacha implements Initializable {
     private void backToPreviousScene(ActionEvent event) throws IOException {
         closeMethod();
         
-         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/main/main.fxml"));
+         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre

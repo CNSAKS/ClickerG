@@ -30,8 +30,8 @@ public class writeItemsFileAccountInfo extends TemplateXMLWriter{
         DocumentBuilder db;
         try {
             db = dbf.newDocumentBuilder();
-            xml = db.parse("src/clickerg/main/accountInfo.xml");
-            route = "src/clickerg/main/accountInfo.xml";
+            xml = db.parse("src/clickerg/visualsAndFiles/main/accountInfo.xml");
+            route = "src/clickerg/visualsAndFiles/main/accountInfo.xml";
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {

@@ -31,7 +31,7 @@ public class AnimationVolatile {
         this.msDuration = msDuration;
         this.iv = iv;
 
-        iv.setImage(new Image("/clickerg/animations/extra/id0/id0 (1).gif"));
+        iv.setImage(new Image("/clickerg/visualsAndFiles/animations/extra/id0/id0 (1).gif"));
     }
     
     public void startTime() {

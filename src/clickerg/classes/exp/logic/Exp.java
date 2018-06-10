@@ -115,7 +115,7 @@ public class Exp implements Initializable {
                 lb_lvl.setText("Nivel " + heroeLvl );
                 lb_lvl.setTextFill(Color.web("#FFFFFF"));
                 lb_lvl.setStyle("-fx-font-weight: bold");
-                imageHeroe.setImage(new Image("/clickerg/heroes/images/id_" + contratados.get(x).getId()+".png"));
+                imageHeroe.setImage(new Image("/clickerg/visualsAndFiles/heroes/images/id_" + contratados.get(x).getId()+".png"));
              }
         }
 
@@ -144,7 +144,7 @@ public class Exp implements Initializable {
         gameBack.startGame();
         
         ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setImage(new Image("/clickerg/visualsAndFiles/icons/back.png"));
          iv.setFitHeight(50);
          iv.setFitWidth(80);
           bBack.setStyle("-fx-background-color: transparent;");
@@ -172,7 +172,7 @@ public class Exp implements Initializable {
     @FXML
     private void backTown(ActionEvent event) throws IOException {
         closeMethod();
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/main/main.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         stage.setTitle("Town");

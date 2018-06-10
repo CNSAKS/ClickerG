@@ -27,7 +27,7 @@ public class readGachaFileGacha extends TemplateXMLonlyRead{
         DocumentBuilder db;
         try {
             db = dbf.newDocumentBuilder();
-            xml = db.parse("src/clickerg/gacha/gacha.xml");
+            xml = db.parse("src/clickerg/visualsAndFiles/gacha/gacha.xml");
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(readGachaFileGacha.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {

@@ -30,7 +30,7 @@ public class GameLoop{
     ScheduledExecutorService executor;
     
     public GameLoop(String id, ImageView img, String type) {
-        this.frames = new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length;
+        this.frames = new File("src/clickerg/visualsAndFiles/animations/"+type+"/id"+id).listFiles().length;
         this.id = id;
         this.img = img;
         this.actual = 1;
@@ -54,10 +54,10 @@ public class GameLoop{
         BufferedImage bufferedImage;
         File file;
         if(actual <= frames){
-            file = new File("src/clickerg/animations/"+type+"/id"+id+"/id"+id+" ("+actual+").gif");
+            file = new File("src/clickerg/visualsAndFiles/animations/"+type+"/id"+id+"/id"+id+" ("+actual+").gif");
             actual++;
         }else{
-            file = new File("src/clickerg/animations/"+type+"/id"+id+"/id"+id+" ("+1+").gif");
+            file = new File("src/clickerg/visualsAndFiles/animations/"+type+"/id"+id+"/id"+id+" ("+1+").gif");
             actual = 1;
             actual++;
         }
@@ -92,7 +92,7 @@ public class GameLoop{
 
     public void setId(String id) {
         this.id = id;
-        setFrames(new File("src/clickerg/animations/"+type+"/id"+id).listFiles().length);
+        setFrames(new File("src/clickerg/visualsAndFiles/animations/"+type+"/id"+id).listFiles().length);
     }
 
     public void setActual(int actual) {

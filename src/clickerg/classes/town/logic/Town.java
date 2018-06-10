@@ -63,7 +63,7 @@ public class Town implements Initializable{
         
         
         
-        File f = new File("src/clickerg/main/accountInfo.xml");
+        File f = new File("src/clickerg/visualsAndFiles/main/accountInfo.xml");
          if(!f.exists())
          {
             try {
@@ -100,7 +100,7 @@ public class Town implements Initializable{
                     TransformerFactory transformerFactory = TransformerFactory.newInstance();
                     Transformer transformer = transformerFactory.newTransformer();
                     DOMSource source = new DOMSource(doc);
-                    StreamResult result = new StreamResult(new File("src/clickerg/main/accountInfo.xml"));
+                    StreamResult result = new StreamResult(new File("src/clickerg/visualsAndFiles/main/accountInfo.xml"));
 
 
                     transformer.transform(source, result);
@@ -125,7 +125,7 @@ public class Town implements Initializable{
             dialog.initStyle(StageStyle.UTILITY);
             dialog.initModality(Modality.APPLICATION_MODAL);
             HBox dialogHbox = new HBox(20);
-            ImageView imgV = new ImageView(new Image("/clickerg/icons/fairy.png"));
+            ImageView imgV = new ImageView(new Image("/clickerg/visualsAndFiles/icons/fairy.png"));
             imgV.setFitHeight(100);
             imgV.setFitWidth(100);
             dialogHbox.getChildren().add(imgV);
@@ -140,35 +140,35 @@ public class Town implements Initializable{
          
          
          ImageView iv1 = new ImageView();
-         iv1.setImage(new Image("/clickerg/icons/boss1.png"));
+         iv1.setImage(new Image("/clickerg/visualsAndFiles/icons/boss1.png"));
          iv1.setFitHeight(50);
          iv1.setFitWidth(80);
          bt_boss.setStyle("-fx-background-color: transparent;");
         bt_boss.setGraphic(iv1);
         
         ImageView iv2 = new ImageView();
-        iv2.setImage(new Image("/clickerg/icons/goldIcon.png"));
+        iv2.setImage(new Image("/clickerg/visualsAndFiles/icons/goldIcon.png"));
          iv2.setFitHeight(50);
          iv2.setFitWidth(80);
          bt_gold.setStyle("-fx-background-color: transparent;");
         bt_gold.setGraphic(iv2);
         
          ImageView iv3 = new ImageView();
-        iv3.setImage(new Image("/clickerg/icons/gacha1.png"));
+        iv3.setImage(new Image("/clickerg/visualsAndFiles/icons/gacha1.png"));
          iv3.setFitHeight(80);
          iv3.setFitWidth(80);
          bt_gacha.setStyle("-fx-background-color: transparent;");
         bt_gacha.setGraphic(iv3);
         
          ImageView iv4 = new ImageView();
-        iv4.setImage(new Image("/clickerg/icons/exp1.png"));
+        iv4.setImage(new Image("/clickerg/visualsAndFiles/icons/exp1.png"));
          iv4.setFitHeight(100);
          iv4.setFitWidth(100);
          bt_exp.setStyle("-fx-background-color: transparent;");
         bt_exp.setGraphic(iv4);
         
          ImageView iv5 = new ImageView();
-        iv5.setImage(new Image("/clickerg/icons/heroes.png"));
+        iv5.setImage(new Image("/clickerg/visualsAndFiles/icons/heroes.png"));
          iv5.setFitHeight(80);
          iv5.setFitWidth(80);
          bt_heroes.setStyle("-fx-background-color: transparent;");
@@ -177,7 +177,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickGold(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/gold/gold.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/gold/gold.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -187,7 +187,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickBoss(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/boss/boss.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/boss/boss.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -197,7 +197,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickExp(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/exp/exp.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/exp/exp.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -209,7 +209,7 @@ public class Town implements Initializable{
     private void clickGacha(ActionEvent event) throws IOException {
         if(nuevaPartida()){
         dialog.close();}
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/gacha/gacha.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/gacha/gacha.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -221,7 +221,7 @@ public class Town implements Initializable{
         Boolean nueva = false;
         
         try{
-        String filepath = "src/clickerg/main/accountInfo.xml";
+        String filepath = "src/clickerg/visualsAndFiles/main/accountInfo.xml";
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
         Document doc = docBuilder.parse(filepath);
@@ -254,7 +254,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickHeroes(ActionEvent event) throws IOException {
-         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/heroes/heroes.fxml"));
+         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/heroes/heroes.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre

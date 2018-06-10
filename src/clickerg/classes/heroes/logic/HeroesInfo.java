@@ -98,7 +98,7 @@ public class HeroesInfo implements Initializable{
     
     public void initData (AuxiliarHeroe heroe){
         
-        iv_back.setImage(new Image("/clickerg/heroesInfo/heroeBackground1.png"));
+        iv_back.setImage(new Image("/clickerg/visualsAndFiles/heroesInfo/heroeBackground1.png"));
         
         label_item_3.setTextFill(Color.web("#FFFFFF"));
         label_item_2.setTextFill(Color.web("#FFFFFF"));
@@ -110,28 +110,28 @@ public class HeroesInfo implements Initializable{
         lb_name.setTextFill(Color.web("#FFFFFF"));
        
         ImageView iv1 = new ImageView();
-        iv1.setImage(new Image("/clickerg/icons/active.png"));
+        iv1.setImage(new Image("/clickerg/visualsAndFiles/icons/active.png"));
         iv1.setFitHeight(20);
         iv1.setFitWidth(80);
         b_activar.setStyle("-fx-background-color: transparent;");
         b_activar.setGraphic(iv1);
         
         ImageView iv2 = new ImageView();
-        iv2.setImage(new Image("/clickerg/icons/item1.png"));
+        iv2.setImage(new Image("/clickerg/visualsAndFiles/icons/item1.png"));
         iv2.setFitHeight(25);
         iv2.setFitWidth(80);
         button_item1.setStyle("-fx-background-color: transparent;");
         button_item1.setGraphic(iv2);
         
         ImageView iv3 = new ImageView();
-        iv3.setImage(new Image("/clickerg/icons/item2.png"));
+        iv3.setImage(new Image("/clickerg/visualsAndFiles/icons/item2.png"));
         iv3.setFitHeight(25);
         iv3.setFitWidth(80);
         button_item2.setStyle("-fx-background-color: transparent;");
         button_item2.setGraphic(iv3);
         
         ImageView iv4 = new ImageView();
-        iv4.setImage(new Image("/clickerg/icons/item3.png"));
+        iv4.setImage(new Image("/clickerg/visualsAndFiles/icons/item3.png"));
         iv4.setFitHeight(25);
         iv4.setFitWidth(80);
         button_item3.setStyle("-fx-background-color: transparent;");
@@ -155,7 +155,7 @@ public class HeroesInfo implements Initializable{
         HDC = new HeroeDamageCalculatorSlot3(HDC,heroesInfo,items);
         lb_ataque.setText("Ataque : "+((int) HDC.calcularAtaque()));
         
-        Image image = new Image("/clickerg/heroes/images/id_" + heroesInfo.getId()+".png");
+        Image image = new Image("/clickerg/visualsAndFiles/heroes/images/id_" + heroesInfo.getId()+".png");
         if(heroesInfo.getActive().equals("true")){
             lb_heroeAc.setVisible(true);
         }else{
@@ -194,7 +194,7 @@ public class HeroesInfo implements Initializable{
         
         
          ImageView iv = new ImageView();
-         iv.setImage(new Image("/clickerg/icons/back.png"));
+         iv.setImage(new Image("/clickerg/visualsAndFiles/icons/back.png"));
          iv.setFitHeight(50);
          iv.setFitWidth(80);
          bBack.setStyle("-fx-background-color: transparent;");
@@ -205,7 +205,7 @@ public class HeroesInfo implements Initializable{
     private void irATown(ActionEvent event) throws IOException {
         
         closeMethod();
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/heroes/heroes.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/heroes/heroes.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -244,7 +244,7 @@ public class HeroesInfo implements Initializable{
         itemToChange = ((Control) event.getSource()).getId();
         itemToChange = itemToChange.substring(itemToChange.length()-1, itemToChange.length());
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/clickerg/items/items.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/clickerg/visualsAndFiles/items/items.fxml"));
         Parent reserva = (Parent) loader.load();
         loader.<Items>getController().initData(selectedHeroe,itemToChange);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

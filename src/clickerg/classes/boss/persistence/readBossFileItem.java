@@ -27,7 +27,7 @@ public class readBossFileItem extends TemplateXMLonlyRead{
         DocumentBuilder db;
         try {
             db = dbf.newDocumentBuilder();
-            xml = db.parse("src/clickerg/items/item.xml");
+            xml = db.parse("src/clickerg/visualsAndFiles/items/item.xml");
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(readBossFileItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
