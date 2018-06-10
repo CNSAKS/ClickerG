@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Gacha">
+<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.gacha.logic.Gacha">
    <children>
       <ImageView fx:id="iv_back" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="600.0">

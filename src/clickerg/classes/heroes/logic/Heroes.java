@@ -125,7 +125,7 @@ public class Heroes implements Initializable{
                      System.gc();
                      String idHeroe =(b.getId().replaceAll("[A-z]*-", ""));
                      selectedHeroe = contratados.get(Integer.parseInt(""+idHeroe,10));
-                     FXMLLoader loader = new FXMLLoader(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/clickerg/heroesInfo/heroesInfo.fxml"));
                      Parent parent = (Parent) loader.load();
                      loader.<HeroesInfo>getController().initData(selectedHeroe);
                      Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -186,7 +186,7 @@ public class Heroes implements Initializable{
             alert.setContentText("El programa volvera a la anterior ventana, si el problema persiste reinicie el juego");
 
             alert.showAndWait();
-            Parent parent = FXMLLoader.load(getClass().getResource("main/main.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/main/main.fxml"));
             Stage stage = (Stage) stakingPane.getScene().getWindow();
             stage.setScene(new Scene(parent));
             //Preguntar por cierre

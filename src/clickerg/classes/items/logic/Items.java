@@ -174,7 +174,7 @@ public class Items implements Initializable {
     
     @FXML
     private void returnToHeroesInfo(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("heroesInfo/heroesInfo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/clickerg/heroesInfo/heroesInfo.fxml"));
         Parent reserva = (Parent) loader.load();
         loader.<HeroesInfo>getController().initData(heroeToEquip);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane stylesheets="@items.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Items">
+<Pane stylesheets="@items.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.items.logic.Items">
    <children>
       <ImageView fx:id="iv_back" fitHeight="402.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <VBox layoutY="2.0" prefHeight="400.0" prefWidth="600.0">

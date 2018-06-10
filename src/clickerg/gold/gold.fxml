@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Gold">
+<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.gold.logic.Gold">
    <children>
       <ImageView fx:id="iv_back" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <VBox fx:id="vBox_Gold" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">

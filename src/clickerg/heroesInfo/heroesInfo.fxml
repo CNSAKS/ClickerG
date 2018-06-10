@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.HeroesInfo">
+<Pane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.heroes.logic.HeroesInfo">
    <children>
       <ImageView fx:id="iv_back" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <VBox fx:id="vBox_back" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@heroesInfo.css">

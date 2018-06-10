@@ -177,7 +177,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickGold(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("gold/gold.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/gold/gold.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -187,7 +187,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickBoss(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("boss/boss.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/boss/boss.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -197,7 +197,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickExp(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("exp/exp.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/exp/exp.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -209,7 +209,7 @@ public class Town implements Initializable{
     private void clickGacha(ActionEvent event) throws IOException {
         if(nuevaPartida()){
         dialog.close();}
-        Parent reserva = FXMLLoader.load(getClass().getResource("gacha/gacha.fxml"));
+        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/gacha/gacha.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre
@@ -254,7 +254,7 @@ public class Town implements Initializable{
 
     @FXML
     private void clickHeroes(ActionEvent event) throws IOException {
-         Parent reserva = FXMLLoader.load(getClass().getResource("heroes/heroes.fxml"));
+         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/heroes/heroes.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(reserva));
         //Preguntar por cierre

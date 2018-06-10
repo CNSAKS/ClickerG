@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane fx:id="pane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.Town">
+<Pane fx:id="pane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clickerg.classes.town.logic.Town">
    <children>
       <Button fx:id="bt_gold" layoutX="182.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickGold" prefHeight="25.0" prefWidth="78.0" textOverrun="CENTER_ELLIPSIS">
          <font>
