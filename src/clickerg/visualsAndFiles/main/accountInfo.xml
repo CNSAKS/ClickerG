@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <accountInfo>
-    <gold>275</gold>
-    <bossLvl>54</bossLvl>
+    <gold>6337</gold>
+    <bossLvl>200</bossLvl>
     <heroes>
         <heroe>
             <active>false</active>
@@ -42,14 +42,14 @@
         <heroe>
             <active>true</active>
             <base_atk>100</base_atk>
-            <exp>5126</exp>
+            <exp>108808988400</exp>
             <id>1</id>
             <id_heroe>3</id_heroe>
-            <lvl>34</lvl>
+            <lvl>150</lvl>
             <name>Elza</name>
-            <item_1>9</item_1>
-            <item_2>19</item_2>
-            <item_3>15</item_3>
+            <item_1>0</item_1>
+            <item_2>1</item_2>
+            <item_3>28</item_3>
         </heroe>
         <heroe>
             <active>false</active>
@@ -483,19 +483,211 @@
             <item_2>-1</item_2>
             <item_3>-1</item_3>
         </heroe>
+    <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>40</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>41</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>0</exp>
+            <id>4</id>
+            <id_heroe>42</id_heroe>
+            <lvl>1</lvl>
+            <name>Selena</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+    <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>43</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>44</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>80</base_atk>
+            <exp>0</exp>
+            <id>4</id>
+            <id_heroe>45</id_heroe>
+            <lvl>1</lvl>
+            <name>Selena</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+    <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>46</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>47</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>48</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>100</base_atk>
+            <exp>0</exp>
+            <id>1</id>
+            <id_heroe>49</id_heroe>
+            <lvl>1</lvl>
+            <name>Elza</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+    <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>50</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>51</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>52</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+        <heroe>
+            <active>false</active>
+            <base_atk>100</base_atk>
+            <exp>0</exp>
+            <id>1</id>
+            <id_heroe>53</id_heroe>
+            <lvl>1</lvl>
+            <name>Elza</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+    <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>54</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
+    <heroe>
+            <active>false</active>
+            <base_atk>50</base_atk>
+            <exp>0</exp>
+            <id>3</id>
+            <id_heroe>55</id_heroe>
+            <lvl>1</lvl>
+            <name>Vargas</name>
+            <item_1>-1</item_1>
+            <item_2>-1</item_2>
+            <item_3>-1</item_3>
+        </heroe>
     </heroes>
     <items>
         <item>
-            <base_mult>0,10</base_mult>
+            <base_mult>700,0</base_mult>
             <name_item>Laca Macarra</name_item>
             <id_item>0</id_item>
-            <id_heroe_owner>-1</id_heroe_owner>
+            <id_heroe_owner>3</id_heroe_owner>
         </item>
         <item>
-            <base_mult>0,18</base_mult>
+            <base_mult>500,0</base_mult>
             <name_item>Ultimas Palabras</name_item>
             <id_item>1</id_item>
-            <id_heroe_owner>-1</id_heroe_owner>
+            <id_heroe_owner>3</id_heroe_owner>
         </item>
         <item>
             <base_mult>0,15</base_mult>
@@ -543,7 +735,7 @@
             <base_mult>2,08</base_mult>
             <name_item>Flecha negra</name_item>
             <id_item>9</id_item>
-            <id_heroe_owner>3</id_heroe_owner>
+            <id_heroe_owner>-1</id_heroe_owner>
         </item>
         <item>
             <base_mult>1,04</base_mult>
@@ -579,7 +771,7 @@
             <base_mult>1,56</base_mult>
             <name_item>Flecha negra</name_item>
             <id_item>15</id_item>
-            <id_heroe_owner>3</id_heroe_owner>
+            <id_heroe_owner>-1</id_heroe_owner>
         </item>
     <item>
             <base_mult>0,60</base_mult>
@@ -603,7 +795,7 @@
             <base_mult>2,07</base_mult>
             <name_item>Ultimas Palabras</name_item>
             <id_item>19</id_item>
-            <id_heroe_owner>3</id_heroe_owner>
+            <id_heroe_owner>-1</id_heroe_owner>
         </item>
         <item>
             <base_mult>0,18</base_mult>
@@ -615,6 +807,72 @@
             <base_mult>0,05</base_mult>
             <name_item>Laca Macarra</name_item>
             <id_item>21</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+    <item>
+            <base_mult>2,25</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>22</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+    <item>
+            <base_mult>2,25</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>23</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+    <item>
+            <base_mult>9,27</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>24</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>2,20</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>25</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+    <item>
+            <base_mult>4,95</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>26</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>5,95</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>27</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>9,63</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>28</id_item>
+            <id_heroe_owner>3</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>4,55</base_mult>
+            <name_item>Laca Macarra</name_item>
+            <id_item>29</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>1,53</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>30</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>9,54</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>31</id_item>
+            <id_heroe_owner>-1</id_heroe_owner>
+        </item>
+        <item>
+            <base_mult>2,16</base_mult>
+            <name_item>Ultimas Palabras</name_item>
+            <id_item>32</id_item>
             <id_heroe_owner>-1</id_heroe_owner>
         </item>
     </items>

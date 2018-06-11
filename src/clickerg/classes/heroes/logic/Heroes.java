@@ -114,8 +114,13 @@ public class Heroes implements Initializable{
                 }
                 Button b = new Button();
                 b.setId("bHeroe-" + i);
+                b.setStyle("-fx-background-color: transparent;");
                 b.setMinWidth(97);
                 b.setMinHeight(97);
+                
+                if(contratados.get(i).getActive().equals("true")){
+                    b.setStyle("-fx-border-color: white; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;");
+                }
                 
                 b.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -150,7 +155,7 @@ public class Heroes implements Initializable{
                 iv.setFitHeight(97);
                 iv.setFitWidth(97);
                 b.setGraphic(iv);
-                b.setStyle("-fx-background-color: transparent;");
+                
 
 
                 gridPaneHe.add(b,columna, fila);

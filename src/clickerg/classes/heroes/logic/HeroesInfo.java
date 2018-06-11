@@ -15,7 +15,6 @@ import clickerg.classes.others.damageCalculators.HeroeDamageCalculatorSlot3;
 import clickerg.classes.items.logic.Items;
 import clickerg.classes.others.templates.TemplateXMLWriter;
 import clickerg.classes.others.templates.TemplateXMLonlyRead;
-import clickerg.classes.heroes.logic.Heroes;
 import clickerg.classes.heroes.persistence.readHeroeFileAccountInfo;
 import clickerg.classes.heroes.persistence.readHeroeInfoFileAccountInfo;
 import clickerg.classes.heroes.persistence.writeHeroeFileAccountInfo;
@@ -153,7 +152,7 @@ public class HeroesInfo implements Initializable{
         HDC = new HeroeDamageCalculatorSlot1(HDC,heroesInfo,items);
         HDC = new HeroeDamageCalculatorSlot2(HDC,heroesInfo,items);
         HDC = new HeroeDamageCalculatorSlot3(HDC,heroesInfo,items);
-        lb_ataque.setText("Ataque : "+((int) HDC.calcularAtaque()));
+        lb_ataque.setText("Ataque : "+((long) HDC.calcularAtaque()));
         
         Image image = new Image("/clickerg/visualsAndFiles/heroes/images/id_" + heroesInfo.getId()+".png");
         if(heroesInfo.getActive().equals("true")){

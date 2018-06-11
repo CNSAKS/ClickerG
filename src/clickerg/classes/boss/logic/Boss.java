@@ -62,7 +62,7 @@ public class Boss implements Initializable {
     
     int baseHp = 100;
     double bossHp;
-    int heroDamage = 5;
+    long heroDamage = 5;
     int bossLvl = 1;
     int numberOfBosses;
     int randomNumberGenerated;
@@ -148,7 +148,7 @@ public class Boss implements Initializable {
         label_bossName.setText(bosses.get(randomNumberGenerated).getName()+" Lvl:"+bossLvl);
         
         bossHp = baseHp * Math.pow(escalado_por_nivel, bossLvl-1);
-        currenthp.setText((int) bossHp+" / "+(int) bossHp);
+        currenthp.setText((long) bossHp+" / "+(long) bossHp);
         
         for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
@@ -156,7 +156,7 @@ public class Boss implements Initializable {
                 HDC = new HeroeDamageCalculatorSlot1(HDC,contratados.get(x),itemsOwned);
                 HDC = new HeroeDamageCalculatorSlot2(HDC,contratados.get(x),itemsOwned);
                 HDC = new HeroeDamageCalculatorSlot3(HDC,contratados.get(x),itemsOwned);
-                heroDamage = (int) HDC.calcularAtaque();
+                heroDamage = (long) HDC.calcularAtaque();
              }
         }
         label_bossName.setTextFill(Color.web("#FFFFFF"));
@@ -193,7 +193,7 @@ public class Boss implements Initializable {
 
     @FXML
     private void damageBoss(MouseEvent event) {
-        hp_bar.setProgress((hp_bar.getProgress()*bossHp-heroDamage)/(int)bossHp);
+        hp_bar.setProgress((hp_bar.getProgress()*bossHp-heroDamage)/(long)bossHp);
         if(hp_bar.getProgress()<=0){
             hp_bar.setProgress(1);
             bossLvl++;
@@ -208,7 +208,7 @@ public class Boss implements Initializable {
             bossHp = Math.floor(bossHp);
             gameBoss.setId(bosses.get(randomNumberGenerated).getId());
         }
-        currenthp.setText((int)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(int)bossHp);
+        currenthp.setText((long)Math.floor(hp_bar.getProgress()*bossHp)+" / "+(long)bossHp);
     }
 
     

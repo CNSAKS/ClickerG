@@ -66,9 +66,9 @@ public class Exp implements Initializable {
     ArrayList<String> expList;
     
     int baseLvlExp = 100;
-    int nextLvlExp = baseLvlExp;
+    long nextLvlExp = baseLvlExp;
     int heroeLvl;
-    int heroExperience;
+    long heroExperience;
     String nombre;
     String idActual;
     @FXML
@@ -104,11 +104,11 @@ public class Exp implements Initializable {
         label_msg.setStyle("-fx-font-weight: bold");
        
          
-          TemplateXMLonlyRead readerExp = new readExpFileAccountInfo();
-            contratados = readerExp.readXML();
-         for(int x = 0;x<contratados.size();x++){
+       TemplateXMLonlyRead readerExp = new readExpFileAccountInfo();
+        contratados = readerExp.readXML();
+        for(int x = 0;x<contratados.size();x++){
              if("true".equals(contratados.get(x).getActive())){
-                heroExperience = Integer.parseInt(contratados.get(x).getExp());
+                heroExperience = Long.parseLong(contratados.get(x).getExp());
                 idActual = contratados.get(x).getId_heroe();
                 heroeLvl = Integer.parseInt(contratados.get(x).getLvl());
                 nombre = contratados.get(x).getName();
@@ -119,10 +119,9 @@ public class Exp implements Initializable {
              }
         }
 
-        nextLvlExp =  (int)( baseLvlExp *  Math.pow(1.16, heroeLvl-1));
-        exp_bar.setProgress(0);
-        exp_bar.setProgress((exp_bar.getProgress()+ heroExperience) / nextLvlExp );
-        currentexp.setText((int) heroExperience +" / "+(int) nextLvlExp);
+        nextLvlExp =  (long)( baseLvlExp *  Math.pow(1.16, heroeLvl-1));
+        exp_bar.setProgress((double)heroExperience / (double)nextLvlExp);
+        currentexp.setText((long) heroExperience +" / "+(long) nextLvlExp);
        
         
        
@@ -161,8 +160,8 @@ public class Exp implements Initializable {
             lvlUp = new LabelTextVolatile(2500, label_msg, "!" + nombre+  " ha subido de nivel!");
             lvlUp.startTime();
             lb_lvl.setText("Nivel " + heroeLvl );
-            nextLvlExp  = (int) (baseLvlExp * Math.pow(1.16, heroeLvl-1));
-            nextLvlExp = (int) Math.floor(nextLvlExp);
+            nextLvlExp  = (long) (baseLvlExp * Math.pow(1.16, heroeLvl-1));
+            nextLvlExp = (long) Math.floor(nextLvlExp);
         }
         exp_bar.setProgress((double)heroExperience/(double)nextLvlExp);  
         currentexp.setText(heroExperience + " / " + nextLvlExp);
@@ -170,7 +169,7 @@ public class Exp implements Initializable {
     } 
 
     @FXML
-    private void backTown(ActionEvent event) throws IOException {
+    private void irATown(ActionEvent event) throws IOException {
         closeMethod();
         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/main/main.fxml"));
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

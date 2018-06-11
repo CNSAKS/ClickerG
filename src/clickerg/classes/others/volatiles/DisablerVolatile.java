@@ -51,7 +51,7 @@ public class DisablerVolatile{
     private void updateTime() {
             actual+=100;
             if(actual>=msDuration){
-                pane.setDisable(false);
+                pane.setMouseTransparent(false);
                 closeThread();
             }
     }
@@ -61,6 +61,6 @@ public class DisablerVolatile{
     }
     
     private void disablePane(){
-        pane.setDisable(true);
+        pane.setMouseTransparent(true);
     }
 }

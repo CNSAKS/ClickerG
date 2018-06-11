@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -175,19 +174,19 @@ public class Town implements Initializable{
 
     @FXML
     private void clickGold(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/gold/gold.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/gold/gold.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(reserva));
+        stage.setScene(new Scene(parent));
         //Preguntar por cierre
-        stage.setTitle("Cave");
+        stage.setTitle("Gold");
         stage.show();
     }
 
     @FXML
     private void clickBoss(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/boss/boss.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/boss/boss.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(reserva));
+        stage.setScene(new Scene(parent));
         //Preguntar por cierre
         stage.setTitle("Boss");
         stage.show();
@@ -195,9 +194,9 @@ public class Town implements Initializable{
 
     @FXML
     private void clickExp(ActionEvent event) throws IOException {
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/exp/exp.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/exp/exp.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(reserva));
+        stage.setScene(new Scene(parent));
         //Preguntar por cierre
         stage.setTitle("Exp");
         stage.show();
@@ -207,9 +206,9 @@ public class Town implements Initializable{
     private void clickGacha(ActionEvent event) throws IOException {
         if(nuevaPartida()){
         dialog.close();}
-        Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/gacha/gacha.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/gacha/gacha.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(reserva));
+        stage.setScene(new Scene(parent));
         //Preguntar por cierre
         stage.setTitle("Gacha");
         stage.show();
@@ -252,9 +251,9 @@ public class Town implements Initializable{
 
     @FXML
     private void clickHeroes(ActionEvent event) throws IOException {
-         Parent reserva = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/heroes/heroes.fxml"));
+         Parent parent = FXMLLoader.load(getClass().getResource("/clickerg/visualsAndFiles/heroes/heroes.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(reserva));
+        stage.setScene(new Scene(parent));
         //Preguntar por cierre
         stage.setTitle("Heroes");
         stage.show();
